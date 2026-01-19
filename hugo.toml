@@ -1,0 +1,46 @@
+baseURL = 'https://energo-effect.pro'
+languageCode = 'ru-RU'
+defaultContentLanguage = 'ru'
+title = 'ООО «Энерго Эффект»'
+disableHugoGeneratorInject = true
+timeZone = 'Europe/Moscow'
+disableKinds = ['taxonomy','term'] # отключаем категории и теги
+
+# Контакты компании
+[params]
+    phone01 = '8 (862) 555-12-25'
+    phone02 = '+7 (918) 600-90-10'
+    adressUR = '354068, Краснодарский край, г. Сочи, ул. Подгорная, д. 2, офис 17'
+    inn = 2366037694
+    emailMain = 'energoeffect.sochi@yandex.ru'
+
+
+[[menu.main]]
+    name = "Главная"
+    pageRef = "/"
+    weight = 1
+
+[[menu.main]]
+    name = "О компании"
+    url = "/#about-company"
+    weight = 2
+
+[[menu.main]]
+    name = "Руководство"
+    url = "/#administration"
+    weight = 3
+
+[[menu.main]]
+    name = "Проекты"
+    url = "/projects"
+    weight = 4
+
+[[menu.main]]
+    name = "Новости"
+    pageRef = "/news"
+    weight = 5
+
+[[menu.main]]
+    name = "Контакты"
+    url = "/#contacts"
+    weight = 6
