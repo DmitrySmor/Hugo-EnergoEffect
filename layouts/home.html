@@ -1,0 +1,506 @@
+{{ define "main" }}
+<section class="section-bg-1 mx-auto">
+    <div class="container px-5">
+        <div class="row">
+            <div class="col-md-12 d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+                <h1 class="text-uppercase text-white">Инжиниринговая компания <span class="text-warning">«ЭНЕРГО ЭФФЕКТ»</span></h1>
+                <p class="text-white text-end">Проектирование Строительство Эксплуатация</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-bg-2 p-5 pt-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10">
+                <h2 class="mb-4">Динамично развивающаяся компания, зарегистрированная в Краснодарском крае</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 custom-1">
+                <p class="text-primary ps-4 pt-4">Компания специализируется на предоставлении комплексных решений в области энергоснабжения и энергоэффективности. В своей работе организация придерживается высоких стандартов качества и стремится к инновационному развитию энергетического сектора региона</p>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div class="d-flex justify-content-md-between pt-6">
+                    <p class="ps-2"><b>ООО «Энерго Эффект» зарекомендовала себя как надежный партнер, способный решать сложные технические задачи в сфере энергетики</b></p>
+                    <div class="border-start"></div>
+                    <p>Организация придерживается принципов <b>прозрачности в работе</b> и стремится к <b>долгосрочному сотрудничеству</b> с партнерами, обеспечивая <b>высокое качество</b> предоставляемых услуг и <b>индивидуальный подход</b> к каждому заказчику</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-5 text-uppercase">Ключевые направления деятельности</h2>
+            </div>
+        </div>
+        <div class="panes">
+            <div class="row">
+                {{ $pages := first 6 (where .Site.RegularPages "Section" "direction").Reverse }}
+                <!---->
+                {{ range $pages }}
+                <div class="col-lg-4 col-md-4 col-xs-12 mb-5">
+                    {{ $preview := .Resources.GetMatch "preview.webp" }}
+                    <div style="background-image: url('{{ $preview.RelPermalink | absURL }}');">
+                        <a class="btn btn-light text-start d-flex align-items-center justify-content-md-between justify-content-between" href="{{ .RelPermalink | absURL }}">
+                            {{ .Title }}
+                            <img src="{{ `images/link-arrow.png` | absURL }}" />
+                        </a>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-bg-3 py-6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-5 text-uppercase text-white">широкий спектр работ:<br /><b>от проектирования до эксплуатации</b></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
+                <div>
+                    <div class="d-flex justify-content-md-between">
+                        <p class="p-4 pb-0">Наличие лицензии на эксплуатацию</p>
+                        <span class="custom-num d-flex justify-content-center align-items-center text-white">01</span>
+                    </div>
+                    <ul class="p-3">
+                        <li>Взрывопожароопасных и химически опасных производственных объектов I, II и III классов опасности, с большим перечнем разрешенных видов деятельности</li>
+                        <li>Являемся членом СРО в области строительства, а так же СРО в области изысканий и проектирования</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
+                <div>
+                    <div class="d-flex justify-content-md-between">
+                        <p class="p-4 pb-0">Наличие аттестата аккредитации</p>
+                        <span class="custom-num d-flex justify-content-center align-items-center text-white">02</span>
+                    </div>
+                    <ul class="p-3">
+                        <li>На право поверки средств измерений предоставляет еще более широкий комплекс услуг нашему заказчику в области обеспечения единства измерений. Выполняем поверку любых средств измерений установленных в котельных и ИТП</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
+                <div>
+                    <div class="d-flex justify-content-md-between">
+                        <p class="p-4 pb-0">Собственная аварийно-диспетчерская служба (АДС)</p>
+                        <span class="custom-num d-flex justify-content-center align-items-center text-white">03</span>
+                    </div>
+                    <ul class="p-3">
+                        <li>Оперативность реагирования на аварийные ситуации</li>
+                        <li>Строгое соблюдение нормативов времени реагирования</li>
+                        <li>Быстрая локализация и устранение аварий</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
+                <div>
+                    <div class="d-flex justify-content-md-between">
+                        <p class="p-4 pb-0">Большой коллектив инженерно-технических работников</p>
+                        <span class="custom-num d-flex justify-content-center align-items-center text-white">04</span>
+                    </div>
+                    <ul class="p-3">
+                        <li>Более 50 специалистов</li>
+                        <li>Высокая надежность выполнения работ благодаря большому опыту коллектива</li>
+                        <li>Возможность обеспечивать большой объем работ</li>
+                        <li>Соблюдение нормативов и стандартов безопасности</li>
+                        <li>Профильные специалисты</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
+                <div>
+                    <div class="d-flex justify-content-md-between">
+                        <p class="p-4 pb-0">Мы располагаем собственным проектным отделом</p>
+                        <span class="custom-num d-flex justify-content-center align-items-center text-white">05</span>
+                    </div>
+                    <ul class="p-3">
+                        <li>Передовое оборудование последнего поколения</li>
+                        <li>Команда профессиональных проектировщиков зарегистрированных в НРС</li>
+                        <li>Оперативность в реализации проекта</li>
+                        <li>Полный контроль над процессом проектирования</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
+                <div>
+                    <div class="d-flex justify-content-md-between">
+                        <p class="p-4 pb-0">Мы создаем ценность, а не просто предлагаем услуги</p>
+                        <span class="custom-num d-flex justify-content-center align-items-center text-white">06</span>
+                    </div>
+                    <ul class="p-3">
+                        <li>В мире, где цена часто становится главным аргументом, мы выбрали другой путь. Наша компания конкурирует не стоимостью услуг, а их качеством и результатом, который мы создаем для наших клиентов</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="about-company" class="section-bg-4 py-6">
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-5 text-uppercase">О компании</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-3 text-warning">История</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="mb-3"><b>История профессионального партнёрства</b></p>
+                <p class="mb-3">21 сентября 2022 года три независимых руководителя, каждый специалист в своей области, объединили свои знания и опыт в компанию «Энерго Эффект»!</p>
+                <p>Комплексный подход к решению задач любой сложности стал основой философии компании. Объединение экспертных знаний в различных направлениях энергетического сектора позволило создать уникальную компанию, способную предоставлять полный спектр услуг в сфере промышленной теплоэнергетики</p>
+            </div>
+        </div>
+    </div>
+    <div class="custom-line">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <span class="mb-5 text-primary d-block">2022</span>
+                    <ul>
+                        <li class="mb-2">Поиск подходящего места, регистрация компании, слияние ресурсов</li>
+                        <li class="mb-2">Формирование руководящего состава основных направлений</li>
+                        <li class="mb-2">Формирование материально-технической базы, закупка эталонного метрологического оборудования</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <span class="mb-5 text-primary d-block">2023</span>
+                    <ul>
+                        <li class="mb-2">Получение лицензии на эксплуатацию опасных производственных объектов</li>
+                        <li class="mb-2">Аккредитация метрологической лаборатории</li>
+                        <li class="mb-2">Вступление в СРО в области строительства и проектирования</li>
+                        <li class="mb-2">Увеличение объемов по эксплуатации, проектированию и строительству</li>
+                        <li class="mb-2">Расширение штата специалистов до 25 ИТР</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <span class="mb-5 text-primary d-block">2024</span>
+                    <ul>
+                        <li class="mb-2">Заключение договоров со всеми ведущими производителями и поставщиками специализированными оборудования</li>
+                        <li class="mb-2">Заключение договоров на эксплуатацию с крупнейшими заказчиками в г. Сочи</li>
+                        <li class="mb-2">Многократное увеличение объемов по проектированию и строительству</li>
+                        <li class="mb-2">Расширение штата специалистов до 50 ИТР</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <span class="mb-5 text-primary d-block">2025</span>
+                    <ul>
+                        <li class="mb-2">Подтверждение компетенции, расширение области аккредитации метрологической лаборатории</li>
+                        <li class="mb-2">Расширение штата специалистов до 63 ИТР</li>
+                        <li class="mb-2">Заключение агентских договоров с группой компаний “Газпром”</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-6 lg">
+    <div class="container">
+        <div class="d-flex justify-content-md-between">
+            <div class="custom-1 v2">
+                <h2>Наша миссия — обеспечивать <span class="text-warning">эффективную, безопасную и бесперебойную</span> работу инженерных систем на объектах любой сложности</h2>
+            </div>
+            <div class="custom-2">
+                <h2>Мы стремимся к тому, чтобы наш заказчик спал спокойно, зная,что его <span class="text-primary">объект работает как часы</span></h2>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-bg-5 pt-5">
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-5 text-uppercase">Основные цели</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container block-bg">
+        <div class="row orange-bg">
+            <div class="col-lg-3 col-md-3 col-xs-6 border-end">
+                <div class="p-3">
+                    <img class="mb-4" src="{{ `images/mini-icon-1.png` | absURL }}" />
+                    <h4 class="text-white mb-3">Технологическое лидерство</h4>
+                    <p class="text-white">Обеспечение высокого качества услуг через применение современных технологий и постоянное развитие компетенций</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-xs-6 border-end">
+                <div class="p-3">
+                    <img class="mb-4" src="{{ `images/mini-icon-2.png` | absURL }}" />
+                    <h4 class="text-white mb-3">Ориентация на клиента</h4>
+                    <p class="text-white">Создание максимально эффективных предложений для заказчиков через индивидуальный подход и надёжность решений</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-xs-6 border-end">
+                <div class="p-3">
+                    <img class="mb-4" src="{{ `images/mini-icon-3.png` | absURL }}" />
+                    <h4 class="text-white mb-3">Развитие экспертов</h4>
+                    <p class="text-white">Поддержание высокого профессионального уровня и накопление отраслевого опыта</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-xs-6">
+                <div class="p-3">
+                    <img class="mb-4" src="{{ `images/mini-icon-4.png` | absURL }}" />
+                    <h4 class="text-white mb-3">Стратегическое развитие</h4>
+                    <p class="text-white">Укрепление позиций на рынке Краснодарского края и расширение географии присутствия</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-bg-6 py-6">
+    <div class="container px-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-5 text-uppercase text-white"><span class="text-warning">Наша команда —</span><br />наше преимущество</h2>
+                <p class="text-white">Команда из более 60 высококвалифицированных специалистов, каждый из которых вносит свой вклад в успешную реализацию проектов, обеспечивает комплексное решение любых задач: от проектирования до запуска объектов в постоянную эксплуатацию.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="administration" class="section-carousel py-6">
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-uppercase">Руководство</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="owl-carousel main-carousel">
+                    {{ range .Params.administration }}
+                    <div class="item">
+                        <img src="{{ path.Join `images/administration` .img | absURL }}" />
+                        <p class="btn btn-warning text-white"><span class="text-uppercase">{{ .name }}</span><br />{{ .role }}</p>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="projects" class="cases py-6">
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-5 text-uppercase">Реализованные проекты</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <p><b>ООО «Энерго Эффект»</b> продолжает расширять географию присутствия и спектр реализуемых проектов. Компания активно участвует в развитии энергетической инфраструктуры региона, внедряя инновационные решения и современные технологии.</p>
+            </div>
+        </div>
+
+        {{ $pages := where .Site.RegularPages "Section" "projects" | first 3 }}
+        <!---->
+        {{ range $index, $page := $pages }}
+        <div class="case border-bottom {{ if eq $index 0 }}border-top{{ end }} {{ if eq $index (sub (len $pages) 1) }}mb-5{{ end }}">
+            <div class="row justify-content-md-between align-items-center py-2">
+                <div class="col-md-3 col-xs-3">
+                    {{ $preview := .Resources.GetMatch "preview.webp" }}
+                    <a href="{{ .Permalink | absURL }}"><img src="{{ $preview.RelPermalink | absURL }}" alt="{{ .Title }}" /></a>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <p><a href="{{ .Permalink | absURL }}">{{ .Title }}</a></p>
+                </div>
+                <div class="col-md-2 col-xs-2">
+                    <a class="d-flex w-100 justify-content-end p-lg-5" href="{{ .Permalink | absURL }}"><img src="{{ `images/link-arrow-2.png` | absURL }}" alt="Подробнее" /></a>
+                </div>
+            </div>
+        </div>
+        {{ end }}
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase" href="{{ `projects` | absURL }}">Смотреть все проекты</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section-bg-7 py-6">
+    <div class="container p-5 mb-3">
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <h2 class="mb-5 text-uppercase text-white fw-bolder">Официальные партнерства</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-xs-12 mb-4">
+                <p class="text-white">ООО «Энерго Эффект» активно сотрудничает с ведущими производителями приборов учёта и телеметрии, что подтверждает наш высокий технический уровень и доверие отраслевых лидеров</p>
+            </div>
+        </div>
+        <div class="row mb-5 mbs-0">
+            {{ $pages := where .Site.RegularPages "Section" "partner" }}
+            <!---->
+            {{ range $pages }}
+            <div class="col-lg-6 col-md-6 col-xs-12 mb-4">
+                <div class="d-flex flex-column justify-content-md-between justify-content-between p-5">
+                    <div>
+                        <h4 class="text-white mb-3">{{ .Title }}</h4>
+                        <p class="text-white mb-3">{{ .Summary }}</p>
+                    </div>
+                    <a class="text-decoration-underline text-white fst-italic" href="{{ .RelPermalink | absURL }}">Подробнее ...</a>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+<section id="news" class="py-6 mpy-4 news-main">
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-5 text-uppercase fw-bolder">Новости</h2>
+            </div>
+        </div>
+        <div class="row">
+            {{ $pages := where .Site.RegularPages "Section" "news" | first 4 }}
+            <!---->
+            {{ range $index, $page := $pages }}
+            <div class="col-lg-3 col-md-3 col-xsm-5 col-xs-6">
+                {{ $preview := .Resources.GetMatch "preview.webp" }}
+                <a href="{{ .Permalink | absURL }}"><img class="mb-3" src="{{ $preview.RelPermalink | absURL }}" /></a>
+                <p class="text-uppercase">
+                    <a href="{{ .Permalink | absURL }}">{{ .Title }}</a>
+                </p>
+                <p class="text-warning">{{ .Date | time.Format ":date_long" }}</p>
+            </div>
+            {{ end }}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase" href="{{ `news` | absURL }}">Смотреть все</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-6 mpy-4">
+    <div class="container mb-3">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-5 text-uppercase fw-bolder">Документация</h2>
+            </div>
+        </div>
+        <div class="row docs mb-5">
+            {{ $docPage := .Site.GetPage "/documents" }} {{ with $docPage }} {{ range first 4 .Params.documents }}
+            <div class="col-md-3 col-xs-6">
+                <img src="{{ printf `docs/%s` .img | absURL }}" alt="{{ .name }}" />
+            </div>
+            {{ end }} {{ end }}
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase" href="{{ `documents` | absURL }}">Смотреть все</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contacts" class="section-bg-3 v2 py-6">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h2 class="text-uppercase text-white fw-bolder">Контакты</h2>
+            </div>
+        </div>
+        <div class="row justify-content-md-between">
+            <div class="col-lg-5 col-md-5 col-xs-12">
+                <h3 class="text-white border-bottom pb-3">Связаться с нами</h3>
+                <div class="row pt-3">
+                    <div class="col-md-12">
+                        <h4 class="text-white">Телефон:</h4>
+                    </div>
+                </div>
+                <div class="row pb-3">
+                    <div class="col-md-12">
+                        <a class="text-white" href="tel:{{ .Site.Param `phone01` }}">{{ .Site.Param "phone01" }}</a><br />
+                        <a class="text-white" href="tel:{{ .Site.Param `phone02` }}">{{ .Site.Param "phone02" }}</a>
+                    </div>
+                </div>
+                <div class="row pt-3 pb-3">
+                    <div class="col-lg-6 col-md-6 col-xs-12">
+                        <h4 class="text-white mb-3">E-mail:</h4>
+                        <a class="text-white" href="mailto:energoeffect.sochi@yandex.ru">energoeffect.sochi@yandex.ru</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-xs-12">
+                <h3 class="text-white border-bottom pb-3 pmt-3">Офис компании</h3>
+                <div class="mt-3 pb-3">
+                    <h4 class="text-white mb-3">Адрес:</h4>
+                    <p class="text-white">354000, Краснодарский край, г. Сочи, ул. Подгорная, д. 2, офис 17</p>
+                </div>
+                <div class="mt-3 pb-3">
+                    <h4 class="text-white">Часы работы:</h4>
+                    <p class="text-white pb-3">Пн–Пт: 08:00–17:00<br />Сб–Вс: выходной</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-6">
+    <div class="container how-to-point">
+        <div class="row mb-5">
+            <div class="col-md-12">
+                <h2 class="text-uppercase fw-bolder">Как до нас добраться</h2>
+            </div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-lg-7 col-md-7 col-xs-12">
+                <p class="m-f">Мы находимся в центре Сочи, в районе с удобной транспортной развязкой Въезд с ул. Донская → направо на ул. Подгорную → здание слева</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-xs-6 mb-5">
+                <div class="btn btn-warning d-flex justify-content-md-between justify-content-between align-items-center text-white px-4 py-0 text-start">
+                    Парковка рядом с офисом
+                    <img src="{{ `images/link-arrow-3.png` | absURL }}" />
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6 mb-5">
+                <div class="btn btn-warning d-flex justify-content-md-between justify-content-between align-items-center text-white px-4 py-0 text-start">
+                    5 минут пешком от остановки «Хлебозавод» и «Мясокомбинат»
+                    <img src="{{ `images/link-arrow-3.png` | absURL }}" />
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6 mb-5">
+                <div class="btn btn-warning d-flex justify-content-md-between justify-content-between align-items-center text-white px-4 py-0 text-start">
+                    15 минут от ж/д вокзала
+                    <img src="{{ `images/link-arrow-3.png` | absURL }}" />
+                </div>
+            </div>
+        </div>
+        <div class="row contacts">
+            <div class="col-lg-6 col-md-6 col-xs-12">
+                <div>
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af0bec5b67ceb92fbf8dc9d30c3c94d684d45d0314b3c26164449961fad2cca00&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-xs-12 d-flex flex-column justify-content-md-between">
+                <div class="mbs-5">
+                    <img src="{{ `images/contact-img-1.webp` | absURL }}" />
+                </div>
+                <div>
+                    <img src="{{ `images/contact-img-2.webp` | absURL }}" />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

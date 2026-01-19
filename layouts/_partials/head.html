@@ -1,0 +1,20 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}" />
+<!-- Title -->
+<title>{{ with .Title }} {{ . }} {{ else }} {{ .Site.Title }} {{ end }}</title>
+<!-- Favicon-->
+<link rel="icon" type="image/png" sizes="16x16" href="{{ `images/favicon-16x16.png` | absURL }}" />
+<!-- Bootstrap Core -->
+{{ $bootstrap := resources.Get "css/bootstrap/bootstrap.css" }}
+<!-- Хз зачем, нужно разобраться -->
+{{ $vendor := resources.Get "css/bootstrap/vendor.css" }}
+<!-- owlcarousel (слайдер) -->
+{{ $owlcarousel := resources.Get "css/owlcarousel/owl.carousel.css" }}
+<!-- Core theme CSS (нашм стили)-->
+{{ $style := resources.Get "css/styles.css" }}
+<!-- Объединение стилей -->
+{{- $bundle := slice $bootstrap $vendor $owlcarousel $style | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
+<link rel="stylesheet" href="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous" />

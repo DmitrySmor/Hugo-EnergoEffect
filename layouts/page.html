@@ -1,0 +1,55 @@
+{{ define "main" }}
+<article>
+    <section class="text-block py-5 mb-3">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <h1 class="text-uppercase">{{ .Title }}</h1>
+                </div>
+            </div>
+            <!-- Все изображения -->
+            {{ $slides := (.Resources.Match "images/*.{png,jpg,jpeg,gif,webp,tif,tiff,bmp}") }}
+            <!---->
+            {{ $slidesCount := len $slides }}
+            <!---->
+            {{ if eq $slidesCount 1 }}
+            <!-- Одна картинка - простой вывод -->
+            {{ with index $slides 0 }}
+            <div class="row mb-5">
+                <div class="col-md-12">
+                    <img src="{{ .RelPermalink }}" height="575" />
+                </div>
+            </div>
+            {{ end }}
+            <!---->
+            {{ else if gt $slidesCount 1 }}
+            <!-- Несколько картинок - слайдер -->
+            <div class="col-md-12">
+                <div id="news-slider-1" class="carousel slide post-slider" data-bs-ride="carousel">
+                    <!-- Кнопки управления -->
+                    <div class="d-flex justify-content-end">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#news-slider-1" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#news-slider-1" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+                    <div class="carousel-inner">
+                        <!-- Слайд -->
+                        {{ range $index, $slide := $slides }}
+                        <div class="carousel-item{{ if eq $index 0 }} active{{ end }}">
+                            <img src="{{ $slide.RelPermalink }}" class="d-block" />
+                        </div>
+                        {{ end }}
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+            <div class="row text">
+                <div class="col-md-12">{{ .Content }}</div>
+            </div>
+        </div>
+    </section>
+</article>
+{{ end }}

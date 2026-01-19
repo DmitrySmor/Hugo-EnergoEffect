@@ -1,0 +1,50 @@
+<header>
+    <div class="container lg">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4">
+            <a href="{{ `` | absURL }}" class="d-flex align-items-center col-md-2 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img src="{{ `images/logoheader.png` | absURL }}" alt="{{ .Title }}" />
+            </a>
+
+            <ul class="nav col-md-7 mb-2 justify-content-center mb-md-0">
+                {{ range .Site.Menus.main }}
+                <li><a href="{{ .URL | absURL }}" class="nav-link px-2">{{ .Name }}</a></li>
+                {{ end }}
+            </ul>
+
+            <div class="col-md-3 d-flex text-end justify-content-end text-nowrap">
+                <button type="button" class="btn me-2">
+                    <img src="{{ `images/lang-icon.png` | absURL }}" alt="ru" />
+                </button>
+                <a href='tel:{{ .Site.Param "phone01" }}' class="btn btn-primary">
+                    <img src="{{ `images/phone-icon.png` | absURL }}" width="18" height="18" alt="phone" />
+                    {{ .Site.Param "phone01" }}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container xs">
+        <div class="d-flex flex-wrap align-items-center justify-content-between py-4">
+            <a href="{{ `` | absURL }}" class="d-flex align-items-center col-md-2 mb-2 mb-md-0 text-dark text-decoration-none">
+                <img src="{{ `images/logoheader.png` | absURL }}" alt="{{ .Title }}" />
+            </a>
+            <nav>
+                <button class="bord-none" data-bs-toggle="collapse" data-bs-target="#MobMenuHeader" aria-controls="MobMenuHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span id="mobmenu" class="mob-menu-button" onclick="MobMenu()"></span>
+                </button>
+            </nav>
+        </div>
+    </div>
+    <div class="collapse" id="MobMenuHeader">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="d-flex flex-column nav justify-content-center align-items-center mb-5">
+                        {{ range .Site.Menus.main }}
+                        <li><a href="{{ .URL | absURL }}" class="nav-link px-2">{{ .Name }}</a></li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

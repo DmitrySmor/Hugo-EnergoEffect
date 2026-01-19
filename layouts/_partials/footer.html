@@ -1,0 +1,28 @@
+<img id="scroll-top" src="{{ `images/top-icon.png` | absURL }}" />
+<footer>
+    <div class="py-5 bg-dark">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between">
+                <a href="{{ `` | absURL }}" class="d-flex align-items-center col-md-2 mb-2 mb-md-0 text-dark text-decoration-none">
+                    <img src="{{ `images/logoheader.png` | absURL }}" alt="{{ .Title }}" />
+                </a>
+                <ul class="nav col-md-8 mb-2 justify-content-end mb-md-0">
+                    {{ range .Site.Menus.main }}
+                    <li><a href="{{ .URL | absURL }}" class="nav-link px-2 text-white">{{ .Name }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Не знаю заечем, Удалил, но тут оставил врдруг понадобиться -->
+{{ $jquery := resources.Get "js/jquery-3.7.1.min.js" }}
+<!-- Для слайда сотрудники компании -->
+{{ $owlcarousel := resources.Get "js/owlcarousel/owl.carousel.min.js" }}
+<!-- Bootstrap core JS-->
+{{ $bootstrap := resources.Get "js/bootstrap.bundle.min.js" }}
+<!-- Core theme JS-->
+{{ $script := resources.Get "js/script.js" }}
+<!-- Объединение и минификация скриптов -->
+{{ $js := slice $jquery $owlcarousel $bootstrap $script | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint }}
+<script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
