@@ -9,7 +9,7 @@ disableKinds = ['taxonomy','term'] # отключаем категории и т
 # Контакты компании
 [params]
     phone01 = '8 (862) 555-12-25'
-    phone02 = '+7 (918) 600-90-10'
+    phone02 = '8 (988) 283-53-53'
     adressUR = '354068, Краснодарский край, г. Сочи, ул. Подгорная, д. 2, офис 17'
     inn = 2366037694
     emailMain = 'energoeffect.sochi@yandex.ru'
