@@ -21,19 +21,24 @@ disableKinds = ['taxonomy','term'] # отключаем категории и т
     weight = 1
 
 [[menu.main]]
+    name = "Поверка"
+    pageRef = "/poverka"
+    weight = 2
+
+[[menu.main]]
     name = "О компании"
     url = "/#about-company"
-    weight = 2
+    weight = 7
 
 [[menu.main]]
     name = "Руководство"
     url = "/#administration"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     name = "Проекты"
     url = "/projects"
-    weight = 4
+    weight = 3
 
 [[menu.main]]
     name = "Новости"
