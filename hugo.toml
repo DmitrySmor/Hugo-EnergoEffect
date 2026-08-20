@@ -5,8 +5,9 @@ title = 'ООО «Энерго Эффект»'
 disableHugoGeneratorInject = true
 timeZone = 'Europe/Moscow'
 disableKinds = ['taxonomy','term'] # отключаем категории и теги
+enableRobotsTXT = true # Включаем генрацию robots.txt
 
-# Контакты компании
+# Контакты компанииё
 [params]
     phone01 = '8 (862) 555-12-25'
     phone02 = '8 (988) 283-53-53'

@@ -1,0 +1,5 @@
+User-agent: *
+{{ $disallowed := where .Pages "Params.disallow" true -}}
+{{ range $disallowed -}}
+Disallow: {{ .RelPermalink -}}
+{{ end -}}
