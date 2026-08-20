@@ -1,5 +1,5 @@
 baseURL = 'https://energo-effect.pro'
-languageCode = 'ru-RU'
+locale = 'ru-RU'
 defaultContentLanguage = 'ru'
 title = 'ООО «Энерго Эффект»'
 disableHugoGeneratorInject = true
