@@ -3,3 +3,4 @@ User-agent: *
 {{ range $disallowed -}}
 Disallow: {{ .RelPermalink -}}
 {{ end -}}
+Sitemap: https://energo-effect.pro/sitemap.xml
