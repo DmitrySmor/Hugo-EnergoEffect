@@ -50,3 +50,20 @@ cp -a ./archetypes/0_to_copy_news ./content/partner/new_partner
 ```
 disallow = true # Страница, которую нужно скрыть
 ```
+
+### Настройка IndexNow для GitHub Pages
+
+Для работы с IndexNow необходимо просто заменить значение переменной `INDEXNOW_KEY` в секретах GitHub Actions.
+Больше ничего делать ну не надо.
+
+'GitHub → Repository → Settings → Secrets and variables → Actions → Secrets'
+
+```
+Secrets
+└── INDEXNOW_KEY
+    └── 42e02184e285e8a4d0a
+
+Variables
+└── SITE_URL
+    └── energo-effect.pro
+```
