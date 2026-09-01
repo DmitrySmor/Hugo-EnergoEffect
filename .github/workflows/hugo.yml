@@ -118,16 +118,26 @@ jobs:
 
         steps:
             # Отправляем URL главной страницы в IndexNow
-            # На следующем этапе сюда добавим автоматическое
-            # определение добавленных и изменённых страниц
             - name: Notify IndexNow
+              env:
+                  INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+                  SITE_URL: ${{ vars.SITE_URL }}
+
               run: |
-                  curl -X POST "https://api.indexnow.org/indexnow" \
+                  # Формируем полный URL сайта
+                  SITE_URL_HTTPS="https://${SITE_URL}"
+
+                  echo "SITE_URL: $SITE_URL_HTTPS"
+                  echo "HOST: $SITE_URL"
+
+                  # Отправляем URL в IndexNow
+                  curl -i \
+                    -X POST "https://api.indexnow.org/indexnow" \
                     -H "Content-Type: application/json; charset=utf-8" \
-                    -d '{
-                      "host": "'"${{ vars.SITE_URL }}"'",
-                      "key": "'"${{ secrets.INDEXNOW_KEY }}"'",
-                      "urlList": [
-                        "'"${{ vars.SITE_URL }}"'/"
+                    -d "{
+                      \"host\": \"$SITE_URL\",
+                      \"key\": \"$INDEXNOW_KEY\",
+                      \"urlList\": [
+                        \"$SITE_URL_HTTPS/\"
                       ]
-                    }'
+                    }"
