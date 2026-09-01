@@ -7,6 +7,7 @@ timeZone = 'Europe/Moscow'
 disableKinds = ['taxonomy','term'] # отключаем категории и теги
 enableRobotsTXT = true # Включаем генрацию robots.txt
 
+
 # Контакты компанииё
 [params]
     phone01 = '8 (862) 555-12-25'
