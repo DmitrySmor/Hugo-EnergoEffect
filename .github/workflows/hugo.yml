@@ -1,4 +1,4 @@
-# Сборка и публикация Hugo-сайта на GitHub Pages
+# Сборка, публикация Hugo-сайта и уведомление IndexNow
 name: Deploy Hugo site to Pages
 
 on:
@@ -26,9 +26,9 @@ defaults:
         shell: bash
 
 jobs:
-    # ==============================
+    # ============================================================
     # СБОРКА HUGO-САЙТА
-    # ==============================
+    # ============================================================
     build:
         runs-on: ubuntu-latest
 
@@ -36,7 +36,9 @@ jobs:
             HUGO_VERSION: 0.161.1
 
         steps:
+            # ----------------------------------------------------
             # Установка Hugo
+            # ----------------------------------------------------
             - name: Install Hugo CLI
               run: |
                   wget -O ${{ runner.temp }}/hugo.deb \
@@ -44,28 +46,68 @@ jobs:
 
                   sudo dpkg -i ${{ runner.temp }}/hugo.deb
 
+            # ----------------------------------------------------
             # Установка Dart Sass
+            # ----------------------------------------------------
             - name: Install Dart Sass
               run: sudo snap install dart-sass
 
+            # ----------------------------------------------------
             # Получение исходного кода из репозитория
+            # ----------------------------------------------------
             - name: Checkout
               uses: actions/checkout@v4
               with:
                   submodules: recursive
 
+            # ----------------------------------------------------
             # Настройка GitHub Pages
+            # ----------------------------------------------------
             - name: Setup Pages
               id: pages
               uses: actions/configure-pages@v5
 
+            # ----------------------------------------------------
             # Установка Node.js зависимостей, если они существуют
+            # ----------------------------------------------------
             - name: Install Node.js dependencies
               run: '[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true'
 
+            # ----------------------------------------------------
+            # Получаем sitemap предыдущей опубликованной версии сайта
+            #
+            # sitemap.xml используется как хранилище предыдущего
+            # состояния сайта.
+            #
+            # Если sitemap ещё отсутствует, это первый запуск —
+            # тогда все страницы новой сборки будут считаться новыми.
+            # ----------------------------------------------------
+            - name: Download previous sitemap
+              env:
+                  SITE_URL: ${{ vars.SITE_URL }}
+              run: |
+                  SITE_URL_HTTPS="https://${SITE_URL}"
+
+                  echo "Получаем предыдущий sitemap:"
+                  echo "${SITE_URL_HTTPS}/sitemap.xml"
+
+                  if curl -fsSL \
+                    "${SITE_URL_HTTPS}/sitemap.xml" \
+                    -o previous-sitemap.xml
+                  then
+                      echo "Предыдущий sitemap успешно получен."
+                  else
+                      echo "Предыдущий sitemap не найден."
+                      echo "Считаем это первым запуском."
+                      touch previous-sitemap.xml
+                  fi
+
+            # ----------------------------------------------------
             # Создание файла подтверждения IndexNow
-            # Файл создаётся только во время CI-сборки
-            # и не хранится в Git-репозитории
+            #
+            # Файл создаётся только во время CI-сборки.
+            # В Git-репозитории его хранить не нужно.
+            # ----------------------------------------------------
             - name: Create IndexNow key file
               run: |
                   mkdir -p static
@@ -73,7 +115,9 @@ jobs:
                   printf "%s" "${{ secrets.INDEXNOW_KEY }}" \
                     > "static/${{ secrets.INDEXNOW_KEY }}.txt"
 
+            # ----------------------------------------------------
             # Сборка сайта Hugo
+            # ----------------------------------------------------
             - name: Build with Hugo
               env:
                   HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
@@ -83,15 +127,193 @@ jobs:
                     --minify \
                     --baseURL "${{ steps.pages.outputs.base_url }}/"
 
-            # Загрузка собранного сайта как артефакта GitHub Pages
-            - name: Upload artifact
+            # ====================================================
+            # ОПРЕДЕЛЕНИЕ ИЗМЕНЕНИЙ ДЛЯ INDEXNOW
+            # ====================================================
+
+            # ----------------------------------------------------
+            # Сравниваем предыдущий sitemap с новым.
+            #
+            # Из sitemap берём:
+            #   <loc>     — URL страницы
+            #   <lastmod> — дату последнего изменения
+            #
+            # В IndexNow отправляются:
+            #
+            #   1. Новые URL
+            #   2. URL с изменившимся lastmod
+            #   3. URL, которые были удалены
+            #
+            # Если sitemap предыдущей версии отсутствовал,
+            # отправляются все URL новой версии.
+            # ----------------------------------------------------
+            - name: Find changed URLs for IndexNow
+              env:
+                  SITE_URL: ${{ vars.SITE_URL }}
+              run: |
+                  python3 <<'PY'
+                  import os
+                  import re
+                  from pathlib import Path
+
+                  site_url = f"https://{os.environ['SITE_URL']}"
+
+                  previous_file = Path("previous-sitemap.xml")
+                  current_file = Path("public/sitemap.xml")
+                  output_file = Path("indexnow-urls.txt")
+
+                  def parse_sitemap(path):
+                      """
+                      Читаем sitemap и создаём словарь:
+
+                      URL -> lastmod
+
+                      Например:
+
+                      https://energo-effect.pro/page/ -> 2026-09-01...
+                      """
+
+                      if not path.exists() or path.stat().st_size == 0:
+                          return {}
+
+                      text = path.read_text(encoding="utf-8")
+
+                      urls = {}
+
+                      # Извлекаем блоки <url>...</url>
+                      for block in re.findall(
+                          r"<url>(.*?)</url>",
+                          text,
+                          flags=re.DOTALL
+                      ):
+                          loc_match = re.search(
+                              r"<loc>(.*?)</loc>",
+                              block,
+                              flags=re.DOTALL
+                          )
+
+                          lastmod_match = re.search(
+                              r"<lastmod>(.*?)</lastmod>",
+                              block,
+                              flags=re.DOTALL
+                          )
+
+                          if not loc_match:
+                              continue
+
+                          url = loc_match.group(1).strip()
+
+                          # Если lastmod отсутствует, используем пустое значение
+                          lastmod = (
+                              lastmod_match.group(1).strip()
+                              if lastmod_match
+                              else ""
+                          )
+
+                          urls[url] = lastmod
+
+                      return urls
+
+                  previous = parse_sitemap(previous_file)
+                  current = parse_sitemap(current_file)
+
+                  changed = set()
+
+                  # ------------------------------------------------
+                  # Новые и изменённые страницы
+                  # ------------------------------------------------
+                  for url, lastmod in current.items():
+
+                      # URL появился впервые
+                      if url not in previous:
+                          changed.add(url)
+                          print(f"+ NEW      {url}")
+
+                      # URL существует, но дата изменения стала другой
+                      elif previous[url] != lastmod:
+                          changed.add(url)
+                          print(f"~ MODIFIED {url}")
+
+                  # ------------------------------------------------
+                  # Удалённые страницы
+                  #
+                  # IndexNow получает старый URL, чтобы поисковая
+                  # система узнала, что страница больше не существует.
+                  # ------------------------------------------------
+                  for url in previous:
+
+                      if url not in current:
+                          changed.add(url)
+                          print(f"- DELETED  {url}")
+
+                  # ------------------------------------------------
+                  # Если это первый запуск и предыдущего sitemap
+                  # не было, все текущие URL уже попадут в changed.
+                  # ------------------------------------------------
+
+                  output_file.write_text(
+                      "\n".join(sorted(changed)) +
+                      ("\n" if changed else ""),
+                      encoding="utf-8"
+                  )
+
+                  print()
+                  print("========================================")
+                  print("IndexNow: найдено URL:", len(changed))
+                  print("========================================")
+
+                  if changed:
+                      print()
+                      print("URL для отправки в IndexNow:")
+                      for url in sorted(changed):
+                          print(url)
+                  else:
+                      print("Изменений нет.")
+                  PY
+
+            # ----------------------------------------------------
+            # Показываем содержимое sitemap для диагностики.
+            #
+            # Этот шаг можно будет удалить после проверки.
+            # ----------------------------------------------------
+            - name: Show IndexNow URLs
+              run: |
+                  echo "========================================"
+                  echo "Список URL для IndexNow"
+                  echo "========================================"
+
+                  if [[ -s indexnow-urls.txt ]]; then
+                      cat indexnow-urls.txt
+                  else
+                      echo "Нет URL для отправки."
+                  fi
+
+            # ----------------------------------------------------
+            # Передаём список URL из build job в indexnow job.
+            #
+            # Это НЕ состояние сайта.
+            # Это просто передача результата текущей сборки
+            # между двумя job.
+            # ----------------------------------------------------
+            - name: Upload IndexNow URL list
+              uses: actions/upload-artifact@v4
+              with:
+                  name: indexnow-urls
+                  path: indexnow-urls.txt
+                  if-no-files-found: error
+                  retention-days: 1
+
+            # ----------------------------------------------------
+            # Загружаем собранный сайт как артефакт GitHub Pages
+            # ----------------------------------------------------
+            - name: Upload Pages artifact
               uses: actions/upload-pages-artifact@v3
               with:
                   path: ./public
 
-    # ==============================
+    # ============================================================
     # ПУБЛИКАЦИЯ НА GITHUB PAGES
-    # ==============================
+    # ============================================================
     deploy:
         environment:
             name: github-pages
@@ -99,45 +321,131 @@ jobs:
 
         runs-on: ubuntu-latest
 
+        # Деплой начинается только после успешной сборки
         needs: build
 
         steps:
+            # ----------------------------------------------------
             # Публикация сайта на GitHub Pages
+            # ----------------------------------------------------
             - name: Deploy to GitHub Pages
               id: deployment
               uses: actions/deploy-pages@v4
 
-    # ==============================
+    # ============================================================
     # УВЕДОМЛЕНИЕ INDEXNOW
-    # ==============================
+    # ============================================================
     indexnow:
         runs-on: ubuntu-latest
 
-        # Запускаем только после успешной публикации сайта
+        # Очень важно:
+        #
+        # IndexNow запускается только после успешного deploy.
+        #
+        # Если Hugo не собрался или GitHub Pages не опубликовал
+        # сайт — IndexNow не вызывается.
+        # --------------------------------------------------------
         needs: deploy
 
         steps:
-            # Отправляем URL главной страницы в IndexNow
+            # ----------------------------------------------------
+            # Получаем список URL, который был создан в build job
+            # ----------------------------------------------------
+            - name: Download IndexNow URL list
+              uses: actions/download-artifact@v4
+              with:
+                  name: indexnow-urls
+
+            # ----------------------------------------------------
+            # Отправляем изменившиеся URL в IndexNow
+            # ----------------------------------------------------
             - name: Notify IndexNow
               env:
                   INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
                   SITE_URL: ${{ vars.SITE_URL }}
 
               run: |
-                  # Формируем полный URL сайта
-                  SITE_URL_HTTPS="https://${SITE_URL}"
 
-                  echo "SITE_URL: $SITE_URL_HTTPS"
-                  echo "HOST: $SITE_URL"
+                  # Если изменений нет — ничего отправлять не нужно.
+                  if [[ ! -s indexnow-urls.txt ]]; then
+                      echo "Изменений для IndexNow нет."
+                      exit 0
+                  fi
 
-                  # Отправляем URL в IndexNow
-                  curl -i \
-                    -X POST "https://api.indexnow.org/indexnow" \
-                    -H "Content-Type: application/json; charset=utf-8" \
-                    -d "{
-                      \"host\": \"$SITE_URL\",
-                      \"key\": \"$INDEXNOW_KEY\",
-                      \"urlList\": [
-                        \"$SITE_URL_HTTPS/\"
-                      ]
-                    }"
+                  echo "========================================"
+                  echo "Отправка URL в IndexNow"
+                  echo "========================================"
+
+                  echo "Host: ${SITE_URL}"
+                  echo "Количество URL: $(wc -l < indexnow-urls.txt)"
+                  echo
+
+                  # ------------------------------------------------
+                  # Формируем JSON.
+                  #
+                  # Используем Python, чтобы корректно экранировать
+                  # URL и ключ и не зависеть от кавычек Bash.
+                  # ------------------------------------------------
+                  python3 <<'PY' > indexnow-payload.json
+                  import json
+                  import os
+
+                  urls = [
+                      line.strip()
+                      for line in open(
+                          "indexnow-urls.txt",
+                          encoding="utf-8"
+                      )
+                      if line.strip()
+                  ]
+
+                  payload = {
+                      "host": os.environ["SITE_URL"],
+                      "key": os.environ["INDEXNOW_KEY"],
+                      "urlList": urls
+                  }
+
+                  print(json.dumps(payload, ensure_ascii=False))
+                  PY
+
+                  echo "Отправляем URL:"
+
+                  while IFS= read -r url; do
+                      echo "  $url"
+                  done < indexnow-urls.txt
+
+                  echo
+
+                  # ------------------------------------------------
+                  # Отправляем пакет URL в IndexNow.
+                  #
+                  # IndexNow позволяет отправлять несколько URL
+                  # одним запросом.
+                  # ------------------------------------------------
+                  HTTP_CODE=$(curl \
+                      -sS \
+                      -o indexnow-response.json \
+                      -w "%{http_code}" \
+                      -X POST \
+                      "https://api.indexnow.org/indexnow" \
+                      -H "Content-Type: application/json; charset=utf-8" \
+                      --data-binary @indexnow-payload.json)
+
+                  echo "HTTP status: ${HTTP_CODE}"
+
+                  if [[ -s indexnow-response.json ]]; then
+                      echo "Ответ IndexNow:"
+                      cat indexnow-response.json
+                      echo
+                  fi
+
+                  # ------------------------------------------------
+                  # Любой HTTP-код, отличный от 200/202, считаем
+                  # ошибкой workflow.
+                  # ------------------------------------------------
+                  if [[ "$HTTP_CODE" != "200" && "$HTTP_CODE" != "202" ]]; then
+                      echo "Ошибка: IndexNow вернул HTTP ${HTTP_CODE}"
+                      exit 1
+                  fi
+
+                  echo "IndexNow успешно принял URL."
