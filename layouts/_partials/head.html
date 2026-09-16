@@ -11,6 +11,9 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 <!-- Предзагрузка главного изображения первого экрана для ускорения LCP -->
 <link rel="preload" as="image" fetchpriority="high" href="{{ `images/main-banner-1.webp` | absURL }}" />
+<!-- Предзагрузка шрифтов для ускорения их загрузки и уменьшения задержки отрисовки текста -->
+<link rel="preload" href="{{ `fonts/Inter-Regular.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="{{ `fonts/Inter-Italic.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
 <!-- Bootstrap Core -->
 {{ $bootstrap := resources.Get "css/bootstrap/bootstrap.css" }}
 <!-- Хз зачем, нужно разобраться -->
