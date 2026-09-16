@@ -46,3 +46,8 @@ $('.main-carousel').owlCarousel({
 // Это также устраняет ошибку Lighthouse/axe о кнопках без доступного имени.
 $('.main-carousel .owl-prev').attr('aria-label', 'Предыдущий слайд')
 $('.main-carousel .owl-next').attr('aria-label', 'Следующий слайд')
+// Owl Carousel автоматически создаёт кнопки .owl-dot без доступного имени.
+// Добавляем aria-label, чтобы скринридер понимал, какой слайд выбирает каждая точка навигации.
+$('.main-carousel .owl-dot').each(function (index) {
+	$(this).attr('aria-label', 'Перейти к слайду ' + (index + 1))
+})
