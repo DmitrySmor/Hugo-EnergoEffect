@@ -9,7 +9,7 @@
 		<div class="row">
 			{{ range .Params.documents }}
 			<div class="col-lg-3 col-md-3 col-xsm-4 col-xs-6 mb-5">
-				<img class="mb-3" src="{{ path.Join `docs` .img | absURL }}" alt="" />
+				<img class="mb-3" src="{{ path.Join `docs` .img | absURL }}" alt="" width="320" height="390" />
 				<a class="text-uppercase text-blue text-decoration-underline" href="{{ path.Join `docs` .file | absURL }}">{{ .name }}</a>
 			</div>
 			{{ end }}

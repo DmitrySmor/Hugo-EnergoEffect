@@ -47,7 +47,7 @@
 					<div style="background-image: url('{{ $preview.RelPermalink | absURL }}');">
 						<a class="btn btn-light text-start d-flex align-items-center justify-content-md-between justify-content-between" href="{{ .RelPermalink | absURL }}">
 							{{ .Title }}
-							<img src="{{ `images/link-arrow.png` | absURL }}" alt="" />
+							<img src="{{ `images/link-arrow.png` | absURL }}" alt="" width="27" height="27" />
 						</a>
 					</div>
 				</div>
@@ -232,28 +232,28 @@
 		<div class="row orange-bg">
 			<div class="col-lg-3 col-md-3 col-xs-6 border-end">
 				<div class="p-3">
-					<img class="mb-4" src="{{ `images/mini-icon-1.png` | absURL }}" alt="" />
+					<img class="mb-4" src="{{ `images/mini-icon-1.png` | absURL }}" alt="" width="52" height="52" />
 					<h4 class="text-white mb-3">Технологическое лидерство</h4>
 					<p class="text-white">Обеспечение высокого качества услуг через применение современных технологий и постоянное развитие компетенций</p>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-xs-6 border-end">
 				<div class="p-3">
-					<img class="mb-4" src="{{ `images/mini-icon-2.png` | absURL }}" alt="" />
+					<img class="mb-4" src="{{ `images/mini-icon-2.png` | absURL }}" alt="" width="52" height="52" />
 					<h4 class="text-white mb-3">Ориентация на клиента</h4>
 					<p class="text-white">Создание максимально эффективных предложений для заказчиков через индивидуальный подход и надёжность решений</p>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-xs-6 border-end">
 				<div class="p-3">
-					<img class="mb-4" src="{{ `images/mini-icon-3.png` | absURL }}" alt="" />
+					<img class="mb-4" src="{{ `images/mini-icon-3.png` | absURL }}" alt="" width="52" height="52" />
 					<h4 class="text-white mb-3">Развитие экспертов</h4>
 					<p class="text-white">Поддержание высокого профессионального уровня и накопление отраслевого опыта</p>
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-3 col-xs-6">
 				<div class="p-3">
-					<img class="mb-4" src="{{ `images/mini-icon-4.png` | absURL }}" alt="" />
+					<img class="mb-4" src="{{ `images/mini-icon-4.png` | absURL }}" alt="" width="52" height="52" />
 					<h4 class="text-white mb-3">Стратегическое развитие</h4>
 					<p class="text-white">Укрепление позиций на рынке Краснодарского края и расширение географии присутствия</p>
 				</div>
@@ -285,7 +285,7 @@
 				<div class="owl-carousel main-carousel">
 					{{ range .Params.administration }}
 					<div class="item">
-						<img src="{{ path.Join `images/administration` .img | absURL }}" alt="{{ .name }}" />
+						<img src="{{ path.Join `images/administration` .img | absURL }}" alt="{{ .name }}" width="300" height="450" />
 						<p class="btn btn-warning text-white"><span class="text-uppercase">{{ .name }}</span><br />{{ .role }}</p>
 					</div>
 					{{ end }}
@@ -322,7 +322,7 @@
 					<p><a href="{{ .Permalink | absURL }}">{{ .Title }}</a></p>
 				</div>
 				<div class="col-md-2 col-xs-2">
-					<a class="d-flex w-100 justify-content-end p-lg-5" aria-label="Подробнее о проекте {{ .Title }}" href="{{ .Permalink | absURL }}"><img src="{{ `images/link-arrow-2.png` | absURL }}" alt="" /></a>
+					<a class="d-flex w-100 justify-content-end p-lg-5" aria-label="Подробнее о проекте {{ .Title }}" href="{{ .Permalink | absURL }}"><img src="{{ `images/link-arrow-2.png` | absURL }}" alt="" width="60" height="60" /></a>
 				</div>
 			</div>
 		</div>
@@ -401,7 +401,7 @@
 		<div class="row docs mb-5">
 			{{ $docPage := .Site.GetPage "/documents" }} {{ with $docPage }} {{ range first 4 .Params.documents }}
 			<div class="col-md-3 col-xs-6">
-				<img src="{{ printf `docs/%s` .img | absURL }}" alt="{{ .name }}" />
+				<img src="{{ printf `docs/%s` .img | absURL }}" alt="{{ .name }}" width="320" height="390" />
 			</div>
 			{{ end }} {{ end }}
 		</div>
@@ -471,19 +471,19 @@
 			<div class="col-lg-4 col-md-4 col-xs-6 mb-5">
 				<div class="btn btn-warning d-flex justify-content-md-between justify-content-between align-items-center text-white px-4 py-0 text-start">
 					Парковка рядом с офисом
-					<img src="{{ `images/link-arrow-3.png` | absURL }}" alt="" />
+					<img src="{{ `images/link-arrow-3.png` | absURL }}" alt="" width="31" height="31" />
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-xs-6 mb-5">
 				<div class="btn btn-warning d-flex justify-content-md-between justify-content-between align-items-center text-white px-4 py-0 text-start">
 					5 минут пешком от остановки «Хлебозавод» и «Мясокомбинат»
-					<img src="{{ `images/link-arrow-3.png` | absURL }}" alt="" />
+					<img src="{{ `images/link-arrow-3.png` | absURL }}" alt="" width="31" height="31" />
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-xs-6 mb-5">
 				<div class="btn btn-warning d-flex justify-content-md-between justify-content-between align-items-center text-white px-4 py-0 text-start">
 					15 минут от ж/д вокзала
-					<img src="{{ `images/link-arrow-3.png` | absURL }}" alt="" />
+					<img src="{{ `images/link-arrow-3.png` | absURL }}" alt="" width="31" height="31" />
 				</div>
 			</div>
 		</div>
@@ -496,10 +496,10 @@
 			</div>
 			<div class="col-lg-6 col-md-6 col-xs-12 d-flex flex-column justify-content-md-between">
 				<div class="mbs-5">
-					<img src="{{ `images/contact-img-1.webp` | absURL }}" alt="" />
+					<img src="{{ `images/contact-img-1.webp` | absURL }}" alt="" width="636" height="262" />
 				</div>
 				<div>
-					<img src="{{ `images/contact-img-2.webp` | absURL }}" alt="" />
+					<img src="{{ `images/contact-img-2.webp` | absURL }}" alt="" width="636" height="263" />
 				</div>
 			</div>
 		</div>
