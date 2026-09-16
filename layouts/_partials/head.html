@@ -7,8 +7,10 @@
 <title>{{ with .Title }} {{ . }} {{ else }} {{ .Site.Title }} {{ end }}</title>
 <!-- Favicon-->
 <link rel="icon" type="image/png" sizes="16x16" href="{{ `images/favicon-16x16.png` | absURL }}" />
-<!-- canonical -->
+<!-- canonical для поисковых роботов-->
 <link rel="canonical" href="{{ .Permalink }}" />
+<!-- Предзагрузка главного изображения первого экрана для ускорения LCP -->
+<link rel="preload" as="image" fetchpriority="high" href="{{ `images/main-banner-1.webp` | absURL }}" />
 <!-- Bootstrap Core -->
 {{ $bootstrap := resources.Get "css/bootstrap/bootstrap.css" }}
 <!-- Хз зачем, нужно разобраться -->
