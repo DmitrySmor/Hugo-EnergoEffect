@@ -322,7 +322,7 @@
 					<p><a href="{{ .Permalink | absURL }}">{{ .Title }}</a></p>
 				</div>
 				<div class="col-md-2 col-xs-2">
-					<a class="d-flex w-100 justify-content-end p-lg-5" href="{{ .Permalink | absURL }}"><img src="{{ `images/link-arrow-2.png` | absURL }}" alt="Подробнее" /></a>
+					<a class="d-flex w-100 justify-content-end p-lg-5" aria-label="Подробнее о проекте {{ .Title }}" href="{{ .Permalink | absURL }}"><img src="{{ `images/link-arrow-2.png` | absURL }}" alt="" /></a>
 				</div>
 			</div>
 		</div>
@@ -356,7 +356,7 @@
 						<h4 class="text-white mb-3">{{ .Title }}</h4>
 						<p class="text-white mb-3">{{ .Summary }}</p>
 					</div>
-					<a class="text-decoration-underline text-white fst-italic" href="{{ .RelPermalink | absURL }}">Подробнее ...</a>
+					<a class="text-decoration-underline text-white fst-italic" aria-label="Подробнее о партнере {{ .Title }}" href="{{ .RelPermalink | absURL }}">Подробнее ...</a>
 				</div>
 			</div>
 			{{ end }}
