@@ -41,3 +41,8 @@ $('.main-carousel').owlCarousel({
 		},
 	},
 })
+// Owl Carousel автоматически создаёт кнопки .owl-prev и .owl-next без понятных для скринридеров названий.
+// Добавляем aria-label, чтобы скринридер озвучивал назначение кнопок: «Предыдущий слайд» и «Следующий слайд».
+// Это также устраняет ошибку Lighthouse/axe о кнопках без доступного имени.
+$('.main-carousel .owl-prev').attr('aria-label', 'Предыдущий слайд')
+$('.main-carousel .owl-next').attr('aria-label', 'Следующий слайд')
