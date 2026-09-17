@@ -2,15 +2,19 @@
 	const METRIKA_ID = 112375368
 	const CONSENT_KEY = 'cookieConsent'
 
-	// Если пользователь уже сделал выбор — баннер повторно не показываем.
-	if (localStorage.getItem(CONSENT_KEY)) {
-		if (localStorage.getItem(CONSENT_KEY) === 'accepted') {
-			loadMetrika()
+	// Статусы: 'accepted' | 'rejected'
+	const stored = localStorage.getItem(CONSENT_KEY)
+
+	// Если выбор уже сделан — баннер не показываем.
+	// 'accepted' → грузим счётчики; 'rejected' → ничего не грузим.
+	if (stored) {
+		if (stored === 'accepted') {
+			loadAnalytics()
 		}
 		return
 	}
 
-	// Стили компактного баннера.
+	// Стили баннера.
 	const style = document.createElement('style')
 	style.textContent = `
 		.cookie-consent {
@@ -18,7 +22,7 @@
 			z-index: 9999;
 			left: 20px;
 			bottom: 20px;
-			width: 320px;
+			width: 360px;
 			max-width: calc(100% - 40px);
 			padding: 16px;
 			background: #fff;
@@ -49,21 +53,32 @@
 			color: #001c2b;
 		}
 
-		.cookie-consent__button {
-			width: 100%;
+		/* Две кнопки одинакового размера и заметности. */
+		.cookie-consent__actions {
+			display: flex;
+			gap: 8px;
+		}
+
+		.cookie-consent__btn {
+			flex: 1 1 50%;
 			padding: 9px 16px;
 			border: unset;
 			border-radius: 100px;
-			background: linear-gradient(90deg, #015d91, #001c2b);
-			color: #fff;
 			font-weight: 400;
 			line-height: 1.5;
 			cursor: pointer;
 			transition: opacity .2s ease;
+			color: #fff;
+			background: linear-gradient(90deg, #015d91, #001c2b);
 		}
 
-		.cookie-consent__button:hover {
+		.cookie-consent__btn:hover {
 			opacity: .9;
+		}
+
+		/* Кнопка отказа — такая же заметная, без «тёмного паттерна». */
+		.cookie-consent__btn--reject {
+			background: linear-gradient(90deg, #6c757d, #343a40);
 		}
 
 		@media (max-width: 576px) {
@@ -93,21 +108,39 @@
 			<a href="/terms_of_service/">Согласие</a>.
 		</div>
 
-		<button type="button" class="cookie-consent__button">
-		Только необходимые
-		</button>
+		<div class="cookie-consent__actions">
+			<button type="button" class="cookie-consent__btn cookie-consent__btn--accept">
+				Принять
+			</button>
+			<button type="button" class="cookie-consent__btn cookie-consent__btn--reject">
+				Отказаться
+			</button>
+		</div>
 	`
 
 	document.body.appendChild(banner)
 
-	// Пользователь дал согласие.
-	banner.querySelector('.cookie-consent__button').addEventListener('click', function () {
+	// «Принять» — активное действие, запоминаем и грузим счётчики.
+	banner.querySelector('.cookie-consent__btn--accept').addEventListener('click', function () {
 		localStorage.setItem(CONSENT_KEY, 'accepted')
 		banner.remove()
-		loadMetrika()
+		loadAnalytics()
 	})
 
-	// Загружает Яндекс Метрику только после согласия.
+	// «Отказаться» — тоже активное действие, ничего не грузим.
+	banner.querySelector('.cookie-consent__btn--reject').addEventListener('click', function () {
+		localStorage.setItem(CONSENT_KEY, 'rejected')
+		banner.remove()
+	})
+
+	// Загружает все счётчики только после согласия.
+	function loadAnalytics() {
+		loadMetrika()
+		loadForeignCounters()
+	}
+
+	// Яндекс Метрика (можно отнести к «необходимым для работы сайта»,
+	// но по требованию грузим только после согласия).
 	function loadMetrika() {
 		if (window.ym) {
 			return
@@ -144,5 +177,73 @@
 			accurateTrackBounce: true,
 			trackLinks: true,
 		})
+	}
+
+	// Иностранные счётчики (Google Analytics, Hotjar, Meta Pixel).
+	// Загружаются ТОЛЬКО после явного согласия. При отказе — не грузятся.
+	function loadForeignCounters() {
+		// Пример: Google Analytics 4.
+		// Раскомментируйте и подставьте свой ID.
+		//
+		// const GA_ID = 'G-XXXXXXXXXX'
+		// const ga = document.createElement('script')
+		// ga.async = true
+		// ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID
+		// document.head.appendChild(ga)
+		//
+		// window.dataLayer = window.dataLayer || []
+		// function gtag() { dataLayer.push(arguments) }
+		// window.gtag = gtag
+		// gtag('js', new Date())
+		// gtag('config', GA_ID)
+		// Пример: Meta Pixel.
+		// !(function (f, b, e, v, n, t, s) {
+		// 	if (f.fbq) return
+		// 	n = f.fbq = function () {
+		// 		n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+		// 	}
+		// 	if (!f._fbq) f._fbq = n
+		// 	n.push = n
+		// 	n.loaded = !0
+		// 	n.version = '2.0'
+		// 	n.queue = []
+		// 	t = b.createElement(e)
+		// 	t.async = !0
+		// 	t.src = v
+		// 	s = b.getElementsByTagName(e)[0]
+		// 	s.parentNode.insertBefore(t, s)
+		// })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js')
+		// fbq('init', 'YOUR_PIXEL_ID')
+		// fbq('track', 'PageView')
+		// Пример: Hotjar.
+		// (function (h, o, t, j, a, r) {
+		// 	h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) }
+		// 	h._hjSettings = { hjid: YOUR_HOTJAR_ID, hjsv: 6 }
+		// 	a = o.getElementsByTagName('head')[0]
+		// 	r = o.createElement('script')
+		// 	r.async = 1
+		// 	r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv
+		// 	a.appendChild(r)
+		// })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=')
+	}
+
+	// Публичный API для управления согласием в любой момент.
+	// Пример: window.cookieConsent.revoke()  — отозвать согласие
+	//          window.cookieConsent.reset()   — показать баннер заново
+	//          window.cookieConsent.status()  — узнать текущий статус
+	window.cookieConsent = {
+		status: function () {
+			return localStorage.getItem(CONSENT_KEY)
+		},
+		revoke: function () {
+			localStorage.setItem(CONSENT_KEY, 'rejected')
+			// Перезагрузка нужна, чтобы уже загруженные счётчики
+			// перестали слать хиты (проще всего — reload).
+			location.reload()
+		},
+		reset: function () {
+			localStorage.removeItem(CONSENT_KEY)
+			location.reload()
+		},
 	}
 })()
