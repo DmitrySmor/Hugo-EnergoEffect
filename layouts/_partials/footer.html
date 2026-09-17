@@ -26,3 +26,5 @@
 <!-- Объединение и минификация скриптов -->
 {{ $js := slice $jquery $owlcarousel $bootstrap $script | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous"></script>
+<!-- Внутри будет весь баннер + сохранение выбора + отложенная загрузка Метрики.-->
+<script src="{{ `js/cookie-consent.js` | absURL }}"></script>
