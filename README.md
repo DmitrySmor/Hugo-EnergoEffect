@@ -67,3 +67,18 @@ Variables
 └── SITE_URL
     └── energo-effect.pro
 ```
+
+## SEO
+
+### Инструменты аудита и проверки
+
+| Инструмент                | Назначение                                                                   | Ссылка                                  |
+| ------------------------- | ---------------------------------------------------------------------------- | --------------------------------------- |
+| Google PageSpeed Insights | Скорость загрузки, Core Web Vitals (LCP, INP), мобильная и десктопная версии | https://pagespeed.web.dev/              |
+| whois7.ru                 | История домена, дата регистрации                                             | https://whois7.ru/                      |
+| Web Archive               | Первый снимок сайта, история изменений                                       | https://web.archive.org/                |
+| SSL Labs                  | Безопасность HTTPS-соединения (оценка A)                                     | https://www.ssllabs.com/ssltest/        |
+| page-speed.ru             | Проверка работы HTTP/2                                                       | https://page-speed.ru/tools/http2/      |
+| Geekflare HTTP/3 Test     | Проверка работы HTTP/3                                                       | https://geekflare.com/tools/http3-test/ |
+| Coolakov.ru               | Проверка зеркал сайта и редиректов                                           | https://coolakov.ru/tools/ping/         |
+| Яндекс.Вебмастер          | Проверка мобильной версии, аудит страниц                                     | https://webmaster.yandex.ru/            |
