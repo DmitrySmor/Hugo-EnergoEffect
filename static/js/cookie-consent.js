@@ -89,8 +89,8 @@
 		<div class="cookie-consent__text">
 			С вашего согласия используем аналитические cookie
 			для работы сайта и статистики посещений.
-			<a href="/privacy-policy/">Политика</a>.
-			<a href="/consent/">Согласие</a>.
+			<a href="/privacy_policy/">Политика</a>.
+			<a href="/terms_of_service/">Согласие</a>.
 		</div>
 
 		<button type="button" class="cookie-consent__button">
