@@ -8,7 +8,9 @@
 <!-- Favicon-->
 <link rel="icon" type="image/png" sizes="16x16" href="{{ `images/favicon-16x16.png` | absURL }}" />
 <!-- canonical для поисковых роботов-->
+{{ if ne .Kind "404" }}
 <link rel="canonical" href="{{ .Permalink }}" />
+{{ end }}
 <!-- Предзагрузка главного изображения первого экрана для ускорения LCP -->
 <link rel="preload" as="image" fetchpriority="high" href="{{ `images/main-banner-1.webp` | absURL }}" />
 <!-- Предзагрузка шрифтов для ускорения их загрузки и уменьшения задержки отрисовки текста -->
