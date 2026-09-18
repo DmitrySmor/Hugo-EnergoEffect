@@ -1,0 +1,32 @@
+{{ if .IsHome }}
+<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"name": {{ .Site.Params.company_fullName }},
+		"alternateName": {{ .Site.Params.company_shortName }},
+		"legalName": {{ .Site.Params.company_fullName }},
+		"description": "{{ with .Description }}{{ . }}{{ else }}Проектирование, строительство, эксплуатация и обслуживание объектов энергетики.{{ end }}",
+		"url": {{ .Site.BaseURL }},
+		"logo": {{ "images/logoheader.webp" | absURL }},
+		"foundingDate": "2022-09-21",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": {{ .Site.Params.company_addressLegal }},
+			"addressLocality": "Сочи",
+			"addressRegion": "Краснодарский край",
+			"postalCode": "354068",
+			"addressCountry": "RU"
+		},
+		"contactPoint": {
+			"@type": "ContactPoint",
+			"telephone": {{ .Site.Params.company_phone01_link }},
+			"email": {{ .Site.Params.company_emailMain }},
+			"contactType": "customer service"
+		},
+		"sameAs": [
+			"https://t.me/EnergoEffectSochi"
+		]
+	}
+</script>
+{{ end }}
