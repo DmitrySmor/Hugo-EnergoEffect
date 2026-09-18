@@ -17,6 +17,7 @@ enableRobotsTXT = true # Включаем генрацию robots.txt
     emailMain = 'energoeffect.sochi@yandex.ru'
 
 
+# Меню - Основное
 [[menu.main]]
     name = "Главная"
     pageRef = "/"
@@ -51,3 +52,15 @@ enableRobotsTXT = true # Включаем генрацию robots.txt
     name = "Контакты"
     url = "/#contacts"
     weight = 6
+
+# Меню дополнительное для футера
+# добавляеться после основные пунктов
+[[menu.footer]]
+    name = "Политика"
+    url = "/privacy_policy"
+    weight = 8
+
+[[menu.footer]]
+    name = "Согласие"
+    url = "/terms_of_service"
+    weight = 9

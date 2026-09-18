@@ -10,6 +10,10 @@
 					{{ range .Site.Menus.main }}
 					<li><a href="{{ .URL | absURL }}" class="nav-link px-2 text-white">{{ .Name }}</a></li>
 					{{ end }}
+					<!-- Дополнительное меню для Футера-->
+					{{ range .Site.Menus.footer }}
+					<li><a href="{{ .URL | absURL }}" class="nav-link px-2 text-white">{{ .Name }}</a></li>
+					{{ end }}
 				</ul>
 			</div>
 		</div>
