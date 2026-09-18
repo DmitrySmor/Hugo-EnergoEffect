@@ -1,7 +1,7 @@
 <h2>Контактная информация</h2>
 <dl class="row">
 	<dt class="col-sm-3">Юридический адрес:</dt>
-	<dd class="col-sm-9">{{ .Site.Params.company_addressLegal }}</dd>
+	<dd class="col-sm-9">{{ partial "address-full.html" .Site.Params.addressLegal }}</dd>
 
 	<dt class="col-sm-3">ИНН:</dt>
 	<dd class="col-sm-9">{{ .Site.Params.company_inn }}</dd>

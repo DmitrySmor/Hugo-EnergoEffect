@@ -29,10 +29,6 @@ enableRobotsTXT = true # Включаем генрацию robots.txt
     company_emailMain    = 'energoeffect.sochi@yandex.ru'
     company_emailPoverka = '5353@energo-effect.pro'   # для заявок на поверку
 
-    # ===== Адреса =====
-    company_addressLegal  = '354068, Россия, Краснодарский край, г. Сочи, ул. Подгорная, д. 2, офис 17'
-    company_addressPostal = '354068, Россия, Краснодарский край, г. Сочи, ул. Подгорная, д. 2, офис 17'
-
     # ===== Юридические реквизиты =====
     # Все реквизиты — строки: это идентификаторы, а не числа.
     # Строки сохраняют ведущие нули и не теряют точность (ОГРН > int64).
@@ -54,6 +50,24 @@ enableRobotsTXT = true # Включаем генрацию robots.txt
     # ===== Руководство =====
     company_directorFull  = 'Каландов Сергей Николаевич'
     company_directorShort = 'С.Н. Каландов'   # для подписи
+
+# ===== Юридический адрес (Для доккументов)  =====
+[params.addressLegal]
+    Street      = 'ул. Подгорная, д. 2, офис 17'
+    City        = 'Сочи'
+    Region      = 'Краснодарский край'
+    PostalCode  = '354068'
+    Country     = 'Россия'
+    CountryCode = 'RU'
+
+# ===== Почтовый адрес (Фактический) =====
+[params.addressPostal]
+    Street      = 'ул. Подгорная, д. 2, офис 17'
+    City        = 'Сочи'
+    Region      = 'Краснодарский край'
+    PostalCode  = '354068'
+    Country     = 'Россия'
+    CountryCode = 'RU'
 
 # Меню - Основное
 [[menu.main]]

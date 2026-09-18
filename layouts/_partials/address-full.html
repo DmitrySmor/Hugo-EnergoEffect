@@ -1,0 +1,3 @@
+{{- $a := . -}}
+<!---->
+{{- with $a -}} {{- $a.PostalCode }}, {{ $a.Country }}, {{ $a.Region }}, г. {{ $a.City }}, {{ $a.Street -}} {{- end -}}
