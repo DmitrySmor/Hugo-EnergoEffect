@@ -8,12 +8,20 @@
 						<h2 class="mb-5 text-uppercase fs-1">{{ .Title }}</h2>
 						<p class="mb-0 fw-bold lh-sm w-75 fs-5 subtitle">Для поверки/замены счетчика газа вы можете оставить заявку в мессенджеры</p>
 						<div class="d-flex gap-3 my-4 messangers-mini">
-							<a href="https://max.ru/:share?text=Заявка%20на%20поверку"><img src={{ absURL "/images/poverka/max-icon.png" }} alt="max.ru" width="53" height="53" /></a>
-							<a href="https://wa.me/79882835353?text=Заявка%20на%20поверку"><img src={{ absURL "/images/poverka/whastsapp-icon.png" }} alt="wa.me" width="53" height="53" /></a>
-							<a href="https://t.me/EnergoEffectSochi?text=Заявка%20на%20поверку"><img src={{ absURL "/images/poverka/telegram-icon.png" }} alt="t.me" width="53" height="53" /></a>
-							<a href="sms:+79882835353?body=Заявка%20на%20поверку"><img src={{ absURL "/images/poverka/line-icon.png" }} alt="sms" width="53" height="53" /></a>
-						</div>
-						<p class="fs-5 lh-sm w-75">По номеру <a class="text-warning fw-bold fs-5" href="tel:+7(988)-283-53-53">+7(988)-283-53-53</a> отправить сообщение <span class="text-warning">«Заявка на поверку»</span>, указать адрес установки счетчика и номер телефона для связи</p>
+					    <a href="https://max.ru/:share?text=Заявка%20на%20поверку">
+					        <img src="{{ absURL `/images/poverka/max-icon.png` }}" alt="max.ru" width="53" height="53" />
+					    </a>
+					    <a href="https://wa.me/{{ .Site.Params.company_phone02_link }}?text=Заявка%20на%20поверку">
+					        <img src="{{ absURL `/images/poverka/whastsapp-icon.png` }}" alt="wa.me" width="53" height="53" />
+					    </a>
+					    <a href="https://t.me/EnergoEffectSochi?text=Заявка%20на%20поверку">
+					        <img src="{{ absURL `/images/poverka/telegram-icon.png` }}" alt="t.me" width="53" height="53" />
+					    </a>
+					    <a href="sms:{{ .Site.Params.company_phone02_link }}?body=Заявка%20на%20поверку">
+					        <img src="{{ absURL `/images/poverka/line-icon.png` }}" alt="sms" width="53" height="53" />
+					    </a>
+					</div>
+					<p class="fs-5 lh-sm w-75">По номеру <a class="text-warning fw-bold fs-5" href="tel:{{ .Site.Params.company_phone02_link }}">{{ .Site.Params.company_phone02 }}</a> отправить сообщение <span class="text-warning">«Заявка на поверку»</span>, указать адрес установки счетчика и номер телефона для связи</p>
 					</div>
 					<div class="mob-d-none">
 						<p class="fw-bold text-warning fs-5 lh-sm">Если требуется замена счетчика газа, компания «Энерго Эффект» является официальным поставщиком заводов производителей в г. Сочи</p>

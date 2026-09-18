@@ -429,15 +429,15 @@
 				</div>
 				<div class="row pb-3">
 					<div class="col-md-12">
-						<a class="text-white" href="tel:{{ .Site.Param `phone01` }}">{{ .Site.Param "phone01" }}</a><br />
-						<a class="text-white" href="tel:{{ .Site.Param `phone02` }}">{{ .Site.Param "phone02" }} (поверка счетчиков)</a>
+						<a class="text-white" href="tel:{{ .Site.Params.company_phone01_link }}"> {{ .Site.Params.company_phone01 }} </a><br />
+						<a class="text-white" href="tel:{{ .Site.Params.company_phone02_link }}"> {{ .Site.Params.company_phone02 }} (поверка счетчиков) </a>
 					</div>
 				</div>
 				<div class="row pt-3 pb-3">
 					<div class="col-md-12">
 						<h4 class="text-white mb-3">E-mail:</h4>
-						<a class="text-white" href="mailto:energoeffect.sochi@yandex.ru">energoeffect.sochi@yandex.ru</a><br />
-						<a class="text-white" href="mailto:5353@energo-effect.pro">5353@energo-effect.pro (поверка счетчиков)</a>
+						<a class="text-white" href="mailto:{{ .Site.Params.company_emailMain }}"> {{ .Site.Params.company_emailMain }} </a><br />
+						<a class="text-white" href="mailto:{{ .Site.Params.company_emailPoverka }}"> {{ .Site.Params.company_emailPoverka }} (поверка счетчиков) </a>
 					</div>
 				</div>
 			</div>
@@ -445,7 +445,7 @@
 				<h3 class="text-white border-bottom pb-3 pmt-3">Офис компании</h3>
 				<div class="mt-3 pb-3">
 					<h4 class="text-white mb-3">Адрес:</h4>
-					<p class="text-white">354000, Краснодарский край, г. Сочи, ул. Подгорная, д. 2, офис 17</p>
+					<p class="text-white">{{ .Site.Params.company_addressLegal }}</p>
 				</div>
 				<div class="mt-3 pb-3">
 					<h4 class="text-white">Часы работы:</h4>

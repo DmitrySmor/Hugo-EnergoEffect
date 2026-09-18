@@ -1,12 +1,19 @@
 <h2>Контактная информация</h2>
 <dl class="row">
-    <dt class="col-sm-3">Юридический адрес:</dt>
-    <dd class="col-sm-9">{{ .Site.Param "adressUR" }}</dd>
-    <dt class="col-sm-3">ИНН:</dt>
-    <dd class="col-sm-9">{{ .Site.Param "inn" }}</dd>
-    <dt class="col-sm-3">Телефон:</dt>
-    <dd class="col-sm-9"><a href='tel:{{ .Site.Param "phone02" }}'>{{ .Site.Param "phone01" }}</a></dd>
-    <dt class="col-sm-3">Email:</dt>
-    <dd class="col-sm-9"><a href='mailto:{{ .Site.Param "emailMain" }}'>{{ .Site.Param "emailMain" }}</a></dd>
+	<dt class="col-sm-3">Юридический адрес:</dt>
+	<dd class="col-sm-9">{{ .Site.Params.company_addressLegal }}</dd>
+
+	<dt class="col-sm-3">ИНН:</dt>
+	<dd class="col-sm-9">{{ .Site.Params.company_inn }}</dd>
+
+	<dt class="col-sm-3">Телефон:</dt>
+	<dd class="col-sm-9">
+		<a href="tel:{{ .Site.Params.company_phone01_link }}"> {{ .Site.Params.company_phone01 }} </a>
+	</dd>
+
+	<dt class="col-sm-3">Email:</dt>
+	<dd class="col-sm-9">
+		<a href="mailto:{{ .Site.Params.company_emailMain }}"> {{ .Site.Params.company_emailMain }} </a>
+	</dd>
 </dl>
 <p>Доверьте обслуживание вашего оборудования профессионалам! Мы обеспечим надёжную работу ваших приборов и поможем избежать непредвиденных простоев. Свяжитесь с нами прямо сейчас для получения консультации или оформления заявки на обслуживание.</p>
