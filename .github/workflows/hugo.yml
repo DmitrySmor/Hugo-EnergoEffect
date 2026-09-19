@@ -2,10 +2,33 @@
 name: Deploy Hugo site to Pages
 
 on:
-    # Запуск при push в ветку main
+    # Запуск при push в ветку main.
+    # Сборка идёт только если изменён хотя бы один файл из списка paths —
+    # правки README.md, LICENSE, docs/ и прочего сайт не пересобирают.
     push:
         branches: ['main']
 
+        # Whitelist путей: изменения вне этого списка игнорируются.
+        # Whitelist предпочтительнее paths-ignore — при добавлении новой
+        # папки в проект сложнее случайно сломать триггер.
+        paths:
+            - 'content/**' # посты, страницы, разделы
+            - 'layouts/**' # шаблоны и partials
+            - 'static/**' # статика как есть (favicon, robots.txt и т.п.)
+            - 'assets/**' # ресурсы для пайплайна Hugo Pipes
+            - 'archetypes/**' # шаблоны для `hugo new`
+            - 'i18n/**' # переводы интерфейса
+            - 'data/**' # data-файлы (yaml/json/toml)
+            - 'themes/**' # темы (для submodule путь в родителе не меняется — см. примечание)
+            - 'config/**' # конфиг в режиме config-директории
+            - 'hugo.yaml'
+            - 'hugo.toml'
+            - 'hugo.json'
+            - 'go.mod' # Hugo Modules: зависимости
+            - 'go.sum'
+            - 'package.json' # если версия Hugo/PostCSS ставятся через npm
+            - 'package-lock.json'
+            - '.github/workflows/hugo.yml' # конкретный файл, не весь каталог .github/**
     # Возможность запустить workflow вручную из вкладки Actions
     workflow_dispatch:
 
