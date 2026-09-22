@@ -6,7 +6,7 @@
 <!-- Title -->
 <title>{{ with .Title }} {{ . }} {{ else }} {{ .Site.Title }} {{ end }}</title>
 <!-- Favicon-->
-<link rel="icon" type="image/png" sizes="16x16" href="{{ `images/favicon-16x16.png` | absURL }}" />
+<link rel="icon" type="image/png" sizes="120x120" href="{{ `images/favicon-120x120.png` | absURL }}" />
 <!-- canonical для поисковых роботов-->
 {{ if ne .Kind "404" }}
 <link rel="canonical" href="{{ .Permalink }}" />
