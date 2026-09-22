@@ -1572,8 +1572,10 @@ html {
 		padding-top: 40px;
 	}
 	.section-bg-1 .container {
+		background-image: linear-gradient(#00000000, #0000009e), url('../images/main-banner-1-540.webp');
 		background-position-x: 0px;
-	}
+		border-radius: 0px;
+}
 
 	.section-bg-1 .container .row .col-md-12 {
 		justify-content: space-between !important;
@@ -1856,62 +1858,3 @@ html {
 		left: 10px;
 	}
 }
-/*@media (max-width: 335px) {
-	.custom-num {
-		right: -27px;
-	}
-	.mob-menu-button {
-		right: 20px;
-	}
-	header .container > .d-flex a:first-child img {
-		height: 55px;
-		width: 155px;
-	}
-	.section-bg-1 .px-5 {
-		padding: 0 10px !important;
-	}
-	.section-bg-1 {
-		height: 800px;
-	}
-	.panes a {
-		font-size: 14px;
-	}
-	.section-bg-4 .custom-line::after {
-		bottom: 695px;
-	}
-	.section-bg-5 .block-bg {
-		min-height: 1400px;
-		background-position-y: 901px;
-	}
-	.section-bg-6 .container .row {
-		top: 10%;
-	}
-	.section-bg-7 .p-5 {
-		padding: 48px 20px !important;
-	}
-	a.btn-warning.px-5 {
-		padding: 24px 18px !important;
-	}
-	.section-bg-3 h2 {
-		font-size: 22px;
-	}
-	.section-bg-3 .col-xs-6 {
-		width: 100% !important;
-	}
-	.section-404 .btn {
-		bottom: -17vh;
-	}
-	.owl-carousel.main-carousel .owl-item .item {
-		width: 100%;
-	}
-	.owl-carousel.main-carousel .owl-nav button {
-		height: 40px;
-		width: 40px;
-	}
-	.owl-carousel.main-carousel .owl-nav button img {
-		height: 100%;
-	}
-	.owl-carousel.main-carousel .owl-nav {
-		bottom: 473px;
-	}
-}*/
