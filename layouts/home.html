@@ -310,7 +310,6 @@
 		</div>
 
 		{{ $pages := where .Site.RegularPages "Section" "projects" | first 3 }}
-		<!---->
 		{{ range $index, $page := $pages }}
 		<div class="case border-bottom {{ if eq $index 0 }}border-top{{ end }} {{ if eq $index (sub (len $pages) 1) }}mb-5{{ end }}">
 			<div class="row justify-content-md-between align-items-center py-2">
@@ -329,7 +328,7 @@
 		{{ end }}
 		<div class="row">
 			<div class="col-md-12">
-				<a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase" href="{{ `projects` | absURL }}">Смотреть все проекты</a>
+				<a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase" href="{{ `projects` | absURL }}" aria-label="Смотреть все проекты">Смотреть все проекты</a>
 			</div>
 		</div>
 	</div>
@@ -386,7 +385,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase" href="{{ `news` | absURL }}">Смотреть все</a>
+				<a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase" href="{{ `news` | absURL }}" aria-label="Смотреть все новости">Смотреть все</a>
 			</div>
 		</div>
 	</div>
@@ -407,7 +406,7 @@
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase" href="{{ `documents` | absURL }}">Смотреть все</a>
+				<a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase" href="{{ `documents` | absURL }}" aria-label="Смотреть все документы">Смотреть все</a>
 			</div>
 		</div>
 	</div>
