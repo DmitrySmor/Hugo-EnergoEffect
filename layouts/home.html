@@ -376,7 +376,7 @@
 			{{ range $index, $page := $pages }}
 			<div class="col-lg-3 col-md-3 col-xsm-5 col-xs-6">
 				{{ $preview := .Resources.GetMatch "preview.webp" }}
-				<a href="{{ .Permalink | absURL }}"><img class="mb-3" src="{{ $preview.RelPermalink | absURL }}" alt="{{ .Title }}" /></a>
+				<a href="{{ .Permalink | absURL }}"><img class="mb-3" src="{{ $preview.RelPermalink | absURL }}" alt="{{ .Title }}" width="306" height="173"/></a>
 				<p class="text-uppercase">
 					<a href="{{ .Permalink | absURL }}">{{ .Title }}</a>
 				</p>
