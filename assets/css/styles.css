@@ -1573,9 +1573,11 @@ html {
 	}
 	.section-bg-1 .container {
 		background-image: linear-gradient(#00000000, #0000009e), url('../images/main-banner-1-540.webp');
-		background-position-x: 0px;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
 		border-radius: 0px;
-}
+	}
 
 	.section-bg-1 .container .row .col-md-12 {
 		justify-content: space-between !important;
