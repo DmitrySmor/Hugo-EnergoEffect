@@ -6,7 +6,7 @@ $('.main-carousel').owlCarousel({
 	margin: 15,
 	autoplay: true,
 	nav: true,
-	navText: ["<img src='./images/slide-prev.png' alt='' />", "<img src='./images/slide-next.png' alt='' />"],
+	navText: ["<img src='./images/slide-prev.png' alt='' width='61' height='61' />", "<img src='./images/slide-next.png' alt='' width='61' height='61' />"],
 	responsive: {
 		0: {
 			items: 1,
