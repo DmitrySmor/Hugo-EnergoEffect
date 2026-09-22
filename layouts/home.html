@@ -316,7 +316,7 @@
 			<div class="row justify-content-md-between align-items-center py-2">
 				<div class="col-md-3 col-xs-3">
 					{{ $preview := .Resources.GetMatch "preview.webp" }}
-					<a href="{{ .Permalink | absURL }}"><img src="{{ $preview.RelPermalink | absURL }}" alt="{{ .Title }}" /></a>
+					<a href="{{ .Permalink | absURL }}"><img src="{{ $preview.RelPermalink | absURL }}" alt="{{ .Title }}" width="306" height="173" /></a>
 				</div>
 				<div class="col-md-6 col-xs-6">
 					<p><a href="{{ .Permalink | absURL }}">{{ .Title }}</a></p>
