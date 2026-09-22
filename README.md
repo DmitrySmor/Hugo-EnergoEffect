@@ -87,29 +87,13 @@ Variables
 
 При смене фонового изображения баннера нужно обновить **три места**, иначе preload и CSS разойдутся, и картинка загрузится дважды.
 
-### 1. CSS — путь к файлу
-
-```css
-@media (max-width: 540px) {
-    .section-bg-1 .container {
-        background-image: linear-gradient(#00000000, #0000009e),
-                          url('../images/НОВЫЙ-ФАЙЛ-540.webp');
-    }
-}
-
-.section-bg-1 .container {
-    background-image: linear-gradient(#00000000, #0000009e),
-                      url('../images/НОВЫЙ-ФАЙЛ.webp');
-}
-```
-
-### 2. `<link rel="preload">` — атрибут `href`
+### `<link rel="preload">` — атрибут `href`
 
 ```html
 href="{{ `images/НОВЫЙ-ФАЙЛ.webp` | absURL }}"
 ```
 
-### 3. `<link rel="preload">` — атрибут `imagesrcset`
+### `<link rel="preload">` — атрибут `imagesrcset`
 
 Указать **новые URL и реальные ширины** файлов в пикселях:
 
@@ -130,7 +114,3 @@ imagesrcset="{{ `images/НОВЫЙ-ФАЙЛ.webp` | absURL }} ШИРИНА_w,
 - [ ] `<link>` `imagesrcset` → новые URL + реальные ширины
 - [ ] Проверить, что брейкпоинты в CSS и `imagesizes` совпадают
 - [ ] Проверить в DevTools → Network, что грузится **один** файл, а не два
-
-### 💡 Совет
-
-Чтобы не править три места каждый раз, можно вынести путь и ширины в переменные Hugo (например, в `params.toml` или front matter страницы). Тогда замена картинки = правка одного места в шаблоне.
