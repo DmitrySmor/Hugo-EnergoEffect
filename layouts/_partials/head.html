@@ -12,7 +12,15 @@
 <link rel="canonical" href="{{ .Permalink }}" />
 {{ end }}
 <!-- Предзагрузка главного изображения первого экрана для ускорения LCP -->
-<link rel="preload" as="image" fetchpriority="high" href="{{ `images/main-banner-1.webp` | absURL }}" />
+<link
+  rel="preload"
+  as="image"
+  href="{{ `images/main-banner-1.webp` | absURL }}"
+  imagesrcset="{{ `images/main-banner-1.webp` | absURL }} 1344w,
+               {{ `images/main-banner-1-540.webp` | absURL }} 805w"
+  imagesizes="(max-width: 540px) 540px, 100vw"
+  fetchpriority="high"
+>
 <!-- Предзагрузка шрифтов для ускорения их загрузки и уменьшения задержки отрисовки текста -->
 <link rel="preload" href="{{ `fonts/Inter-Regular.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="{{ `fonts/Inter-Italic.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />

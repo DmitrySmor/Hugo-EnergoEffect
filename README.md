@@ -82,3 +82,55 @@ Variables
 | Geekflare HTTP/3 Test     | Проверка работы HTTP/3                                                       | https://geekflare.com/tools/http3-test/ |
 | Coolakov.ru               | Проверка зеркал сайта и редиректов                                           | https://coolakov.ru/tools/ping/         |
 | Яндекс.Вебмастер          | Проверка мобильной версии, аудит страниц                                     | https://webmaster.yandex.ru/            |
+
+## Замена фоновой картинки баннера
+
+При смене фонового изображения баннера нужно обновить **три места**, иначе preload и CSS разойдутся, и картинка загрузится дважды.
+
+### 1. CSS — путь к файлу
+
+```css
+@media (max-width: 540px) {
+    .section-bg-1 .container {
+        background-image: linear-gradient(#00000000, #0000009e),
+                          url('../images/НОВЫЙ-ФАЙЛ-540.webp');
+    }
+}
+
+.section-bg-1 .container {
+    background-image: linear-gradient(#00000000, #0000009e),
+                      url('../images/НОВЫЙ-ФАЙЛ.webp');
+}
+```
+
+### 2. `<link rel="preload">` — атрибут `href`
+
+```html
+href="{{ `images/НОВЫЙ-ФАЙЛ.webp` | absURL }}"
+```
+
+### 3. `<link rel="preload">` — атрибут `imagesrcset`
+
+Указать **новые URL и реальные ширины** файлов в пикселях:
+
+```html
+imagesrcset="{{ `images/НОВЫЙ-ФАЙЛ.webp` | absURL }} ШИРИНА_w,
+             {{ `images/НОВЫЙ-ФАЙЛ-540.webp` | absURL }} ШИРИНА_w"
+```
+
+### ⚠️ Что менять НЕ нужно
+
+- **`imagesizes`** — если брейкпоинты (`540px`, `720px` и т.д.) остались прежними.
+- **Структуру `<link>`** — тег остаётся один, с `imagesrcset` и `imagesizes`.
+
+### 📋 Чек-лист
+
+- [ ] CSS `background-image` → новый URL (для всех брейкпоинтов)
+- [ ] `<link>` `href` → новый URL основного файла
+- [ ] `<link>` `imagesrcset` → новые URL + реальные ширины
+- [ ] Проверить, что брейкпоинты в CSS и `imagesizes` совпадают
+- [ ] Проверить в DevTools → Network, что грузится **один** файл, а не два
+
+### 💡 Совет
+
+Чтобы не править три места каждый раз, можно вынести путь и ширины в переменные Hugo (например, в `params.toml` или front matter страницы). Тогда замена картинки = правка одного места в шаблоне.
