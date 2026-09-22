@@ -1,32 +1,44 @@
 {{ if .IsHome }}
 <script type="application/ld+json">
-	{
-	  "@context": "https://schema.org",
-	  "@type": "Organization",
-	  "name": {{ .Site.Params.company_fullName }},
-	  "alternateName": {{ .Site.Params.company_shortName }},
-	  "legalName": {{ .Site.Params.company_fullName }},
-	  "description": "{{ with .Description }}{{ . }}{{ else }}Проектирование, строительство, эксплуатация и обслуживание объектов энергетики.{{ end }}",
-	  "url": {{ .Site.BaseURL }},
-	  "logo": {{ "images/logoheader.webp" | absURL }},
-	  "foundingDate": "2022-09-21",
-	  "address": {
-	    "@type": "PostalAddress",
-	    "streetAddress": "{{ .Site.Params.addressLegal.Street }}",
-	    "addressLocality": "{{ .Site.Params.addressLegal.City }}",
-	    "addressRegion": "{{ .Site.Params.addressLegal.Region }}",
-	    "postalCode": "{{ .Site.Params.addressLegal.PostalCode }}",
-	    "addressCountry": "{{ .Site.Params.addressLegal.CountryCode }}"
-	  },
-	  "contactPoint": {
-	    "@type": "ContactPoint",
-	    "telephone": {{ .Site.Params.company_phone02_schema }},
-	    "email": {{ .Site.Params.company_emailMain }},
-	    "contactType": "customer service"
-	  },
-	  "sameAs": [
-	    "https://t.me/EnergoEffectSochi"
-	  ]
+{
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	"name": {{ .Site.Params.company_fullName }},
+	"alternateName": {{ .Site.Params.company_shortName }},
+	"legalName": {{ .Site.Params.company_fullName }},
+	"description": "{{ with .Description }}{{ . }}{{ else }}Проектирование, строительство, эксплуатация и обслуживание объектов энергетики.{{ end }}",
+	"url": {{ .Site.BaseURL }},
+	"logo": {{ "images/logoheader.webp" | absURL }},
+	"foundingDate": "2022-09-21",
+	"address": {
+		"@type": "PostalAddress",
+		"streetAddress": "{{ .Site.Params.addressLegal.Street }}",
+		"addressLocality": "{{ .Site.Params.addressLegal.City }}",
+		"addressRegion": "{{ .Site.Params.addressLegal.Region }}",
+		"postalCode": "{{ .Site.Params.addressLegal.PostalCode }}",
+		"addressCountry": "{{ .Site.Params.addressLegal.CountryCode }}"
+	},
+	"contactPoint": {
+		"@type": "ContactPoint",
+		"telephone": {{ .Site.Params.company_phone02_schema }},
+		"email": {{ .Site.Params.company_emailMain }},
+		"contactType": "customer service"
+	},
+	"sameAs": [
+		"https://t.me/EnergoEffectSochi"
+	],
+	"location": {
+		"@type": "Place",
+		"geo": {
+			"@type": "GeoCoordinates",
+			"latitude": 43.613710,
+			"longitude": 39.728499
+		},
+		"hasMap": [
+			"https://www.google.com/maps?q=43.613710,39.728499",
+			"https://yandex.ru/maps/?ll=39.728499%2C43.613710&z=17&pt=39.728499,43.613710,pm2rdm"
+		]
 	}
+}
 </script>
 {{ end }}
