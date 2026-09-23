@@ -1757,7 +1757,7 @@ html {
 	}
 	#administration.section-carousel .owl-item p span,
 	.section-carousel .owl-item p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 	#administration .carousel > .d-flex {
 		bottom: 60px !important;
@@ -1811,7 +1811,7 @@ html {
 		bottom: -2vh;
 	}
 	.owl-carousel.main-carousel .owl-item .item {
-		width: 65%;
+		width: 72%;
 		display: block;
 		margin: 0 auto;
 	}
