@@ -371,9 +371,8 @@
 		</div>
 		<div class="row">
 			{{ $pages := where .Site.RegularPages "Section" "news" | first 4 }}
-			<!---->
 			{{ range $index, $page := $pages }}
-			<div class="col-lg-3 col-md-3 col-xsm-5 col-xs-6">
+			<div class="col-lg-3 col-md-3 col-xsm-5 col-xs-6 {{ if gt $index 0 }} d-none d-sm-block{{ end }}">
 				{{ $preview := .Resources.GetMatch "preview.webp" }}
 				<a href="{{ .Permalink | absURL }}"><img class="mb-3" src="{{ $preview.RelPermalink | absURL }}" alt="{{ .Title }}" width="306" height="173"/></a>
 				<p class="text-uppercase">
@@ -398,11 +397,14 @@
 			</div>
 		</div>
 		<div class="row docs mb-5">
-			{{ $docPage := .Site.GetPage "/documents" }} {{ with $docPage }} {{ range first 4 .Params.documents }}
-			<div class="col-md-3 col-xs-6">
+		{{ $docPage := .Site.GetPage "/documents" }}
+		{{ with $docPage }}
+			{{ range $index, $doc := first 4 .Params.documents }}
+			<div class="col-md-3 col-xs-6 {{ if gt $index 0 }} d-none d-sm-block{{ end }}">
 				<img src="{{ printf `docs/%s` .img | absURL }}" alt="{{ .name }}" width="320" height="390" />
 			</div>
-			{{ end }} {{ end }}
+			{{ end }}
+		{{ end }}
 		</div>
 		<div class="row">
 			<div class="col-md-12">
