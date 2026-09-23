@@ -286,7 +286,7 @@
 					{{ range .Params.administration }}
 					<div class="item">
 						<img src="{{ path.Join `images/administration` .img | absURL }}" alt="{{ .name }}" width="300" height="450" />
-						<p class="btn btn-warning text-white"><span class="text-uppercase">{{ .name }}</span><br />{{ .role }}</p>
+						<p class="btn btn-warning text-white overflow-hidden"><span class="text-uppercase">{{ .name }}</span><br />{{ .role }}</p>
 					</div>
 					{{ end }}
 				</div>
