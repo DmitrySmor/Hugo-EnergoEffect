@@ -1,71 +1,86 @@
 {{ if .IsHome }}
-<script type="application/ld+json">
-{
-	"@context": "https://schema.org",
-	"@type": "Organization",
-	"name": {{ .Site.Params.company_fullName }},
-	"alternateName": {{ .Site.Params.company_shortName }},
-	"legalName": {{ .Site.Params.company_fullName }},
-	"description": "{{ with .Description }}{{ . }}{{ else }}Проектирование, строительство, эксплуатация и обслуживание объектов энергетики.{{ end }}",
-	"url": {{ .Site.BaseURL }},
-	"logo": {{ "images/favicon-120x120.webp" | absURL }},
-	"foundingDate": "2022-09-21",
-	"contactPoint": {
-		"@type": "ContactPoint",
-		"telephone": {{ .Site.Params.company_phone02_schema }},
-		"email": {{ .Site.Params.company_emailMain }},
-		"contactType": "customer service"
-	},
-	"sameAs": [
-		"https://t.me/EnergoEffectSochi"
-	],
-	"legalAddress": {
-		"@type": "PostalAddress",
-		"streetAddress": {{ .Site.Params.addressLegal.Street }},
-		"addressLocality": {{ .Site.Params.addressLegal.City }},
-		"addressRegion": {{ .Site.Params.addressLegal.Region }},
-		"postalCode": {{ .Site.Params.addressLegal.PostalCode }},
-		"addressCountry": {{ .Site.Params.addressLegal.CountryCode }}
-	},
-	"location": {
-		"@type": "Place",
-		"name": "Офис",
-		"address": {
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Organization",
+		"name": {{ .Site.Params.company_fullName }},
+		"alternateName": {{ .Site.Params.company_shortName }},
+		"legalName": {{ .Site.Params.company_fullName }},
+		"description": {{ with .Description }}{{ . }}{{ else }}"Проектирование, строительство, эксплуатация и обслуживание объектов энергетики."{{ end }},
+		"url": {{ .Site.BaseURL }},
+		"logo": {{ "images/favicon-120x120.webp" | absURL }},
+		"foundingDate": "2022-09-21",
+		"contactPoint": {
+			"@type": "ContactPoint",
+			"telephone": {{ .Site.Params.company_phone02_schema }},
+			"email": {{ .Site.Params.company_emailMain }},
+			"contactType": "customer service"
+		},
+		"sameAs": [
+			"https://t.me/EnergoEffectSochi"
+		],
+		"legalAddress": {
 			"@type": "PostalAddress",
-			"streetAddress": {{ .Site.Params.addressPostal.Street }},
-			"addressLocality": {{ .Site.Params.addressPostal.City }},
-			"addressRegion": {{ .Site.Params.addressPostal.Region }},
-			"postalCode": {{ .Site.Params.addressPostal.PostalCode }},
-			"addressCountry": {{ .Site.Params.addressPostal.CountryCode }}
+			"streetAddress": {{ .Site.Params.addressLegal.Street }},
+			"addressLocality": {{ .Site.Params.addressLegal.City }},
+			"addressRegion": {{ .Site.Params.addressLegal.Region }},
+			"postalCode": {{ .Site.Params.addressLegal.PostalCode }},
+			"addressCountry": {{ .Site.Params.addressLegal.CountryCode }}
 		},
-		"geo": {
-			"@type": "GeoCoordinates",
-			"latitude": 43.613710,
-			"longitude": 39.728499
+		"location": {
+			"@type": "Place",
+			"name": "Офис",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": {{ .Site.Params.addressPostal.Street }},
+				"addressLocality": {{ .Site.Params.addressPostal.City }},
+				"addressRegion": {{ .Site.Params.addressPostal.Region }},
+				"postalCode": {{ .Site.Params.addressPostal.PostalCode }},
+				"addressCountry": {{ .Site.Params.addressPostal.CountryCode }}
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": 43.613710,
+				"longitude": 39.728499
+			},
+			"hasMap": [
+				"https://www.google.com/maps?q=43.613710,39.728499",
+				"https://yandex.ru/maps/?ll=39.728499%2C43.613710&z=17&pt=39.728499,43.613710,pm2rdm"
+			]
 		},
-		"hasMap": [
-			"https://www.google.com/maps?q=43.613710,39.728499",
-			"https://yandex.ru/maps/?ll=39.728499%2C43.613710&z=17&pt=39.728499,43.613710,pm2rdm"
-		]
-	},
-	"taxID": {{ .Site.Params.company_inn }},
-	"identifier": [
-		{
-			"@type": "PropertyValue",
-			"propertyID": "КПП",
-			"value": {{ .Site.Params.company_kpp }}
-		},
-		{
-			"@type": "PropertyValue",
-			"propertyID": "ОГРН",
-			"value": {{ .Site.Params.company_ogrn  }}
-		},
-		{
-			"@type": "PropertyValue",
-			"propertyID": "ОКПО",
-			"value": {{ .Site.Params.company_okpo }}
+		"taxID": {{ .Site.Params.company_inn }},
+		"identifier": [
+			{
+				"@type": "PropertyValue",
+				"propertyID": "КПП",
+				"value": {{ .Site.Params.company_kpp }}
+			},
+			{
+				"@type": "PropertyValue",
+				"propertyID": "ОГРН",
+				"value": {{ .Site.Params.company_ogrn  }}
+			},
+			{
+				"@type": "PropertyValue",
+				"propertyID": "ОКПО",
+				"value": {{ .Site.Params.company_okpo }}
+			}
+		],
+	}
+	</script>
+{{ else if and .IsPage (eq .Section "direction") }}
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "Service",
+		"@id": {{ print .Permalink "#service" }},
+		"name": {{ .Title }},
+		"description": {{ .Description }},
+		"url": {{ .Permalink }},
+		"serviceType": {{ .Title }},
+		"provider": {
+			"@id": {{ print .Site.BaseURL "#organization" }}
 		}
-	],
-}
-</script>
+	}
+	</script>
 {{ end }}
