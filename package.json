@@ -1,0 +1,29 @@
+{
+  "name": "hugo-energoeffect",
+  "version": "1.0.0",
+  "description": "Описание компании",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DmitrySmor/Hugo-EnergoEffect.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DmitrySmor/Hugo-EnergoEffect/issues"
+  },
+  "homepage": "https://github.com/DmitrySmor/Hugo-EnergoEffect#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.28",
+    "postcss-cli": "^12.0.0"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ]
+}
