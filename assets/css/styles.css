@@ -5,7 +5,6 @@
 	font-style: normal;
 	font-display: swap;
 }
-
 @font-face {
 	font-family: 'Inter';
 	src: url('../fonts/Inter-Italic.woff2') format('woff2');
@@ -980,12 +979,6 @@ html {
 		flex-wrap: nowrap !important;
 		white-space: nowrap;
 	}
-	.mbs-5 {
-		margin-bottom: 48px;
-	}
-	.mbs-0 {
-		margin-bottom: unset !important;
-	}
 	.col-xsm-5 {
 		width: 40%;
 	}
@@ -1171,9 +1164,6 @@ html {
 
 	section.lg {
 		display: none;
-	}
-	.section-bg-4 .mbs-5 {
-		margin-bottom: 50px !important;
 	}
 	.section-bg-5 .row.orange-bg img {
 		height: 41px;
