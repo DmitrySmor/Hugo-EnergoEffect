@@ -24,15 +24,18 @@
 <!-- Предзагрузка шрифтов для ускорения их загрузки и уменьшения задержки отрисовки текста -->
 <link rel="preload" href="{{ `fonts/Inter-Regular.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="{{ `fonts/Inter-Italic.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
-<!-- Bootstrap Core -->
-{{ $bootstrap := resources.Get "css/bootstrap/bootstrap.css" }}
-<!-- Хз зачем, нужно разобраться -->
-{{ $vendor := resources.Get "css/bootstrap/vendor.css" }}
-<!-- owlcarousel (слайдер) -->
-{{ $owlcarousel := resources.Get "css/owlcarousel/owl.carousel.css" }}
-<!-- Core theme CSS (нашм стили)-->
-{{ $style := resources.Get "css/styles.css" }}
-<!-- Объединение стилей -->
-{{- $bundle := slice $bootstrap $vendor $owlcarousel $style | resources.Concat "css/bundle.css" | resources.Minify | resources.Fingerprint }}
-<link rel="stylesheet" href="{{ $bundle.Permalink }}" integrity="{{ $bundle.Data.Integrity }}" crossorigin="anonymous" />
+<!-- Микроразметка -->
 {{ partial "schema/organization.html" . }}
+<!-- Стили: Sass + PostCSS + fingerprint -->
+{{ with resources.Get "scss/main.scss" }}
+	{{ $opts := dict
+		"outputStyle" (cond hugo.IsDevelopment "expanded" "compressed")
+		"targetPath" "css/main.css"
+		"transpiler" "dartsass"
+		"includePaths" (slice "node_modules")
+		"silenceDependencyDeprecations" true
+	}}
+	{{ with . | css.Sass $opts | postCSS | fingerprint }}
+	    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+	{{ end }}
+{{ end }}
