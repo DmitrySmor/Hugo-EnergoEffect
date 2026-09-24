@@ -1,18 +1,22 @@
-# Generated files by hugo
-/public/
-/resources/_gen/
-/assets/jsconfig.json
-hugo_stats.json
+# Сгенерированные файлы Hugo
+/public/              # итоговая сборка сайта — пересоздаётся при каждом запуске hugo
+/resources/_gen/      # кэш пайплайнов Hugo (CSS/JS) — генерируется автоматически
+/assets/jsconfig.json # конфиг для редакторов, создаётся Hugo
+hugo_stats.json       # статистика использования классов — нужна только для Tailwind/PostCSS
 
-# Hugo binaries
-.hugo_build.lock
+# Файлы блокировки Hugo
+.hugo_build.lock      # создаётся на время сборки, предотвращает параллельный запуск
 
-# OS files
-.DS_Store
-Thumbs.db
+# Зависимости Node.js
+/node_modules/        # устанавливаются через npm install, восстанавливаются одной командой
 
-# Editors
-.vscode/
-.idea/
-*.swp
-.prettierrc
+# Системные файлы ОС
+.DS_Store             # macOS — служебный файл Finder
+Thumbs.db             # Windows — кэш миниатюр проводника
+
+# Редакторы и IDE
+.vscode/              # настройки Visual Studio Code
+.idea/                # настройки JetBrains (WebStorm, PhpStorm и др.)
+*.swp                 # временные файлы редактора Vim
+*.swo                 # временные файлы редактора Vim (альтернативный суффикс)
+.prettierrc           # настройки форматтера Prettier
