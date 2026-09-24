@@ -29,6 +29,7 @@ on:
             - 'package.json' # если версия Hugo/PostCSS ставятся через npm
             - 'package-lock.json'
             - 'postcss.config.js'
+            - 'postcss.config.mjs'
             - '.browserslistrc'
             - '.github/workflows/hugo.yml' # конкретный файл, не весь каталог .github/**
     # Возможность запустить workflow вручную из вкладки Actions
