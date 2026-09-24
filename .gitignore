@@ -1,22 +1,35 @@
 # Сгенерированные файлы Hugo
-/public/              # итоговая сборка сайта — пересоздаётся при каждом запуске hugo
-/resources/_gen/      # кэш пайплайнов Hugo (CSS/JS) — генерируется автоматически
-/assets/jsconfig.json # конфиг для редакторов, создаётся Hugo
-hugo_stats.json       # статистика использования классов — нужна только для Tailwind/PostCSS
+# Итоговая сборка сайта — пересоздаётся при каждом запуске hugo
+/public/
+# Кэш пайплайнов Hugo (CSS/JS) — генерируется автоматически
+/resources/_gen/
+# Конфиг для редакторов, создаётся Hugo
+/assets/jsconfig.json
+# Статистика использования классов — нужна только для Tailwind/PostCSS
+hugo_stats.json
 
 # Файлы блокировки Hugo
-.hugo_build.lock      # создаётся на время сборки, предотвращает параллельный запуск
+# Создаётся на время сборки, предотвращает параллельный запуск
+.hugo_build.lock
 
 # Зависимости Node.js
-/node_modules/        # устанавливаются через npm install, восстанавливаются одной командой
+# Устанавливаются через npm install, восстанавливаются одной командой
+/node_modules/
 
 # Системные файлы ОС
-.DS_Store             # macOS — служебный файл Finder
-Thumbs.db             # Windows — кэш миниатюр проводника
+# macOS — служебный файл Finder
+.DS_Store
+# Windows — кэш миниатюр проводника
+Thumbs.db
 
 # Редакторы и IDE
-.vscode/              # настройки Visual Studio Code
-.idea/                # настройки JetBrains (WebStorm, PhpStorm и др.)
-*.swp                 # временные файлы редактора Vim
-*.swo                 # временные файлы редактора Vim (альтернативный суффикс)
-.prettierrc           # настройки форматтера Prettier
+# Настройки Visual Studio Code
+.vscode/
+# Настройки JetBrains (WebStorm, PhpStorm и др.)
+.idea/
+# Временные файлы редактора Vim
+*.swp
+# Временные файлы редактора Vim (альтернативный суффикс)
+*.swo
+# Настройки форматтера Prettier
+.prettierrc
