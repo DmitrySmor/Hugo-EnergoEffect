@@ -46,7 +46,10 @@ const purgecss = purgeCSSPlugin({
   safelist: {
     standard: [],
     deep: [],
-    greedy: [],
+    greedy: [
+        /owl-/,
+        /^active$/
+      ],
     keyframes: [],
     variables: []
   }
