@@ -584,19 +584,6 @@ div.btn-warning {
 	padding-left: 75px !important;
 	padding-right: 75px !important;
 }
-#scroll-top {
-	position: fixed;
-	bottom: 40px;
-	right: 40px;
-	display: none;
-	background-color: white;
-	border-radius: 50%;
-	opacity: 0;
-	animation: show 2.5s forwards;
-}
-#scroll-top::hover {
-	cursor: pointer;
-}
 .docs .col-md-3 img {
 	height: 390px;
 	border-radius: 15px;
