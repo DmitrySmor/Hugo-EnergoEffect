@@ -21,8 +21,38 @@ $border-radius:    0.25rem;
 $border-radius-lg: 0.3rem;
 $border-radius-sm: 0.2rem;
 
-// --- Отключение неиспользуемых компонентов (опционально) ---
-// У вас используется Owl Carousel, а не встроенный — можно отключить
-// $enable-accordion: false;
-// $enable-carousel: false;
-// $enable-offcanvas: false;
+// ============================================
+// Отключение неиспользуемых компонентов Bootstrap
+// ============================================
+// Проверено скриптом check_bootstrap_5.0.2.sh:
+// используются только carousel, collapse, nav
+// (см. layouts/page.html, layouts/_partials/header.html)
+
+// --- Отключённые компоненты ---
+$enable-accordion:    false;  // аккордеоны (не используются)
+$enable-alert:        false;  // всплывающие уведомления (не используются)
+$enable-badge:        false;  // бейджи-метки (не используются)
+$enable-breadcrumb:   false;  // хлебные крошки (не используются)
+$enable-card:         false;  // карточки (не используются)
+$enable-dropdown:     false;  // выпадающие меню (не используются)
+$enable-list-group:   false;  // списки-группы (не используются)
+$enable-modal:        false;  // модальные окна (не используются)
+$enable-navbar:       false;  // навигационная панель (используется .nav без .navbar)
+$enable-offcanvas:    false;  // боковые панели (не используются)
+$enable-pagination:   false;  // пагинация (не используется)
+$enable-placeholder:  false;  // заглушки-скелетоны (не используются)
+$enable-popover:      false;  // всплывающие подсказки с контентом (не используются)
+$enable-progress:     false;  // прогресс-бары (не используются)
+$enable-spinner:      false;  // индикаторы загрузки (не используются)
+$enable-toasts:       false;  // всплывающие уведомления (не используются)
+$enable-tooltip:      false;  // всплывающие подсказки (не используются)
+$enable-close-button: false;  // кнопки закрытия (не используются)
+
+// --- Оставленные включёнными ---
+// $enable-carousel   — Bootstrap Carousel в post-slider (page.html)
+// $enable-collapse   — мобильное меню (data-bs-toggle="collapse")
+// $enable-nav        — навигация в header и footer (.nav, .nav-link)
+// $enable-forms      — базовые стили input/textarea/select
+// $enable-table      — базовые стили таблиц (markdown-контент)
+// $enable-transitions, $enable-reboot, $enable-type, $enable-images,
+// $enable-containers, $enable-grid, $enable-buttons — базовые
