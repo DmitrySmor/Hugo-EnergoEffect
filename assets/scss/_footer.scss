@@ -4,14 +4,19 @@
 	// База — 16px (для xxl и выше)
 	font-size: 1rem;
 
-	// xl и ниже (< 1400px) — 13px
+	// xl и ниже (< 1400px) — 15px
 	@include media-breakpoint-down(xxl) {
-		font-size: 0.8125rem;
+		font-size: 0.9375rem;
 	}
 
-	// lg и ниже (< 1200px) — 12px
+	// lg и ниже (< 1200px) — 14px
 	@include media-breakpoint-down(xl) {
-		font-size: 0.75rem;
+		font-size: 0.875rem;
+	}
+
+	// md и ниже (< 992px) — 13px
+	@include media-breakpoint-down(lg) {
+		font-size: 0.8125rem;
 	}
 
 	// Hover-цвет (атомарный блок)
