@@ -14,12 +14,12 @@
 				<ul class="nav justify-content-end">
 					{{ range .Site.Menus.main }}
 					<li class="nav-item">
-						<a href="{{ .URL | absURL }}" class="nav-link px-2 text-white">{{ .Name }}</a>
+						<a href="{{ .URL | absURL }}" class="nav-link px-2 text-white footer-nav-link">{{ .Name }}</a>
 					</li>
 					{{ end }}
 					{{ range .Site.Menus.footer }}
 					<li class="nav-item">
-						<a href="{{ .URL | absURL }}" class="nav-link px-2 text-white">{{ .Name }}</a>
+						<a href="{{ .URL | absURL }}" class="nav-link px-2 text-white footer-nav-link">{{ .Name }}</a>
 					</li>
 					{{ end }}
 				</ul>

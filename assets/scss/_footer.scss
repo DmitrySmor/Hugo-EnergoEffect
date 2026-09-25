@@ -1,13 +1,22 @@
-// ============================================
-// Footer
-// ============================================
+// --- Адаптивный размер шрифта меню ---
+// Масштабируется от 12px (lg) до 14px (xxl)
+.footer-nav-link {
+	// База — 16px (для xxl и выше)
+	font-size: 1rem;
 
-// --- Ссылки футера ---
-footer ul li a {
-	color: #000000 !important;
-}
+	// xl и ниже (< 1400px) — 13px
+	@include media-breakpoint-down(xxl) {
+		font-size: 0.8125rem;
+	}
 
-footer ul li:hover a,
-footer ul li a:hover {
-	color: $warning !important;
+	// lg и ниже (< 1200px) — 12px
+	@include media-breakpoint-down(xl) {
+		font-size: 0.75rem;
+	}
+
+	// Hover-цвет (атомарный блок)
+	&:hover,
+	&:focus {
+		color: $warning !important;
+	}
 }
