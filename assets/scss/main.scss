@@ -2,11 +2,14 @@
 // Точка входа для всех стилей сайта
 // ============================================
 
-// 1. Сначала переменные — ДО Bootstrap!
+// Сначала переменные — ДО Bootstrap!
 @import "variables";
 
-// 2. Vendor: Bootstrap (из Sass) + Owl Carousel
+// Vendor: Bootstrap (из Sass) + Owl Carousel
 @import "vendor";
 
-// 3. Ваши кастомные стили
+// Компоненты
+@import "footer";
+
+// Ваши кастомные стили
 @import "custom";

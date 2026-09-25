@@ -1,0 +1,71 @@
+// ============================================
+// Footer
+// ============================================
+
+// --- Ссылки футера ---
+footer ul li a {
+	color: #000000 !important;
+}
+
+footer ul li:hover a,
+footer ul li a:hover {
+	color: $warning !important;
+}
+
+// --- Отступ ---
+footer {
+	margin-top: 3rem !important;
+}
+
+// ============================================
+// Медиа-запросы
+// ============================================
+
+@media (max-width: 1140px) {
+	footer ul {
+		flex-wrap: nowrap !important;
+		white-space: nowrap;
+	}
+}
+
+@media (max-width: 960px) {
+	footer img {
+		height: 45px;
+		width: auto;
+	}
+}
+
+@media (max-width: 720px) {
+	footer .container > .d-flex {
+		flex-direction: column;
+	}
+
+	footer .d-flex a img {
+		margin-bottom: 30px;
+	}
+
+	footer ul {
+		flex-direction: column;
+	}
+
+	footer ul li {
+		text-align: center;
+	}
+}
+
+@media (max-width: 540px) {
+	footer {
+		.container > .d-flex,
+		ul {
+			flex-direction: column;
+		}
+
+		img {
+			margin-bottom: 40px;
+		}
+
+		ul li {
+			text-align: center;
+		}
+	}
+}

@@ -53,23 +53,16 @@ p b {
 	font-weight: 500;
 }
 
-footer {
-	margin-top: 3rem !important;
-}
-
 // ============================================
-// Ссылки (навигация, футер)
+// Ссылки (навигация)
 // ============================================
 
-header ul li a,
-footer ul li a {
+header ul li a {
 	color: #000000 !important;
 }
 
 header ul li:hover a,
 header ul li a:hover,
-footer ul li:hover a,
-footer ul li a:hover,
 li a.active,
 a:hover {
 	color: $warning !important;
@@ -948,8 +941,7 @@ h2.text-white {
 		right: 20px;
 	}
 
-	header .nav li a,
-	footer .nav li a {
+	header .nav li a {
 		font-size: 12px;
 	}
 
@@ -1246,11 +1238,6 @@ h2.text-white {
 
 	p.m-f {
 		font-size: 16px !important;
-	}
-
-	footer ul {
-		flex-wrap: nowrap !important;
-		white-space: nowrap;
 	}
 
 	.col-xsm-5 {
@@ -1606,11 +1593,6 @@ h2.text-white {
 		height: 240px;
 	}
 
-	footer img {
-		height: 45px;
-		width: auto;
-	}
-
 	article {
 		padding-top: 120px;
 	}
@@ -1876,22 +1858,6 @@ h2.text-white {
 		width: 15%;
 	}
 
-	footer .container > .d-flex {
-		flex-direction: column;
-	}
-
-	footer .d-flex a img {
-		margin-bottom: 30px;
-	}
-
-	footer ul {
-		flex-direction: column;
-	}
-
-	footer ul li {
-		text-align: center;
-	}
-
 	.post-slider .carousel-control-prev-icon {
 		position: relative;
 		left: 0px;
@@ -2118,21 +2084,6 @@ h2.text-white {
 
 	.how-to-point .col-xs-6 {
 		width: 100% !important;
-	}
-
-	footer {
-		.container > .d-flex,
-		ul {
-			flex-direction: column;
-		}
-
-		img {
-			margin-bottom: 40px;
-		}
-
-		ul li {
-			text-align: center;
-		}
 	}
 
 	.section-404 {
