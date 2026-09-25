@@ -5,13 +5,13 @@
 			<div class="col-2">
 				<a href="{{ `` | absURL }}" class="d-inline-block">
 					<img src="{{ `images/logoheader.webp` | absURL }}"
-					     alt="{{ .Title }}"
+					     alt="{{ .Site.Title }}"
 					     width="161" height="62"/>
 				</a>
 			</div>
 			<!-- Меню справа -->
 			<div class="col-10">
-				<ul class="nav justify-content-lg-end">
+				<ul class="nav justify-content-end">
 					{{ range .Site.Menus.main }}
 					<li class="nav-item">
 						<a href="{{ .URL | absURL }}" class="nav-link px-2 text-white">{{ .Name }}</a>
