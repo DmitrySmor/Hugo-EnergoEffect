@@ -12,11 +12,10 @@
 			</ul>
 
 			<div class="col-md-3 d-flex text-end justify-content-end text-nowrap">
-				<button type="button" class="btn me-2" aria-label="ru">
-					<img src="{{ `images/lang-icon.png` | absURL }}" alt="ru" width="67" height="28" />
-				</button>
-				<a href="tel:{{ .Site.Params.company_phone01_link }}" class="btn btn-primary d-flex align-items-center">
-					<img src="{{ `images/phone-icon.png` | absURL }}" width="19" height="19" alt="phone" />
+				<a href="tel:{{ .Site.Params.company_phone01_link }}" class="btn btn-primary d-flex align-items-center px-4">
+					<svg class="icon text-white me-3 my-2" width="19" height="19" style="flex: 0 0 19px;">
+					    <use href="{{ `icons.svg#telephone-fill` | absURL }}"></use>
+					</svg>
 					{{ .Site.Params.company_phone01 }}
 				</a>
 			</div>

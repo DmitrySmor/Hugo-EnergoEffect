@@ -16,6 +16,24 @@ p b {
 	font-weight: 500;
 }
 
+.icon {
+    --icon-stroke-width: 2;
+    --icon-scale: 1;
+    --icon-x: 0;
+    --icon-y: 0;
+
+    transform:
+        translate(var(--icon-x), var(--icon-y))
+        scale(var(--icon-scale));
+
+    &-bold {
+        --icon-stroke-width: 3;
+        --icon-scale: 0.95;
+        --icon-x: 0.5px;
+        --icon-y: 0.5px;
+    }
+}
+
 // ============================================
 // Ссылки (навигация)
 // ============================================
