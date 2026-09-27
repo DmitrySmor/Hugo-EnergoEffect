@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg">
-	<symbol id="arrow-up-right" viewBox="5 5 14 14">
-		<path d="M5 5h14v14H5z" fill="none" />
-		<path fill="currentColor" d="M17.452 6H6.547a.548.548 0 0 0 0 1.096h9.585l-9.97 9.97a.545.545 0 1 0 .772.772l9.97-9.971v9.586a.548.548 0 0 0 1.096 0V6.546A.55.55 0 0 0 17.452 6" />
+	<symbol id="arrow-up-right" viewBox="0 0 30 30" fill="none">
+		<path d="M1 1H28.3782" stroke="white" stroke-width="2" stroke-linecap="round"/>
+		<path d="M1.5 27.7734L28.2698 1.00366" stroke="white" stroke-width="2" stroke-linecap="round"/>
+		<path d="M28.3789 28.3828L28.3789 1.00463" stroke="white" stroke-width="2" stroke-linecap="round"/>
 	</symbol>
 	<symbol id="poverka-icon-1" viewBox="0 0 25 25" fill="none">
 		<path d="M17.2475 5.53739H20.4474C20.3761 5.43145 20.2946 5.33265 20.2039 5.24239L17.0375 2.10018C16.9463 2.01026 16.8467 1.92903 16.7402 1.85754V5.03399C16.7402 5.1675 16.7937 5.29554 16.8888 5.38994C16.9839 5.48435 17.113 5.53739 17.2475 5.53739Z" fill="white"/>
