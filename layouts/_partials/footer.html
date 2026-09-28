@@ -20,19 +20,19 @@
 				<nav>
 					<ul class="nav justify-content-end">
 						{{ range .Site.Menus.main }}
-						<li class="nav-item">
-							<a href="{{ .URL | absURL }}" class="nav-link footer-nav-link">
-								{{ .Name }}
-							</a>
-						</li>
+							<li class="nav-item">
+								<a href="{{ .URL | absURL }}" class="nav-link footer-nav-link">
+									{{ .Name }}
+								</a>
+							</li>
 						{{ end }}
 
 						{{ range .Site.Menus.footer }}
-						<li class="nav-item">
-							<a href="{{ .URL | absURL }}" class="nav-link footer-nav-link">
-								{{ .Name }}
-							</a>
-						</li>
+							<li class="nav-item">
+								<a href="{{ .URL | absURL }}" class="nav-link footer-nav-link">
+									{{ .Name }}
+								</a>
+							</li>
 						{{ end }}
 					</ul>
 				</nav>
