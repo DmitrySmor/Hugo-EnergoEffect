@@ -38,16 +38,19 @@
 		</div>
 	</div>
 </footer>
-<!-- Не знаю заечем, Удалил, но тут оставил врдруг понадобиться -->
+
+<!-- Временная legacy-связка для Owl Carousel -->
 {{ $jquery := resources.Get "js/jquery-3.7.1.min.js" }}
-<!-- Для слайда сотрудники компании -->
 {{ $owlcarousel := resources.Get "js/owlcarousel/owl.carousel.min.js" }}
-<!-- Bootstrap core JS-->
-{{ $bootstrap := resources.Get "js/bootstrap.bundle.min.js" }}
-<!-- Core theme JS-->
-{{ $script := resources.Get "js/script.js" }}
 <!-- Объединение и минификация скриптов -->
-{{ $js := slice $jquery $owlcarousel $bootstrap $script | resources.Concat "js/bundle.js" | resources.Minify | resources.Fingerprint }}
+{{ $js := slice $jquery $owlcarousel | resources.Concat "js/bundle-carousel.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
+
+<!-- Современный JS через js.Build -->
+{{ with resources.Get "js/main.js" }}
+  {{ $js := . | js.Build "js/main.js" | resources.Minify | resources.Fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer ></script>
+{{ end }}
+
 <!-- Внутри будет весь баннер + сохранение выбора + отложенная загрузка Метрики.-->
 <script src="{{ `js/cookie-consent.js` | absURL }}" defer></script>

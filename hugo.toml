@@ -29,7 +29,6 @@ enableRobotsTXT = true # Включаем генрацию robots.txt
 [build.buildStats]
     enable = true
 
-
 # Контакты компанииё
 [params]
     # ===== Компания =====
@@ -96,32 +95,26 @@ enableRobotsTXT = true # Включаем генрацию robots.txt
     name = "Главная"
     pageRef = "/"
     weight = 1
-
 [[menu.main]]
     name = "Поверка"
     pageRef = "/poverka"
     weight = 2
-
 [[menu.main]]
     name = "О компании"
     url = "/#about-company"
     weight = 7
-
 [[menu.main]]
     name = "Руководство"
     url = "/#administration"
     weight = 4
-
 [[menu.main]]
     name = "Проекты"
     url = "/projects"
     weight = 3
-
 [[menu.main]]
     name = "Новости"
     pageRef = "/news"
     weight = 5
-
 [[menu.main]]
     name = "Контакты"
     url = "/#contacts"
@@ -133,7 +126,6 @@ enableRobotsTXT = true # Включаем генрацию robots.txt
     name = "Политика"
     url = "/privacy_policy"
     weight = 8
-
 [[menu.footer]]
     name = "Согласие"
     url = "/terms_of_service"
