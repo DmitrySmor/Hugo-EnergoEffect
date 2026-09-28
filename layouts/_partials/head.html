@@ -22,8 +22,10 @@
   fetchpriority="high"
 >
 <!-- Предзагрузка шрифтов для ускорения их загрузки и уменьшения задержки отрисовки текста -->
-<link rel="preload" href="{{ `fonts/Inter-Regular.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="{{ `fonts/Inter-Italic.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="{{ `fonts/Inter-Variable-Cyrillic.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="{{ `fonts/Inter-Variable-Latin.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="{{ `fonts/Inter-Variable-Italic-Cyrillic.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="{{ `fonts/Inter-Variable-Italic-Latin.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
 <!-- Микроразметка -->
 {{ partial "schema/organization.html" . }}
 <!-- Стили: Sass + PostCSS + fingerprint -->
