@@ -21,7 +21,7 @@
 					<ul class="nav justify-content-end">
 						{{ range .Site.Menus.main }}
 							<li class="nav-item">
-								<a href="{{ .URL | absURL }}" class="nav-link footer-nav-link">
+								<a href="{{ .URL | absURL }}" class="nav-link footer-nav-link fw-normal">
 									{{ .Name }}
 								</a>
 							</li>
@@ -29,7 +29,7 @@
 
 						{{ range .Site.Menus.footer }}
 							<li class="nav-item">
-								<a href="{{ .URL | absURL }}" class="nav-link footer-nav-link">
+								<a href="{{ .URL | absURL }}" class="nav-link footer-nav-link fw-normal">
 									{{ .Name }}
 								</a>
 							</li>

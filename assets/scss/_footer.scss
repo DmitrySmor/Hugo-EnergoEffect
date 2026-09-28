@@ -1,24 +1,9 @@
 // --- Адаптивный размер шрифта меню ---
 // Масштабируется от 12px (lg) до 14px (xxl)
 .footer-nav-link {
-	// XS, SM, MD — 12px
-	font-size: 0.75rem;
-
-	// LG (≥992px) — 13px
-	@include media-breakpoint-up(lg) {
-		font-size: 0.8125rem;
-	}
-
-	// XL (≥1200px) — 15px
-	@include media-breakpoint-up(xl) {
-		font-size: 0.9375rem;
-	}
-
-	// XXL (≥1400px) — 16px
-	@include media-breakpoint-up(xxl) {
-		font-size: 1rem;
-	}
-
+	font-size: clamp(0.75rem, 1vw, 1.0625rem);
+	letter-spacing: -0.06em;
+	line-height: 1.875rem;
 	color: $white;
 	&:hover,
 	&:focus {
