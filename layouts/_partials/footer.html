@@ -3,15 +3,17 @@
 		<div class="row align-items-center">
 			<!-- Логотип -->
 			<div class="col-12 col-md-auto">
-				{{ with resources.Get "images/logofooter.png" }}
-				<img
-					src="{{ .RelPermalink }}"
-					alt="{{ site.Title }}"
-					width="{{ .Width }}"
-					height="{{ .Height }}"
-					class="footer-logo"
-				>
-				{{ end }}
+				<a href="{{ `` | absURL }}">
+					{{ with resources.Get "images/logofooter.png" }}
+						<img
+							src="{{ .RelPermalink }}"
+							alt="{{ site.Title }}"
+							width="{{ .Width }}"
+							height="{{ .Height }}"
+							class="footer-logo"
+						>
+					{{ end }}
+				</a>
 			</div>
 			<!-- Меню показывается только с md -->
 			<div class="col d-none d-md-block">

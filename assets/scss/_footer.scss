@@ -25,3 +25,8 @@
 		color: $warning;
 	}
 }
+
+.footer-logo {
+	height: clamp(35px, 3vw, 70px);
+	  width: auto;
+}
