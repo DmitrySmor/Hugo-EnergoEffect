@@ -1,29 +1,40 @@
-<footer class="d-none d-lg-block mt-5 py-5 bg-dark">
+<footer class="bg-dark py-4">
 	<div class="container">
 		<div class="row align-items-center">
-			<!-- Логотип слева -->
-			<div class="col-2">
-				<a href="{{ `` | absURL }}" class="d-inline-block">
-					<img src="{{ `images/logofooter.png` | absURL }}"
-					     alt="{{ .Site.Title }}"
-					     width="161" height="62"/>
+			<!-- Логотип -->
+			<div class="col-12 col-md-auto">
+				<a href="{{ `` | absURL }}">
+					<img
+						src="{{ `images/logofooter.png` | absURL }}"
+						alt="{{ .Site.Title }}"
+						width="161"
+						height="62"
+					>
 				</a>
 			</div>
-			<!-- Меню справа -->
-			<div class="col-10">
-				<ul class="nav justify-content-end">
-					{{ range .Site.Menus.main }}
-					<li class="nav-item">
-						<a href="{{ .URL | absURL }}" class="nav-link px-2 text-white footer-nav-link">{{ .Name }}</a>
-					</li>
-					{{ end }}
-					{{ range .Site.Menus.footer }}
-					<li class="nav-item">
-						<a href="{{ .URL | absURL }}" class="nav-link px-2 text-white footer-nav-link">{{ .Name }}</a>
-					</li>
-					{{ end }}
-				</ul>
+			<!-- Меню показывается только с md -->
+			<div class="col d-none d-md-block">
+				<nav>
+					<ul class="nav justify-content-end">
+						{{ range .Site.Menus.main }}
+						<li class="nav-item">
+							<a href="{{ .URL | absURL }}" class="nav-link footer-nav-link">
+								{{ .Name }}
+							</a>
+						</li>
+						{{ end }}
+
+						{{ range .Site.Menus.footer }}
+						<li class="nav-item">
+							<a href="{{ .URL | absURL }}" class="nav-link footer-nav-link">
+								{{ .Name }}
+							</a>
+						</li>
+						{{ end }}
+					</ul>
+				</nav>
 			</div>
+
 		</div>
 	</div>
 </footer>
