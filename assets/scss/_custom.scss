@@ -22,6 +22,21 @@
   	background: $primary-gradient;
 }
 
+// Переопределяем для всего сайта
+a:not(.btn) {
+  &:hover,
+  &:focus-visible {
+    color: $link-hover-color;
+  }
+}
+
+// стилизация сылки в виде кнок
+.btn-light {
+  &.btn-hover-warning {
+    --bs-btn-hover-color: #{$link-hover-color};
+  }
+}
+
 // ============================================
 // База
 // ============================================
