@@ -1,5 +1,4 @@
 // --- Адаптивный размер шрифта меню ---
-// Масштабируется от 12px (lg) до 14px (xxl)
 .footer-nav-link {
 	font-size: clamp(0.75rem, 1vw, 1.0625rem);
 	letter-spacing: -0.06em;

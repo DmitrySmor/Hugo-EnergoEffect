@@ -5,11 +5,12 @@
 // Сначала переменные — ДО Bootstrap!
 @import "variables";
 
-// Vendor: Bootstrap (из Sass) + Owl Carousel
+// Vendor: Bootstrap (из Sass)
 @import "vendor";
 
 // Ваши кастомные стили
 @import "custom";
 
 // Компоненты
+@import "header";
 @import "footer";

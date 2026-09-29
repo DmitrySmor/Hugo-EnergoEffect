@@ -1,49 +1,45 @@
 <header>
-	<div class="container lg">
-		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-4">
-			<a href="{{ `` | absURL }}" class="d-flex align-items-center col-md-2 mb-2 mb-md-0 text-dark text-decoration-none">
-				<img src="{{ `images/logoheader.webp` | absURL }}" alt="{{ .Site.Params.company_shortName }}" width="161" height="62" />
-			</a>
-
-			<ul class="nav col-md-7 mb-2 justify-content-center mb-md-0">
-				{{ range .Site.Menus.main }}
-				<li><a href="{{ .URL | absURL }}" class="nav-link px-2">{{ .Name }}</a></li>
+    <nav class="navbar navbar-expand-xl py-3 bg-white">
+        <div class="container">
+            <a href="{{ `` | absURL }}" class="navbar-brand">
+				{{ with resources.Get "images/logoheader.png" }}
+					<img
+						src="{{ .RelPermalink }}"
+						alt="{{ site.Params.company_shortName }}"
+						width="{{ .Width }}"
+						height="{{ .Height }}"
+						class="header-logo"
+					>
 				{{ end }}
-			</ul>
-
-			<div class="col-md-3 d-flex text-end justify-content-end text-nowrap">
-				<a href="tel:{{ .Site.Params.company_phone01_link }}" class="btn btn-primary d-flex align-items-center px-4">
-					<svg class="icon text-white me-3 my-2" width="19" height="19" style="flex: 0 0 19px;">
-					    <use href="{{ `icons.svg#telephone-fill` | absURL }}"></use>
-					</svg>
-					{{ .Site.Params.company_phone01 }}
-				</a>
-			</div>
-		</div>
-	</div>
-	<div class="container xs">
-		<div class="d-flex flex-wrap align-items-center justify-content-between py-4">
-			<a href="{{ `` | absURL }}" class="d-flex align-items-center col-md-2 mb-2 mb-md-0 text-dark text-decoration-none">
-				<img src="{{ `images/logoheader.webp` | absURL }}" alt="{{ .Site.Params.company_shortName }}" width="161" height="62" />
 			</a>
-			<nav>
-				<button class="bord-none" data-bs-toggle="collapse" data-bs-target="#MobMenuHeader" aria-controls="MobMenuHeader" aria-expanded="false" aria-label="Toggle navigation">
-					<span id="mobmenu" class="mob-menu-button float-end" onclick="MobMenu()"></span>
-				</button>
-			</nav>
-		</div>
-	</div>
-	<div class="collapse" id="MobMenuHeader">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<ul class="d-flex flex-column nav justify-content-center align-items-center mb-5">
-						{{ range .Site.Menus.main }}
-						<li><a href="{{ .URL | absURL }}" class="nav-link px-2">{{ .Name }}</a></li>
-						{{ end }}
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Переключить меню"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto flex-column flex-xl-row align-items-xl-center align-items-center">
+		            {{ range .Site.Menus.main }}
+						<li class="nav-item px-2">
+							<a href="{{ .URL | absURL }}" class="nav-link header-nav-link">{{ .Name }}</a>
+						</li>
+					{{ end }}
+                </ul>
+                <div class="d-flex flex-column flex-xl-row align-items-xl-center align-items-center">
+	                <a href="tel:{{ .Site.Params.company_phone01_link }}" class="btn btn-primary d-flex align-items-center px-4 rounded-pill">
+						<svg class="icon text-white me-3 my-2" width="19" height="19" style="flex: 0 0 19px;" aria-hidden="true">
+						    <use href="{{ `icons.svg#telephone-fill` | absURL }}"></use>
+						</svg>
+						{{ .Site.Params.company_phone01 }}
+					</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 </header>

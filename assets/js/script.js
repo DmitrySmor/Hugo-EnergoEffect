@@ -1,6 +1,3 @@
-function MobMenu() {
-	document.getElementById('mobmenu').classList.toggle('open')
-}
 $('.main-carousel').owlCarousel({
 	loop: true,
 	margin: 15,

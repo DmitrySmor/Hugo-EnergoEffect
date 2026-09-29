@@ -13,10 +13,17 @@ $danger:    #dc3545;
 $light:     #f8f9fa;
 $dark:      #292929;
 
+// Горизонтальный градиент
+$primary-gradient: linear-gradient(90deg, $primary, #001c2b);
+
 // --- Ссылки ---
 $link-color:      $dark; // Все ссылки по умолчанию черные
 $link-hover-color: $warning; // При наведени
 $link-decoration:  none;    // Убираем подчеркивание
+
+$navbar-light-icon-color: $primary;
+$navbar-light-toggler-border-color: $primary;
+
 
 // --- Шрифт ---
 // Inter Variable: один файл поддерживает веса 100–900.
