@@ -4,23 +4,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}" />
 <!-- Title -->
-<title>{{ with .Title }} {{ . }} {{ else }} {{ .Site.Title }} {{ end }}</title>
+<title>{{ with .Title }}{{ . }}{{ else }}{{ .Site.Title }}{{ end }}</title>
 <!-- Favicon-->
 <link rel="icon" type="image/png" sizes="120x120" href="{{ `images/favicon-120x120.png` | absURL }}" />
 <!-- canonical для поисковых роботов-->
 {{ if ne .Kind "404" }}
-<link rel="canonical" href="{{ .Permalink }}" />
+    <link rel="canonical" href="{{ .Permalink }}" />
 {{ end }}
 <!-- Предзагрузка главного изображения первого экрана для ускорения LCP -->
 <link
-  rel="preload"
-  as="image"
-  href="{{ `images/main-banner-1.webp` | absURL }}"
-  imagesrcset="{{ `images/main-banner-1.webp` | absURL }} 1344w,
+    rel="preload"
+    as="image"
+    href="{{ `images/main-banner-1.webp` | absURL }}"
+    imagesrcset="{{ `images/main-banner-1.webp` | absURL }} 1344w,
                {{ `images/main-banner-1-540.webp` | absURL }} 805w"
-  imagesizes="(max-width: 540px) 540px, 100vw"
-  fetchpriority="high"
->
+    imagesizes="(max-width: 540px) 540px, 100vw"
+    fetchpriority="high"
+/>
 <!-- Предзагрузка шрифтов для ускорения их загрузки и уменьшения задержки отрисовки текста -->
 <link rel="preload" href="{{ `fonts/Inter-Variable-Cyrillic.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="{{ `fonts/Inter-Variable-Latin.woff2` | absURL }}" as="font" type="font/woff2" crossorigin />
@@ -30,14 +30,14 @@
 {{ partial "schema/organization.html" . }}
 <!-- Стили: Sass + PostCSS + fingerprint -->
 {{ with resources.Get "scss/main.scss" }}
-	{{ $opts := dict
-		"outputStyle" (cond hugo.IsDevelopment "expanded" "compressed")
-		"targetPath" "css/main.css"
-		"transpiler" "dartsass"
-		"includePaths" (slice "node_modules")
-		"silenceDependencyDeprecations" true
-	}}
-	{{ with . | css.Sass $opts | postCSS | fingerprint | resources.PostProcess }}
-	    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-	{{ end }}
+    {{ $opts := dict
+        "outputStyle" (cond hugo.IsDevelopment "expanded" "compressed")
+        "targetPath" "css/main.css"
+        "transpiler" "dartsass"
+        "includePaths" (slice "node_modules")
+        "silenceDependencyDeprecations" true
+    }}
+    {{ with . | css.Sass $opts | postCSS | fingerprint | resources.PostProcess }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" />
+    {{ end }}
 {{ end }}

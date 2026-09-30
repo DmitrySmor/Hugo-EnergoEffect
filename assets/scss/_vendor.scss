@@ -1,9 +1,154 @@
 // ============================================
-// Vendor-стили
+// Bootstrap
 // ============================================
 
-// Bootstrap 5.0.2 из Sass-исходников (node_modules)
-@import "bootstrap/scss/bootstrap";
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
 
-// Owl Carousel (переименован в SCSS-партиал)
-@import "owl.carousel";
+// ============================================
+// Расширение Bootstrap utilities
+// ============================================
+
+$utilities: map-merge(
+    $utilities,
+    (
+        'rounded': map-merge(
+                map-get($utilities, 'rounded'),
+                (
+                    responsive: true,
+                    values: map-merge(
+                            map-get(map-get($utilities, 'rounded'), 'values'),
+                            (
+                                6: $border-radius-6,
+                                7: $border-radius-7,
+                                8: $border-radius-8,
+                                9: $border-radius-9,
+                                10: $border-radius-10,
+                                11: $border-radius-11,
+                            )
+                        ),
+                )
+            ),
+        'rounded-top': map-merge(
+                map-get($utilities, 'rounded-top'),
+                (
+                    responsive: true,
+                    values: map-merge(
+                            map-get(map-get($utilities, 'rounded-top'), 'values'),
+                            (
+                                6: $border-radius-6,
+                                7: $border-radius-7,
+                                8: $border-radius-8,
+                                9: $border-radius-9,
+                                10: $border-radius-10,
+                                11: $border-radius-11,
+                            )
+                        ),
+                )
+            ),
+        'rounded-end': map-merge(
+                map-get($utilities, 'rounded-end'),
+                (
+                    responsive: true,
+                    values: map-merge(
+                            map-get(map-get($utilities, 'rounded-end'), 'values'),
+                            (
+                                6: $border-radius-6,
+                                7: $border-radius-7,
+                                8: $border-radius-8,
+                                9: $border-radius-9,
+                                10: $border-radius-10,
+                                11: $border-radius-11,
+                            )
+                        ),
+                )
+            ),
+        'rounded-bottom': map-merge(
+                map-get($utilities, 'rounded-bottom'),
+                (
+                    responsive: true,
+                    values: map-merge(
+                            map-get(map-get($utilities, 'rounded-bottom'), 'values'),
+                            (
+                                6: $border-radius-6,
+                                7: $border-radius-7,
+                                8: $border-radius-8,
+                                9: $border-radius-9,
+                                10: $border-radius-10,
+                                11: $border-radius-11,
+                            )
+                        ),
+                )
+            ),
+        'rounded-start': map-merge(
+                map-get($utilities, 'rounded-start'),
+                (
+                    responsive: true,
+                    values: map-merge(
+                            map-get(map-get($utilities, 'rounded-start'), 'values'),
+                            (
+                                6: $border-radius-6,
+                                7: $border-radius-7,
+                                8: $border-radius-8,
+                                9: $border-radius-9,
+                                10: $border-radius-10,
+                                11: $border-radius-11,
+                            )
+                        ),
+                )
+            ),
+    )
+);
+
+// ============================================
+// Bootstrap components
+// ============================================
+
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/type';
+@import 'bootstrap/scss/images';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/tables';
+@import 'bootstrap/scss/forms';
+@import 'bootstrap/scss/buttons';
+@import 'bootstrap/scss/transitions';
+@import 'bootstrap/scss/dropdown';
+@import 'bootstrap/scss/button-group';
+@import 'bootstrap/scss/nav';
+@import 'bootstrap/scss/navbar';
+@import 'bootstrap/scss/card';
+@import 'bootstrap/scss/accordion';
+@import 'bootstrap/scss/breadcrumb';
+@import 'bootstrap/scss/pagination';
+@import 'bootstrap/scss/badge';
+@import 'bootstrap/scss/alert';
+@import 'bootstrap/scss/progress';
+@import 'bootstrap/scss/list-group';
+@import 'bootstrap/scss/close';
+@import 'bootstrap/scss/toasts';
+@import 'bootstrap/scss/modal';
+@import 'bootstrap/scss/tooltip';
+@import 'bootstrap/scss/popover';
+@import 'bootstrap/scss/carousel';
+@import 'bootstrap/scss/spinners';
+@import 'bootstrap/scss/offcanvas';
+@import 'bootstrap/scss/placeholders';
+
+// ============================================
+// Bootstrap utilities
+// ============================================
+
+@import 'bootstrap/scss/helpers';
+@import 'bootstrap/scss/utilities/api';
+
+// ============================================
+// Owl Carousel
+// ============================================
+
+@import 'owl.carousel';

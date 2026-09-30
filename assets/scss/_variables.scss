@@ -4,27 +4,26 @@
 // ============================================
 
 // --- Цвета (наши фирменные) ---
-$primary:   #015d91;
+$primary: #015d91;
 $secondary: #6c757d;
-$success:   #198754;
-$info:      #0dcaf0;
-$warning:   #f85508;
-$danger:    #dc3545;
-$light:     #f8f9fa;
-$dark:      #292929;
+$success: #198754;
+$info: #0dcaf0;
+$warning: #f85508;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #292929;
 
 // Горизонтальный градиент
 $primary-gradient: linear-gradient(90deg, $primary, #001c2b);
 
 // --- Ссылки ---
-$link-color:      $dark; // Все ссылки по умолчанию черные
+$link-color: $dark; // Все ссылки по умолчанию черные
 $link-hover-color: $warning; // При наведени
-$link-decoration:  none;    // Убираем подчеркивание
+$link-decoration: none; // Убираем подчеркивание
 
 // Стили для иконки Мобилного меню
 $navbar-light-icon-color: $primary;
 $navbar-light-toggler-border-color: $primary;
-
 
 // --- Шрифт ---
 // Inter Variable: один файл поддерживает веса 100–900.
@@ -37,12 +36,7 @@ $navbar-light-toggler-border-color: $primary;
     src: url('../fonts/Inter-Variable-Cyrillic.woff2') format('woff2');
 
     // Русский язык
-    unicode-range:
-        U+0301,
-        U+0400-045F,
-        U+0490-0491,
-        U+04B0-04B1,
-        U+2116;
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
     font-family: 'Inter';
@@ -52,26 +46,7 @@ $navbar-light-toggler-border-color: $primary;
     src: url('../fonts/Inter-Variable-Latin.woff2') format('woff2');
 
     // Английский и латиница
-    unicode-range:
-        U+0000-00FF,
-        U+0131,
-        U+0152-0153,
-        U+02BB-02BC,
-        U+02C6,
-        U+02DA,
-        U+02DC,
-        U+0304,
-        U+0308,
-        U+0329,
-        U+2000-206F,
-        U+20AC,
-        U+2122,
-        U+2191,
-        U+2193,
-        U+2212,
-        U+2215,
-        U+FEFF,
-        U+FFFD;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 // Курсивная версия Inter
 @font-face {
@@ -81,12 +56,7 @@ $navbar-light-toggler-border-color: $primary;
     font-display: swap;
     src: url('../fonts/Inter-Variable-Italic-Cyrillic.woff2') format('woff2');
     // Русский язык
-    unicode-range:
-        U+0301,
-        U+0400-045F,
-        U+0490-0491,
-        U+04B0-04B1,
-        U+2116;
+    unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
     font-family: 'Inter';
@@ -95,44 +65,70 @@ $navbar-light-toggler-border-color: $primary;
     font-display: swap;
     src: url('../fonts/Inter-Variable-Italic-Latin.woff2') format('woff2');
     // Английский и латиница
-    unicode-range:
-        U+0000-00FF,
-        U+0131,
-        U+0152-0153,
-        U+02BB-02BC,
-        U+02C6,
-        U+02DA,
-        U+02DC,
-        U+0304,
-        U+0308,
-        U+0329,
-        U+2000-206F,
-        U+20AC,
-        U+2122,
-        U+2191,
-        U+2193,
-        U+2212,
-        U+2215,
-        U+FEFF,
-        U+FFFD;
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 // Inter как основной шрифт Bootstrap
-$font-family-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-family-sans-serif:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
 
-// --- Радиусы ---
-$border-radius:    0.25rem;
-$border-radius-lg: 0.3rem;
-$border-radius-sm: 0.2rem;
+// ============================================
+// Общий стандарт шкалы проекта
+// ============================================
+// 0  → 0px
+// 1  → 4px
+// 2  → 6px
+// 3  → 8px
+// 4  → 16px
+// 5  → 32px
+// 6  → 40px
+// 7  → 48px
+// 8  → 64px
+// 9  → 80px
+// 10 → 96px
+// 11 → 100px
+//
+// Шкала:
+// 0 → 4 → 6 → 8 → 16 → 32 → 40 → 48 → 64 → 80 → 96 → 100px
+//
+// Индексы 0–5 соответствуют Bootstrap 5.3.8.
+// При расширении шкалы придерживаться этих индексов и значений.
 
-// --- Spacers (отступы) ---
-// Переопределяем стандартную карту Bootstrap, добавляя уровень 6 = 5rem (80px).
-// Это генерирует классы .p-6, .py-6, .px-6, .m-6, .mt-6 и т.д.
+// ============================================
+// Border radius — Радиусы
+// ============================================
+
+$border-radius-6: 2.5rem; // 40px
+$border-radius-7: 3rem; // 48px
+$border-radius-8: 4rem; // 64px
+$border-radius-9: 5rem; // 80px
+$border-radius-10: 6rem; // 96px
+$border-radius-11: 6.25rem; // 100px
+
+// ============================================
+// Spacers — Отступы
+// ============================================
+
+// Расширение стандартной карты Bootstrap.
+// Базовые значения Bootstrap не изменяются.
+// Добавляются уровни 6–12.
+
 $spacers: (
-	0: 0,
-	1: 0.25rem,   // 4px
-	2: 0.5rem,    // 8px
-	3: 1rem,      // 16px
-	4: 1.5rem,    // 24px
-	5: 3rem,      // 48px
-	6: 5rem,      // 80px
+    0: 0,
+    1: 0.25rem,
+    2: 0.5rem,
+    3: 1rem,
+    4: 1.5rem,
+    5: 3rem,
+    6: 2rem,
+    7: 2.5rem,
+    8: 3rem,
+    9: 4rem,
+    10: 5rem,
+    11: 6rem,
+    12: 6.25rem,
 );

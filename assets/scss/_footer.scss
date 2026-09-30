@@ -1,12 +1,12 @@
 // --- Адаптивный размер шрифта меню ---
 .footer-nav-link {
-	font-size: clamp(0.75rem, 1vw, 1.0625rem);
-	letter-spacing: -0.06em;
-	line-height: 1.875rem;
-	color: $white;
+    font-size: clamp(0.75rem, 1vw, 1.0625rem);
+    letter-spacing: -0.06em;
+    line-height: 1.875rem;
+    color: $white;
 }
 
 .footer-logo {
-	height: clamp(35px, 3vw, 70px);
-	  width: auto;
+    height: clamp(35px, 3vw, 70px);
+    width: auto;
 }

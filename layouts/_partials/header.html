@@ -1,43 +1,29 @@
 <header>
-    <nav class="navbar navbar-expand-xl py-3 bg-white">
+    <nav class="navbar navbar-expand-lg py-3 bg-white">
         <div class="container">
             <a href="{{ `` | absURL }}" class="navbar-brand">
-				{{ with resources.Get "images/logoheader.png" }}
-					<img
-						src="{{ .RelPermalink }}"
-						alt="{{ site.Params.company_shortName }}"
-						width="{{ .Width }}"
-						height="{{ .Height }}"
-						class="header-logo"
-					>
-				{{ end }}
-			</a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Переключить меню"
-            >
+                {{ with resources.Get "images/logoheader.png" }}
+                    <img src="{{ .RelPermalink }}" alt="{{ site.Params.company_shortName }}" width="{{ .Width }}" height="{{ .Height }}" class="header-logo" />
+                {{ end }}
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить меню">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto flex-column flex-xl-row align-items-xl-center align-items-center">
-		            {{ range .Site.Menus.main }}
-						<li class="nav-item px-2">
-							<a href="{{ .URL | absURL }}" class="nav-link header-nav-link">{{ .Name }}</a>
-						</li>
-					{{ end }}
+                <ul class="navbar-nav mx-auto flex-column flex-lg-row align-items-xl-center align-items-center">
+                    {{ range .Site.Menus.main }}
+                        <li class="nav-item px-2">
+                            <a href="{{ .URL | absURL }}" class="nav-link header-nav-link text-nowrap">{{ .Name }}</a>
+                        </li>
+                    {{ end }}
                 </ul>
-                <div class="d-flex flex-column flex-xl-row align-items-xl-center align-items-center">
-	                <a href="tel:{{ .Site.Params.company_phone01_link }}" class="btn btn-primary d-flex align-items-center px-4 rounded-pill">
-						<svg class="icon text-white me-3 my-2" width="19" height="19" style="flex: 0 0 19px;" aria-hidden="true">
-						    <use href="{{ `icons.svg#telephone-fill` | absURL }}"></use>
-						</svg>
-						{{ .Site.Params.company_phone01 }}
-					</a>
+                <div class="d-flex flex-column flex-xl-row align-items-lg-center align-items-center">
+                    <a href="tel:{{ .Site.Params.company_phone01_link }}" class="btn btn-primary d-flex align-items-center px-4 rounded-pill text-nowrap">
+                        <svg class="icon text-white me-3 my-2" width="19" height="19" style="flex: 0 0 19px;" aria-hidden="true">
+                            <use href="{{ `icons.svg#telephone-fill` | absURL }}"></use>
+                        </svg>
+                        {{ .Site.Params.company_phone01 }}
+                    </a>
                 </div>
             </div>
         </div>
