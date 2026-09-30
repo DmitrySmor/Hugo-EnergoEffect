@@ -15,17 +15,17 @@
     }
 }
 
-// Кнопка свой градиент
-.btn-primary {
-    background: $primary-gradient;
-}
-
 // Переопределяем для всего сайта
 a:not(.btn) {
     &:hover,
     &:focus-visible {
         color: $link-hover-color;
     }
+}
+
+// Кнопка свой градиент
+.btn-primary {
+    background: $primary-gradient;
 }
 
 // стилизация сылки в виде кнок

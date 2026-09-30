@@ -1,12 +1,28 @@
-// --- Адаптивный размер шрифта меню ---
-.footer-nav-link {
-    font-size: clamp(0.75rem, 1vw, 1.0625rem);
-    letter-spacing: -0.06em;
-    line-height: 1.875rem;
-    color: $white;
-}
+footer {
+    // 	Общий цвет для футера
+    .footer-nav-link,
+    .footer-logo {
+        color: $white;
+    }
 
-.footer-logo {
-    height: clamp(35px, 3vw, 70px);
-    width: auto;
+    .footer-nav-link {
+        font-size: clamp(0.75rem, 1vw, 1.0625rem);
+        letter-spacing: -0.06em;
+    }
+
+    // Логотип — это ссылка, поэтому цвет задаём именно <a>.
+    // Внутри SVG используется fill="currentColor", поэтому SVG
+    // автоматически наследует цвет ссылки.
+    //
+    // Обычное состояние: белый логотип.
+    // При hover/focus-visible: логотип получает цвет ссылки при наведении.
+    //
+    // ВАЖНО: не задавать color непосредственно на svg,
+    // иначе он перестанет наследовать цвет от <a>.
+    .footer-logo {
+        svg {
+            height: clamp(35px, 3vw, 70px);
+            width: auto;
+        }
+    }
 }

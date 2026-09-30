@@ -2,15 +2,15 @@
 // Точка входа для всех стилей сайта
 // ============================================
 
-// Сначала переменные — ДО Bootstrap!
-@import "variables";
+// Сначала МОИ переменные — ДО Bootstrap!
+@import 'variables';
 
 // Vendor: Bootstrap (из Sass)
-@import "vendor";
+@import 'vendor';
 
 // Ваши кастомные стили
-@import "custom";
+@import 'custom';
 
 // Компоненты
-@import "header";
-@import "footer";
+@import 'header';
+@import 'footer';
