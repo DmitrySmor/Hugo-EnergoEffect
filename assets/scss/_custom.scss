@@ -14,21 +14,36 @@
         --icon-y: 0.5px;
     }
 }
-
+.mission-corner {
+    width: 5%;
+    aspect-ratio: 1;
+    height: auto;
+}
 // Переопределяем для всего сайта
+body {
+    font-size: clamp(0.875rem, calc(0.787rem + 0.286vw), 1rem);
+    line-height: clamp(1.125rem, calc(0.7rem + 1.02vw), 1.5rem);
+}
+h2 {
+    font-size: clamp(1.25rem, calc(0.293rem + 3.44vw), 2.625rem);
+    line-height: clamp(1.5rem, calc(0.105rem + 4.61vw), 3.125rem);
+    letter-spacing: -0.03em;
+}
+.fs-body-lg {
+    font-size: clamp(1rem, calc(0.875rem + 0.286vw), 1.125rem);
+}
 a:not(.btn) {
     &:hover,
     &:focus-visible {
         color: $link-hover-color;
     }
 }
-
 // Кнопка свой градиент
 .btn-primary {
     background: $primary-gradient;
 }
 
-// стилизация сылки в виде кнок
+// стилизация сылки в виде кнопки
 .btn-light {
     &.btn-hover-warning {
         --bs-btn-hover-color: #{$link-hover-color};
@@ -40,7 +55,8 @@ a:not(.btn) {
 // ============================================
 .hero {
     .container {
-        container-type: inline-size;
+        padding-block: clamp(1.25rem, calc(-0.061rem + 3.641vw), 3.125rem);
+        padding-inline: clamp(1.25rem, calc(-0.061rem + 3.641vw), 3.125rem);
         aspect-ratio: 1920 / 832;
         min-height: 443px;
 
@@ -50,15 +66,31 @@ a:not(.btn) {
         background-repeat: no-repeat;
 
         .hero-title {
-            font-size: clamp(2rem, 5cqw, 5rem);
-            line-height: clamp(2rem, 5cqw, 5.375rem);
+            font-size: clamp(2rem, calc(0.599rem + 2.913vw), 4rem);
+            line-height: clamp(2rem, calc(0.599rem + 2.913vw), 4rem);
             letter-spacing: -0.03em;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.25rem, 2cqw, 2.5rem);
-            line-height: clamp(1.5rem, 2.5cqw, 3.125rem);
+            font-size: clamp(1.25rem, calc(0.551rem + 1.942vw), 2.25rem);
+            line-height: clamp(1.5rem, calc(0.102rem + 2.427vw), 2.75rem);
             letter-spacing: -0.03em;
+        }
+    }
+}
+
+// ============================================
+// Секция 2 — о компании
+// ============================================
+
+.about {
+    background: linear-gradient(140deg, transparent 0%, transparent 42%, #e8f0f6 58%, #e8f0f6 100%);
+    .container {
+        padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
+        .div-border {
+            @include media-breakpoint-down(md) {
+                border: 0 !important;
+            }
         }
     }
 }
@@ -67,11 +99,11 @@ a:not(.btn) {
 // База
 // ============================================
 
-h2 {
-    font-size: 42px;
-    font-weight: 700;
-    line-height: 46px;
-}
+// h2 {
+//     font-size: 42px;
+//     font-weight: 700;
+//     line-height: 46px;
+// }
 
 h4 {
     font-size: 20px;
@@ -112,22 +144,6 @@ a.btn-warning:hover {
 
 .bord-none {
     background: unset;
-}
-
-// ============================================
-// Секция 2 — о компании
-// ============================================
-
-.section-bg-2 {
-    background: linear-gradient(140deg, #e8f0f600, #e8f0f6);
-
-    h2 {
-        font-weight: 500;
-    }
-
-    .d-flex > p {
-        width: 45%;
-    }
 }
 
 // ============================================
@@ -281,11 +297,11 @@ h2.text-white {
         }
     }
 
-    h2 {
-        font-size: 42px;
-        font-weight: 700 !important;
-        width: 50%;
-    }
+    // h2 {
+    //     font-size: 42px;
+    //     font-weight: 700 !important;
+    //     width: 50%;
+    // }
 
     p {
         font-size: 16px;
@@ -312,9 +328,9 @@ h2.text-white {
         padding-left: 16px;
     }
 
-    h2 {
-        font-weight: 700;
-    }
+    // h2 {
+    //     font-weight: 700;
+    // }
 
     .col-md-6 > div {
         background-color: #000000a3;
@@ -602,9 +618,9 @@ h2.text-white {
         font-weight: 500;
     }
 
-    h2 {
-        font-weight: 700;
-    }
+    // h2 {
+    //     font-weight: 700;
+    // }
 }
 
 // ============================================
@@ -634,9 +650,9 @@ h2.text-white {
         margin-bottom: unset;
     }
 
-    h2 {
-        font-size: 24px;
-    }
+    // h2 {
+    //     font-size: 24px;
+    // }
 
     h3 {
         font-size: 22px;
@@ -650,7 +666,7 @@ h2.text-white {
         font-size: 18px;
     }
 
-    h2,
+    // h2,
     h3,
     h4,
     h5,
@@ -836,9 +852,9 @@ h2.text-white {
     border-left: 1px solid #00000021;
 }
 
-.border-end {
-    border-color: #ffffff8a !important;
-}
+// .border-end {
+//     border-color: #ffffff8a !important;
+// }
 
 .border-bottom {
     border-bottom: 1px solid #ffffff21 !important;
@@ -883,18 +899,18 @@ h2.text-white {
         min-height: 370px;
     }
 
-    h2 {
-        font-size: 36px;
-    }
+    // h2 {
+    //     font-size: 36px;
+    // }
 
     .section-bg-4 p {
         font-size: 16px;
     }
 
-    .custom-1.v2 h2,
-    .custom-2 h2 {
-        font-size: 30px;
-    }
+    // .custom-1.v2 h2,
+    // .custom-2 h2 {
+    //     font-size: 30px;
+    // }
 
     div.btn-warning {
         font-size: 18px;
@@ -904,9 +920,9 @@ h2.text-white {
         height: 470px;
     }
 
-    .text-block .text h2 {
-        font-size: 30px;
-    }
+    // .text-block .text h2 {
+    //     font-size: 30px;
+    // }
 
     .fs-1 {
         font-size: calc(1rem + 0.7vw) !important;
@@ -962,10 +978,6 @@ h2.text-white {
         line-height: 25px;
     }
 
-    .section-bg-2 p {
-        font-size: 14px;
-    }
-
     .custom-1::before,
     .custom-1::after,
     .custom-2::before,
@@ -980,10 +992,10 @@ h2.text-white {
         bottom: 15%;
     }
 
-    h2 {
-        font-size: 28px;
-        line-height: 30px;
-    }
+    // h2 {
+    //     font-size: 28px;
+    //     line-height: 30px;
+    // }
 
     .panes a {
         font-size: 16px;
@@ -1003,9 +1015,9 @@ h2.text-white {
         font-size: 20px;
     }
 
-    .section-bg-4 h2.text-warning {
-        font-size: 22px;
-    }
+    // .section-bg-4 h2.text-warning {
+    //     font-size: 22px;
+    // }
 
     .section-bg-4 p {
         font-size: 16px;
@@ -1040,10 +1052,10 @@ h2.text-white {
         background-position-y: 0px;
     }
 
-    .section-bg-6 h2 {
-        width: 70%;
-        line-height: 1;
-    }
+    // .section-bg-6 h2 {
+    //     width: 70%;
+    //     line-height: 1;
+    // }
 
     .section-bg-6 p {
         width: 100%;
@@ -1196,15 +1208,6 @@ h2.text-white {
         border: unset;
     }
 
-    body section:nth-child(2) {
-        padding-top: 80px;
-    }
-
-    h2 {
-        font-size: 36px;
-        line-height: 1.2;
-    }
-
     .custom-1 {
         p.text-primary {
             font-size: 18px;
@@ -1227,11 +1230,6 @@ h2.text-white {
         width: 33px;
     }
 
-    .section-bg-2 p {
-        font-size: 16px;
-        font-weight: 500;
-    }
-
     .panes .row .col-md-4 > div {
         background-size: 100% 100%;
     }
@@ -1245,10 +1243,10 @@ h2.text-white {
     }
 
     .section-bg-3 {
-        h2 {
-            font-size: 28px;
-            line-height: 1.3;
-        }
+        // h2 {
+        //     font-size: 28px;
+        //     line-height: 1.3;
+        // }
 
         p,
         ul li {
@@ -1296,10 +1294,10 @@ h2.text-white {
             top: 53%;
         }
 
-        h2 {
-            font-size: 28px;
-            line-height: 1.1;
-        }
+        // h2 {
+        //     font-size: 28px;
+        //     line-height: 1.1;
+        // }
     }
 
     .carousel.md {
@@ -1352,13 +1350,13 @@ h2.text-white {
         padding: 24px 40px !important;
     }
 
-    .section-bg-7 h2 {
-        font-size: 28px;
-    }
+    // .section-bg-7 h2 {
+    //     font-size: 28px;
+    // }
 
-    .section-bg-7 h2.mb-5 {
-        margin-bottom: 32px !important;
-    }
+    // .section-bg-7 h2.mb-5 {
+    //     margin-bottom: 32px !important;
+    // }
 
     .news-main .col-xs-6 {
         width: 50%;
@@ -1571,9 +1569,6 @@ h2.text-white {
     .section-bg-7 .col-md-6 > div {
         min-height: 580px;
     }
-    .section-bg-2 .d-flex.justify-content-md-between {
-        justify-content: space-between;
-    }
 
     .section-bg-3 p,
     .section-bg-3 ul li {
@@ -1659,10 +1654,10 @@ h2.text-white {
 }
 
 @media (max-width: 540px) {
-    h2 {
-        font-size: 22px;
-        font-weight: 700 !important;
-    }
+    // h2 {
+    //     font-size: 22px;
+    //     font-weight: 700 !important;
+    // }
 
     .custom-1 {
         p.text-primary {
@@ -1680,19 +1675,6 @@ h2.text-white {
 
         p {
             width: 100%;
-        }
-    }
-
-    .section-bg-2 {
-        padding: 80px 0 48px 0 !important;
-
-        .d-flex.justify-content-md-between {
-            flex-direction: column;
-        }
-
-        .d-flex > p {
-            width: 100%;
-            padding-left: unset !important;
         }
     }
 
@@ -1726,9 +1708,9 @@ h2.text-white {
             padding: 0 32px !important;
         }
 
-        h2 {
-            width: 90%;
-        }
+        // h2 {
+        //     width: 90%;
+        // }
 
         .container {
             border-radius: 0px;

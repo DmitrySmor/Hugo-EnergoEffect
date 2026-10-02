@@ -1,7 +1,7 @@
 {{ define "main" }}
     <section class="hero">
         <div class="container rounded-bottom-0 rounded-bottom-sm-6">
-            <div class="row h-100 p-5">
+            <div class="row h-100">
                 <div class="col-12 col-lg-6 d-flex flex-column justify-content-start justify-content-lg-end">
                     <h1 class="hero-title text-uppercase text-white fw-bold">
                         Инжиниринговая<br />
@@ -10,7 +10,7 @@
                     </h1>
                 </div>
                 <div class="col-12 col-lg-6 d-flex flex-column justify-content-end justify-content-lg-end">
-                    <p class="hero-subtitle text-white text-end">
+                    <p class="m-0 hero-subtitle text-white text-end">
                         Проектирование<br />
                         Строительство<br />
                         Эксплуатация
@@ -20,35 +20,56 @@
         </div>
     </section>
 
-    <section class="section-bg-2 p-5 pt-10">
+    <!-- О компании -->
+    <section class="about">
         <div class="container">
             <div class="row">
-                <div class="col-md-10">
-                    <h2 class="mb-4">Динамично развивающаяся компания, зарегистрированная в Краснодарском крае</h2>
+                <div class="col mb-5">
+                    <h2>Динамично развивающаяся компания,<br />зарегистрированная в Краснодарском крае</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-xs-12 custom-1">
-                    <p class="text-primary ps-4 pt-4">
-                        Компания специализируется на предоставлении комплексных решений в области энергоснабжения и энергоэффективности. В своей работе организация придерживается высоких стандартов
-                        качества и стремится к инновационному развитию энергетического сектора региона
-                    </p>
-                </div>
-                <div class="col-lg-6 col-md-6 col-xs-12">
-                    <div class="d-flex justify-content-md-between pt-10">
-                        <p class="ps-2"><b>ООО «Энерго Эффект» зарекомендовала себя как надежный партнер, способный решать сложные технические задачи в сфере энергетики</b></p>
-                        <div class="border-start"></div>
-                        <p>
-                            Организация придерживается принципов <b>прозрачности в работе</b> и стремится к <b>долгосрочному сотрудничеству</b> с партнерами, обеспечивая
-                            <b>высокое качество</b> предоставляемых услуг и <b>индивидуальный подход</b> к каждому заказчику
+            <div class="row gx-0">
+                <!-- Левая большая колонка -->
+                <div class="col-12 col-xl-6">
+                    <div class="text-primary position-relative fw-medium fs-body-lg m-0 pb-4 p-md-4">
+                        <svg class="d-none d-md-block position-absolute top-0 start-0 mission-corner" aria-hidden="true">
+                            <use href="{{ `icons.svg#mission-top-left` | absURL }}"></use>
+                        </svg>
+
+                        <p class="m-0">
+                            Компания специализируется на предоставлении комплексных решений в области энергоснабжения и энергоэффективности. В своей работе организация придерживается высоких
+                            стандартов качества и стремится к инновационному развитию энергетического сектора региона.
                         </p>
+
+                        <svg class="d-none d-md-block position-absolute bottom-0 end-0 mission-corner" aria-hidden="true">
+                            <use href="{{ `icons.svg#mission-bottom-right` | absURL }}"></use>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Правая половина с двумя блоками -->
+                <div class="col-12 col-xl-6 mt-md-4 px-md-4">
+                    <div class="row gx-0">
+                        <!-- Блок 1 -->
+                        <div class="col-12 col-md-6 border-end border-secondary-subtle border-opacity-10 div-border pb-4 px-md-4">
+                            <p class="m-0">ООО «Энерго Эффект» зарекомендовала себя как надежный партнер, способный решать сложные технические задачи в сфере энергетики</p>
+                        </div>
+
+                        <!-- Блок 2 -->
+                        <div class="col-12 col-md-6 px-md-4">
+                            <p class="m-0">
+                                Организация придерживается принципов прозрачности в работе и стремится к долгосрочному сотрудничеству с партнерами, обеспечивая высокое качество предоставляемых услуг и
+                                индивидуальный подход к каждому заказчику
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Ключевые направления деятельности -->
-    <section class="section-bg-5 py-10">
+    <section class="section-bg-5 py-9">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -79,7 +100,7 @@
             </div>
         </div>
     </section>
-    <section class="section-bg-3 py-10">
+    <section class="section-bg-3 py-9">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -172,7 +193,7 @@
             </div>
         </div>
     </section>
-    <!-- О компании -->
+    <!-- История компании -->
     <section id="about-company" class="section-bg-4 py-10">
         <div class="container mb-3">
             <div class="row">
