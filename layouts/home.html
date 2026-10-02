@@ -69,6 +69,66 @@
     </section>
 
     <!-- Ключевые направления деятельности -->
+    <section class="direction">
+        <div class="container">
+            <div class="row">
+                <div class="col mb-5">
+                    <h2 class="text-uppercase">Ключевые направления деятельности</h2>
+                </div>
+            </div>
+            <div class="row">
+                {{ $pages := first 6 (where .Site.RegularPages "Section" "direction").Reverse }}
+                {{ range $pages }}
+                    {{ $preview := .Resources.GetMatch "preview.webp" }}
+                    <div class="col-12 col-md-6 col-xxl-4 mb-4">
+                        <div class="preview-card position-relative overflow-hidden rounded-4">
+                            <svg width="100%" viewBox="0 0 416 285" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <mask id="preview-mask">
+                                        <rect width="416" height="285" fill="black" />
+                                        <path
+                                            d="
+                                                M416 99.4984
+                                                V285
+                                                H0
+                                                V0
+                                                H296.062
+                                                C298.987 0 301.848 1.01444 304.289 2.91749
+                                                L409.289 84.7688
+                                                C413.479 88.0348 416 93.5684 416 99.4984
+                                                Z
+                                            "
+                                            fill="white"
+                                        />
+                                    </mask>
+                                </defs>
+
+                                <image href="{{ $preview.RelPermalink | absURL }}" x="0" y="0" width="416" height="285" preserveAspectRatio="xMidYMid slice" mask="url(#preview-mask)" />
+                            </svg>
+
+                            <a
+                                class="preview-card__content position-absolute bottom-0 start-0 end-0 z-1
+                                   mx-4 mb-4
+                                   p-3
+                                   d-flex align-items-center justify-content-between
+                                   rounded-4
+                                   bg-white
+                                   fw-bold fs-body-lg text-decoration-none"
+                                href="{{ .RelPermalink | absURL }}"
+                            >
+                                <span>{{ .Title }}</span>
+
+                                <svg class="icon text-warning flex-shrink-0" width="26" height="26" aria-hidden="true">
+                                    <use href="{{ `icons.svg#arrow-up-right` | absURL }}"></use>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </section>
+
     <section class="section-bg-5 py-9">
         <div class="container">
             <div class="row">
@@ -79,7 +139,6 @@
             <div class="panes">
                 <div class="row">
                     {{ $pages := first 6 (where .Site.RegularPages "Section" "direction").Reverse }}
-                    <!---->
                     {{ range $pages }}
                         <div class="col-lg-4 col-md-4 col-xs-12 mb-5">
                             {{ $preview := .Resources.GetMatch "preview.webp" }}
@@ -100,6 +159,7 @@
             </div>
         </div>
     </section>
+
     <section class="section-bg-3 py-9">
         <div class="container">
             <div class="row">

@@ -96,6 +96,62 @@ a:not(.btn) {
 }
 
 // ============================================
+// Секция 3 — направления работ
+// ============================================
+.direction {
+    .container {
+        padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
+        .preview-card__content {
+            min-height: calc(2 * 1.5rem + 2 * 1rem);
+            opacity: 90%;
+        }
+    }
+}
+
+.section-bg-3 {
+    margin-bottom: unset;
+    height: fit-content;
+    background: linear-gradient(310deg, #013350, $primary);
+
+    .col-md-4 > div {
+        background: url('../images/clip-bg-3.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        min-height: 350px;
+        border-radius: 30px;
+    }
+
+    p {
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: unset;
+        line-height: 24px;
+        padding-right: unset !important;
+        width: 75%;
+    }
+
+    ul {
+        margin-bottom: unset;
+
+        &.p-3 {
+            padding: 24px 42px !important;
+        }
+    }
+
+    &.v2 {
+        p {
+            font-size: 16px;
+            width: 100%;
+            font-weight: normal;
+        }
+
+        a {
+            text-decoration: unset;
+        }
+    }
+}
+
+// ============================================
 // База
 // ============================================
 
@@ -144,57 +200,6 @@ a.btn-warning:hover {
 
 .bord-none {
     background: unset;
-}
-
-// ============================================
-// Секция 3 — направления работ
-// ============================================
-
-.section-bg-3 {
-    margin-bottom: unset;
-    height: fit-content;
-    background: linear-gradient(310deg, #013350, $primary);
-
-    .col-md-4 > div {
-        background: url('../images/clip-bg-3.png');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        min-height: 350px;
-        border-radius: 30px;
-    }
-
-    p {
-        font-size: 22px;
-        font-weight: 600;
-        margin-bottom: unset;
-        line-height: 24px;
-        padding-right: unset !important;
-        width: 75%;
-    }
-
-    ul {
-        margin-bottom: unset;
-
-        &.p-3 {
-            padding: 24px 42px !important;
-        }
-    }
-
-    &.v2 {
-        p {
-            font-size: 16px;
-            width: 100%;
-            font-weight: normal;
-        }
-
-        a {
-            text-decoration: unset;
-        }
-    }
-}
-
-h2.text-white {
-    font-weight: 400;
 }
 
 // ============================================
