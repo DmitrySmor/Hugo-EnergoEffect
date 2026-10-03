@@ -24,7 +24,8 @@ body {
     font-size: clamp(0.875rem, calc(0.787rem + 0.286vw), 1rem);
     line-height: clamp(1.125rem, calc(0.7rem + 1.02vw), 1.5rem);
 }
-h2 {
+h1,
+h2.h2 {
     font-size: clamp(1.25rem, calc(0.293rem + 3.44vw), 2.625rem);
     line-height: clamp(1.5rem, calc(0.105rem + 4.61vw), 3.125rem);
     letter-spacing: -0.03em;
@@ -147,6 +148,19 @@ a:not(.btn) {
 
         a {
             text-decoration: unset;
+        }
+    }
+}
+
+// ============================================
+// Секция 6 — Миссия компании
+// ============================================
+.mission {
+    background: linear-gradient(140deg, transparent 0%, transparent 42%, #e8f0f6 58%, #e8f0f6 100%);
+    .container {
+        padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
+        .row p {
+            letter-spacing: -0.03em;
         }
     }
 }
