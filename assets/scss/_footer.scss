@@ -6,7 +6,7 @@ footer {
     }
 
     .footer-nav-link {
-        font-size: clamp(0.75rem, 1vw, 1.0625rem);
+        font-size: clamp(0.75rem, 0.5752rem + 0.48544vw, 1rem);
         letter-spacing: -0.06em;
     }
 
@@ -21,7 +21,7 @@ footer {
     // иначе он перестанет наследовать цвет от <a>.
     .footer-logo {
         svg {
-            height: clamp(35px, 3vw, 70px);
+            height: clamp(2.3125rem, 1.2203rem + 3.03398vw, 3.875rem);
             width: auto;
         }
     }
