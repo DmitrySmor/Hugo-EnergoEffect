@@ -1,125 +1,115 @@
 {{ define "main" }}
-    <style>
-        .icon-messenger {
-            border-radius: 22.5%;
-            display: inline-flex;
-            overflow: hidden;
-            margin: 1rem 1rem 1rem 0;
-        }
-
-        /*.icon-telegram {
-            background: linear-gradient(180deg, #2aabee 0%, #229ed9 100%);
-        }
-
-        .icon-whatsapp {
-            background: linear-gradient(180deg, #25d366 0%, #128c7e 100%);
-        }
-        .icon-max {
-            background: linear-gradient(135deg, #4cf 0%, #53e 66.2%, #93d 100%);
-        }*/
-        .list-poverka {
-            li {
-                background: #e8f0f6;
-                .icon-bg {
-                    background: linear-gradient(90deg, #015d91 0%, #001c2b 100%);
-                    padding: 1rem; /* внутренний отступ */
-                    box-sizing: content-box; /* чтобы padding не «съел» размер */
-                    border-radius: 0.5rem;
-                    flex-shrink: 0;
-                }
-            }
-        }
-    </style>
-    <section>
-        <div class="container">
+    <section class="poverka">
+        <div class="container py-4">
             <div class="row">
-                <div class="col-12 col-lg-6 mb-5 mb-lg-0">
-                    <h1>{{ .Title }}</h1>
-                    <p class="fw-bold fs-5 lh-sm mb-2">Для поверки/замены счетчика газа вы можете оставить заявку в мессенджеры</p>
+                <!-- Левая часть -->
+                <div class="poverka_left col-12 col-lg-6 mb-5 mb-lg-0 py-3 py-lg-0 d-flex flex-column">
+                    <!-- Блок 1 -->
                     <div>
-                        <a href="https://max.ru/:share?text=Заявка%20на%20поверку" class="icon-messenger" aria-label="Написать в MAX">
-                            <svg width="52" height="52" style="flex: 0 0 52px;" aria-hidden="true" focusable="false">
-                                <use href="{{ `icons.svg#max` | absURL }}"></use>
-                            </svg>
-                        </a>
-                        <a href="https://t.me/EnergoEffectSochi?text=Заявка%20на%20поверку" class="icon-messenger ">
-                            <svg width="52" height="52" style="flex: 0 0 52px;" aria-hidden="true" focusable="false">
-                                <use href="{{ `icons.svg#telegram` | absURL }}"></use>
-                            </svg>
-                        </a>
-                        <a href="https://wa.me/{{ .Site.Params.company_phone02_link }}?text=Заявка%20на%20поверку" class="icon-messenger ">
-                            <svg width="52" height="52" style="flex: 0 0 52px;" aria-hidden="true" focusable="false">
-                                <use href="{{ `icons.svg#whatsapp` | absURL }}"></use>
-                            </svg>
-                        </a>
-                        <a href="sms:{{ .Site.Params.company_phone02_link }}?body=Заявка%20на%20поверку" class="icon-messenger">
-                            <svg width="52" height="52" style="flex: 0 0 52px;" aria-hidden="true" focusable="false">
-                                <use href="{{ `icons.svg#messages` | absURL }}"></use>
-                            </svg>
-                        </a>
+                        <h1>{{ .Title }}</h1>
+
+                        <p class="fw-bold fs-5 lh-sm mb-2">Для поверки/замены счетчика газа вы можете оставить заявку в мессенджеры</p>
+
+                        <div>
+                            <a href="https://max.ru/:share?text=Заявка%20на%20поверку" class="icon-messenger" aria-label="Написать в MAX">
+                                <svg width="52" height="52" style="flex: 0 0 52px;" aria-hidden="true" focusable="false">
+                                    <use href="{{ `icons.svg#max` | absURL }}"></use>
+                                </svg>
+                            </a>
+                            <a href="https://t.me/EnergoEffectSochi?text=Заявка%20на%20поверку" class="icon-messenger ">
+                                <svg width="52" height="52" style="flex: 0 0 52px;" aria-hidden="true" focusable="false">
+                                    <use href="{{ `icons.svg#telegram` | absURL }}"></use>
+                                </svg>
+                            </a>
+                            <a href="https://wa.me/{{ .Site.Params.company_phone02_link }}?text=Заявка%20на%20поверку" class="icon-messenger ">
+                                <svg width="52" height="52" style="flex: 0 0 52px;" aria-hidden="true" focusable="false">
+                                    <use href="{{ `icons.svg#whatsapp` | absURL }}"></use>
+                                </svg>
+                            </a>
+                            <a href="sms:{{ .Site.Params.company_phone02_link }}?body=Заявка%20на%20поверку" class="icon-messenger">
+                                <svg width="52" height="52" style="flex: 0 0 52px;" aria-hidden="true" focusable="false">
+                                    <use href="{{ `icons.svg#messages` | absURL }}"></use>
+                                </svg>
+                            </a>
+                        </div>
+
+                        <p>
+                            По номеру
+                            <a class="text-warning fw-bold fs-5" href="tel:{{ .Site.Params.company_phone02_link }}">
+                                {{ .Site.Params.company_phone02 }}
+                            </a>
+                            отправить сообщение
+                            <span class="text-warning">«Заявка на поверку»</span>, указать адрес установки счетчика и номер телефона для связи
+                        </p>
                     </div>
-                    <p>
-                        По номеру <a class="text-warning fw-bold fs-5" href="tel:{{ .Site.Params.company_phone02_link }}">{{ .Site.Params.company_phone02 }}</a> отправить сообщение
-                        <span class="text-warning">«Заявка на поверку»</span>, указать адрес установки счетчика и номер телефона для связи
-                    </p>
-                    <!-- Нижний блок прижат к низу -->
-                    <div class="d-none d-lg-block">
+
+                    <!-- Блок 3 -->
+                    <div class="mt-auto mb-4 d-none d-lg-block">
                         <p class="fw-bold fs-5 lh-sm text-warning mb-2">
                             Если требуется замена счетчика газа, компания «Энерго Эффект» является официальным поставщиком заводов производителей в г. Сочи
                         </p>
+
                         <p class="fw-bold fs-5 lh-sm mb-0">После того как наш специалист обработает вашу заявку, вам сообщат о стоимости и сроках поверки/замены счетчика</p>
                     </div>
                 </div>
-                <div class="col-12 col-lg-6 align-items-center">
-                    <p class="h2 mb-4" style=" letter-spacing: -6%;">Приложить к сообщению фотографии</p>
+
+                <!-- Блок 2 -->
+                <div class="col-12 col-lg-6">
+                    <p class="h2 mt-2 mb-3">Приложить к сообщению фотографии</p>
+
+                    {{ $items := slice
+                        (dict
+                        "icon" "poverka-icon-1"
+                        "text" "Первая страница договора ТО ВДГО"
+                        "note" "договор можно заключить на месте с представителем Горгаз"
+                        )
+                        (dict
+                        "icon" "poverka-icon-2"
+                        "text" "Первая страница договора поставки газа"
+                        )
+                        (dict
+                        "icon" "poverka-icon-3"
+                        "text" "Выписка из ЕГРН или свидетельство о праве собственности"
+                        )
+                        (dict
+                        "icon" "poverka-icon-4"
+                        "text" "Фотография счетчика (общий вид с расстояния 1–2 метра)"
+                        )
+                        (dict
+                        "icon" "poverka-icon-5"
+                        "text" "Фотография счетного механизма счетчика, чтобы был виден номер счетчика"
+                        )
+                        (dict
+                        "icon" "poverka-icon-6"
+                        "text" "Акт обследования вентиляционных каналов и дымоходов для договора тех. обслуживания (ТО ВДГО)"
+                        )
+                        }}
+
 
                     <ul class="list-unstyled mb-0 list-poverka">
-                        <li class="d-flex p-4 mb-4 align-items-center rounded-3">
-                            <svg class="me-4 flex-shrink-0 icon-bg" width="46" height="46" aria-hidden="true" focusable="false">
-                                <use href="{{ `icons.svg#poverka-icon-1` | absURL }}"></use>
-                            </svg>
-                            <span class="flex-grow-1 text-break">
-                                Первая страница договора ТО ВДГО
-                                <br />
-                                <span class="fw-semibold">(договор можно заключить на месте с представителем Горгаз)</span>
-                            </span>
-                        </li>
+                        {{ range $items }}
+                            <li class="d-flex p-3 mb-3 align-items-center rounded-4">
+                                <svg class="me-4 flex-shrink-0 icon-bg" width="37" height="37" aria-hidden="true" focusable="false">
+                                    <use href="{{ printf "icons.svg#%s" .icon | absURL }}"></use>
+                                </svg>
 
-                        <li class="d-flex p-4 mb-4 align-items-center rounded-3">
-                            <svg class="me-4 flex-shrink-0 icon-bg" width="46" height="46" aria-hidden="true" focusable="false">
-                                <use href="{{ `icons.svg#poverka-icon-2` | absURL }}"></use>
-                            </svg>
-                            <span class="flex-grow-1 text-break"> Первая страница договора поставки газа </span>
-                        </li>
+                                <span class="flex-grow-1 text-break">
+                                    {{ .text }}
 
-                        <li class="d-flex p-4 mb-4 align-items-center rounded-3">
-                            <svg class="me-4 flex-shrink-0 icon-bg" width="46" height="46" aria-hidden="true" focusable="false">
-                                <use href="{{ `icons.svg#poverka-icon-3` | absURL }}"></use>
-                            </svg>
-                            <span class="flex-grow-1 text-break"> Выписка из ЕГРН или свидетельство о праве собственности </span>
-                        </li>
-
-                        <li class="d-flex p-4 mb-4 align-items-center rounded-3">
-                            <svg class="me-4 flex-shrink-0 icon-bg" width="46" height="46" aria-hidden="true" focusable="false">
-                                <use href="{{ `icons.svg#poverka-icon-4` | absURL }}"></use>
-                            </svg>
-                            <span class="flex-grow-1 text-break"> Фотография счетчика (общий вид с расстояния 1–2 метра) </span>
-                        </li>
-
-                        <li class="d-flex p-4 mb-4 align-items-center rounded-3">
-                            <svg class="me-4 flex-shrink-0 icon-bg" width="46" height="46" aria-hidden="true" focusable="false">
-                                <use href="{{ `icons.svg#poverka-icon-5` | absURL }}"></use>
-                            </svg>
-                            <span class="flex-grow-1 text-break"> Фотография счетного механизма счетчика, чтобы был виден номер счетчика </span>
-                        </li>
-
-                        <li class="d-flex p-4 mb-4 align-items-center rounded-3">
-                            <svg class="me-4 flex-shrink-0 icon-bg" width="46" height="46" aria-hidden="true" focusable="false">
-                                <use href="{{ `icons.svg#poverka-icon-6` | absURL }}"></use>
-                            </svg>
-                            <span class="flex-grow-1 text-break"> Акт обследования вентиляционных каналов и дымоходов для договора тех. обслуживания (ТО ВДГО) </span>
-                        </li>
+                                    {{ with .note }}
+                                        <br />
+                                        <span class="fw-semibold">({{ . }})</span>
+                                    {{ end }}
+                                </span>
+                            </li>
+                        {{ end }}
                     </ul>
+                </div>
+
+                <!-- Блок 3 — мобильная версия -->
+                <div class="col-12 d-lg-none">
+                    <p class="fw-bold fs-5 lh-sm text-warning mb-2">Если требуется замена счетчика газа, компания «Энерго Эффект» является официальным поставщиком заводов производителей в г. Сочи</p>
+                    <p class="fw-bold fs-5 lh-sm mb-0">После того как наш специалист обработает вашу заявку, вам сообщат о стоимости и сроках поверки/замены счетчика</p>
                 </div>
             </div>
         </div>

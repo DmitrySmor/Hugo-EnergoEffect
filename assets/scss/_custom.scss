@@ -43,7 +43,7 @@ a:not(.btn) {
 // ============================================
 //  Header
 // ============================================
-header.header {
+header {
     // Адаптивный размер текста пунктов навигации
     .header-nav-link {
         color: $black;
@@ -75,7 +75,7 @@ header.header {
 // ============================================
 // Footer
 // ============================================
-footer.footer {
+footer {
     // 	Общий цвет для футера
     .footer-nav-link,
     .footer-logo {
@@ -104,6 +104,48 @@ footer.footer {
     }
 }
 
+// ============================================
+// Poverka
+// ============================================
+.poverka {
+    .container {
+        .poverka_left {
+            @include media-breakpoint-down(lg) {
+                position: relative;
+                isolation: isolate;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    inset-block: 0;
+                    left: calc((100vw - 100%) / -2);
+                    right: calc((100vw - 100%) / -2);
+                    z-index: -1;
+
+                    @include bg-gradient-light;
+                }
+            }
+        }
+        .icon-messenger {
+            border-radius: 22.5%;
+            display: inline-flex;
+            overflow: hidden;
+            margin: 1rem 1rem 1rem 0;
+        }
+        .list-poverka {
+            li {
+                background: #e8f0f6;
+                .icon-bg {
+                    background: linear-gradient(90deg, #015d91 0%, #001c2b 100%);
+                    padding: 1rem; /* внутренний отступ */
+                    box-sizing: content-box; /* чтобы padding не «съел» размер */
+                    border-radius: 0.7rem;
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+}
 // ============================================
 // Секция 1 — главный баннер
 // ============================================

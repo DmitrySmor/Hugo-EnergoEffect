@@ -71,8 +71,11 @@
 }
 
 // градиент для блококо с явнывм диагональным преходом одноцветный
-.bg-gradient-light {
+@mixin bg-gradient-light {
     background: linear-gradient(150deg, transparent 0%, transparent 45%, #e8f0f6 55%, #e8f0f6 100%);
+}
+.bg-gradient-light {
+    @include bg-gradient-light;
 }
 
 // светвлый с ватермарком
