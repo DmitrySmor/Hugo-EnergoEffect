@@ -1,0 +1,107 @@
+/* ============================================================
+   Переменные
+   ============================================================ */
+:root {
+    // Ватермарк
+    --watermark: url("data:image/svg+xml,%3Csvg width='512' height='512' viewBox='0 0 512 512' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 191C29.2571 81 126.433 0 251.82 0C396.016 0 512 114 512 256C512 397 396.016 512 251.82 512C130.612 512 28.2122 431 0 317H57.4694C83.5918 396 157.78 455 251.82 455C345.861 455 425.273 392 447.216 306H411.69C389.747 374 326.008 423 251.82 423C182.857 423 123.298 380 95.0857 317H143.151C167.184 353 206.89 376 251.82 376C300.931 376 342.727 348 362.58 303H231.967L250.775 256H49.1102L349.518 200L338.547 220L320.784 251H375.118C373.029 187 318.694 132 251.82 132C204.8 132 165.094 155 142.106 191H95.0857C121.208 130 179.722 86 251.82 86C342.727 86 416.914 157 422.139 244H455.575C450.351 138 361.535 54 251.82 54C156.735 54 78.3673 111 57.4694 191H0Z' fill='white' /%3E%3C/svg%3E");
+    // половина ширины .container на каждом breakpoint
+    --container-half: 50%; /* < 576px: контейнер = 100% ширины */
+}
+
+@each $name, $width in $container-max-widths {
+    @include media-breakpoint-up($name) {
+        :root {
+            --container-half: #{$width * 0.5};
+        }
+    }
+}
+
+/* ============================================================
+   Секция с двумя параллельными линиями
+   TO-DO перенести в одтлельный файл со своими градиентами для блоков и кнопок
+   ============================================================ */
+.bg-gradient-diagonal {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: linear-gradient(180deg, #015d91 0%, #001c2b 100%);
+
+    /* ------------------------------------------------------------
+       Линия 1 — старт в середине верхней грани секции (50%, 0)
+       Заливает левый верхний угол
+       ------------------------------------------------------------ */
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 200vmax;
+        height: 200vmax;
+        background: #013350;
+        opacity: 0.12;
+        transform-origin: 0 0;
+        transform: rotate(150deg);
+        pointer-events: none;
+        z-index: 1;
+    }
+    /* ------------------------------------------------------------
+       Линия 2 — старт в правом верхнем углу .container
+       Заливает правый нижний угол
+       ------------------------------------------------------------ */
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: calc(50% + var(--container-half));
+        width: 200vmax;
+        height: 200vmax;
+        background: #013350;
+        opacity: 0.12;
+        transform-origin: 0 0;
+        transform: rotate(150deg);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* Контент — выше линий */
+    > .container {
+        position: relative;
+        z-index: 2;
+    }
+}
+
+// градиент для блококо с явнывм диагональным преходом одноцветный
+.bg-gradient-light {
+    background: linear-gradient(150deg, transparent 0%, transparent 45%, #e8f0f6 55%, #e8f0f6 100%);
+}
+
+// светвлый с ватермарком
+.bg-light-watermark-white {
+    background: #e8f0f6ed;
+    > .container:first-child {
+        position: relative;
+        isolation: isolate; /* ← создаёт stacking context, z-index:-1 не "убежит" */
+        background-repeat: no-repeat;
+        background-position-x: right;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0%; /* отступ от правого края */
+            transform: translateY(-50%);
+
+            width: 50%;
+            height: 100%;
+
+            background-color: #ffffff;
+
+            -webkit-mask: var(--watermark) no-repeat center / contain;
+            mask: var(--watermark) no-repeat center / contain;
+
+            opacity: 0.25;
+            pointer-events: none;
+            z-index: -1; /* ← уводим ПОД контент */
+        }
+    }
+}

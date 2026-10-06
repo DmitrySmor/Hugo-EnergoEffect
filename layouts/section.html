@@ -1,26 +1,29 @@
 {{ define "main" }}
-<section id="news" class="text-block py-5 mb-3">
-	<div class="container">
-		<div class="row mb-4">
-			<div class="col-md-12">
-				<h1 class="text-uppercase">{{ .Title }}</h1>
-			</div>
-		</div>
-		{{ with .Content }}
-		<div class="row mb-4">
-			<div class="col-md-6">{{ . }}</div>
-		</div>
-		{{ end }}
-		<div class="row mb-5">
-			{{ range .Pages }}
-			<div class="col-lg-3 col-md-3 col-xsm-4 col-xs-6 mb-5">
-				<a class="d-block mb-3" href="{{ .RelPermalink }}"><img src="{{ .RelPermalink }}preview.webp" alt="" width="306" height="173" /></a>
-				<p class="text-uppercase">
-					<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-				</p>
-			</div>
-			{{ end }}
-		</div>
-	</div>
-</section>
+    <div class="container">
+        <header>
+            <h1 class="text-uppercase">{{ .Title }}</h1>
+        </header>
+        {{ with .Content }}
+            <div class="row">
+                <div class="col-12 col-lg-6">{{ . }}</div>
+            </div>
+        {{ end }}
+        <div class="row">
+            {{ range .Pages }}
+                <div class="col-12 col-md-6 col-xl-4 col-xxl-3 mb-5">
+                    <article>
+                        <div class="ratio ratio-16x9 rounded-4 overflow-hidden mb-3">
+                            {{ $image := .Resources.GetMatch "preview.webp" }}
+                            <img class="object-fit-cover" src="{{ $image.RelPermalink }}" alt="{{ .LinkTitle }}" width="{{ $image.Width }}" height="{{ $image.Height }}" />
+                        </div>
+                        <h2 class="h6 lh-1">
+                            <a href="{{ .RelPermalink }}">
+                                {{ .LinkTitle }}
+                            </a>
+                        </h2>
+                    </article>
+                </div>
+            {{ end }}
+        </div>
+    </div>
 {{ end }}

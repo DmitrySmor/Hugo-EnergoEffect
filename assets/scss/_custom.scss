@@ -19,24 +19,6 @@
     aspect-ratio: 1;
     height: auto;
 }
-// Переопределяем для всего сайта
-body {
-    font-size: clamp(0.875rem, calc(0.787rem + 0.286vw), 1rem);
-    line-height: clamp(1.125rem, calc(0.7rem + 1.02vw), 1.5rem);
-}
-h1,
-h2.h1 {
-    font-size: clamp(1.25rem, calc(0.293rem + 3.44vw), 2.625rem);
-    line-height: clamp(1.5rem, calc(0.105rem + 4.61vw), 3.125rem);
-    letter-spacing: -0.03em;
-}
-h2,
-fs-2 {
-    font-size: clamp(1rem, calc(0.625rem + 1.17vw), 1.375rem);
-    line-height: clamp(1rem, calc(0.5rem + 1.33vw), 1.5rem);
-    letter-spacing: -0.03em;
-}
-
 .fs-body-lg {
     font-size: clamp(1rem, calc(0.875rem + 0.286vw), 1.125rem);
 }
@@ -55,6 +37,70 @@ a:not(.btn) {
 .btn-light {
     &.btn-hover-warning {
         --bs-btn-hover-color: #{$link-hover-color};
+    }
+}
+
+// ============================================
+//  Header
+// ============================================
+header.header {
+    // Адаптивный размер текста пунктов навигации
+    .header-nav-link {
+        color: $black;
+        @include media-breakpoint-up(lg) {
+            letter-spacing: -0.03em;
+        }
+    }
+
+    // Адаптивная высота логотипа с сохранением пропорций
+    .header-logo svg {
+        height: clamp(2.3125rem, 1.2203rem + 3.03398vw, 3.875rem);
+        width: auto;
+    }
+    .header-phone {
+        &:hover,
+        &:focus-visible {
+            > svg {
+                color: $link-hover-color !important;
+            }
+        }
+    }
+
+    // Цвет иконки кнопки мобильного меню Bootstrap
+    .navbar-toggler {
+        color: $navbar-light-icon-color;
+    }
+}
+
+// ============================================
+// Footer
+// ============================================
+footer.footer {
+    // 	Общий цвет для футера
+    .footer-nav-link,
+    .footer-logo {
+        color: $white;
+    }
+
+    .footer-nav-link {
+        // font-size: clamp(0.75rem, 0.5752rem + 0.48544vw, 1rem);
+        letter-spacing: -0.06em;
+    }
+
+    // Логотип — это ссылка, поэтому цвет задаём именно <a>.
+    // Внутри SVG используется fill="currentColor", поэтому SVG
+    // автоматически наследует цвет ссылки.
+    //
+    // Обычное состояние: белый логотип.
+    // При hover/focus-visible: логотип получает цвет ссылки при наведении.
+    //
+    // ВАЖНО: не задавать color непосредственно на svg,
+    // иначе он перестанет наследовать цвет от <a>.
+    .footer-logo {
+        svg {
+            height: clamp(2.3125rem, 1.2203rem + 3.03398vw, 3.875rem);
+            width: auto;
+        }
     }
 }
 
@@ -90,9 +136,7 @@ a:not(.btn) {
 // ============================================
 // Секция 2 — о компании
 // ============================================
-
 .about {
-    background: linear-gradient(150deg, transparent 0%, transparent 45%, #e8f0f6 55%, #e8f0f6 100%);
     .container {
         padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
         .div-border {
@@ -116,75 +160,6 @@ a:not(.btn) {
     }
 }
 
-/* ============================================================
-   Переменная: половина ширины .container на каждом breakpoint
-   ============================================================ */
-:root {
-    --container-half: 50%; /* < 576px: контейнер = 100% ширины */
-}
-
-@each $name, $width in $container-max-widths {
-    @include media-breakpoint-up($name) {
-        :root {
-            --container-half: #{$width * 0.5};
-        }
-    }
-}
-
-/* ============================================================
-   Секция с двумя параллельными линиями
-   TO-DO перенести в одтлельный файл со своими градиентами для блоков и кнопок
-   ============================================================ */
-.section-energo {
-    position: relative;
-    overflow: hidden;
-    isolation: isolate;
-    background: linear-gradient(180deg, #015d91 0%, #001c2b 100%);
-}
-
-/* ------------------------------------------------------------
-   Линия 1 — старт в середине верхней грани секции (50%, 0)
-   Заливает левый верхний угол
-   ------------------------------------------------------------ */
-.section-energo::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 200vmax;
-    height: 200vmax;
-    background: #013350;
-    opacity: 0.12;
-    transform-origin: 0 0;
-    transform: rotate(150deg);
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* ------------------------------------------------------------
-   Линия 2 — старт в правом верхнем углу .container
-   Заливает правый нижний угол
-   ------------------------------------------------------------ */
-.section-energo::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: calc(50% + var(--container-half));
-    width: 200vmax;
-    height: 200vmax;
-    background: #013350;
-    opacity: 0.12;
-    transform-origin: 0 0;
-    transform: rotate(150deg);
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Контент — выше линий */
-.section-energo > .container {
-    position: relative;
-    z-index: 2;
-}
 .section-bg-3 {
     margin-bottom: unset;
     height: fit-content;
@@ -239,7 +214,6 @@ a:not(.btn) {
 // Секция 6 — Миссия компании
 // ============================================
 .mission {
-    background: linear-gradient(140deg, transparent 0%, transparent 42%, #e8f0f6 58%, #e8f0f6 100%);
     .container {
         padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
         .row p {
@@ -298,10 +272,6 @@ a.btn-warning:hover {
 // ============================================
 
 .section-bg-4 {
-    background: linear-gradient(#e8f0f6ed, #e8f0f6ed);
-    background-repeat: no-repeat;
-    background-position-x: right;
-
     p {
         font-size: 22px;
     }

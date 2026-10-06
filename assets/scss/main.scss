@@ -8,9 +8,8 @@
 // Vendor: Bootstrap (из Sass)
 @import 'vendor';
 
+// Utilities / переиспользуемые стили проекта
+@import 'backgrounds';
+
 // Ваши кастомные стили
 @import 'custom';
-
-// Компоненты
-@import 'header';
-@import 'footer';

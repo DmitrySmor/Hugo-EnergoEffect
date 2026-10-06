@@ -1,19 +1,26 @@
 {{ define "main" }}
-<section class="docs py-6 text-block">
-	<div class="container mb-3">
-		<div class="row">
-			<div class="col-md-12">
-				<h2 class="mb-5 text-uppercase">{{ .Title }}</h2>
-			</div>
-		</div>
-		<div class="row">
-			{{ range .Params.documents }}
-			<div class="col-lg-3 col-md-3 col-xsm-4 col-xs-6 mb-5">
-				<img class="mb-3" src="{{ path.Join `docs` .img | absURL }}" alt="" width="320" height="390" />
-				<a class="text-uppercase text-blue text-decoration-underline" href="{{ path.Join `docs` .file | absURL }}">{{ .name }}</a>
-			</div>
-			{{ end }}
-		</div>
-	</div>
-</section>
+    <div class="container">
+        <header>
+            <h1 class="text-uppercase">{{ .Title }}</h1>
+        </header>
+        <div class="row">
+            {{ range .Params.documents }}
+                {{ $image := $.Resources.GetMatch .img }}
+                {{ $file := $.Resources.GetMatch .file }}
+                <div class="col-6 col-md-4 col-xl-3 col-xxl-2 mb-5">
+                    <article>
+                        <div class="ratio rounded-4 overflow-hidden mb-3 border" style="--bs-aspect-ratio: 142.43%;">
+                            <img class="w-100 h-100 object-fit-contain" src="{{ $image.RelPermalink }}" alt="{{ .name }}" width="{{ $image.Width }}" height="{{ $image.Height }}" />
+                        </div>
+
+                        <h2 class="h6 lh-1">
+                            <a href="{{ $file.RelPermalink }}" target="_blank" rel="noopener">
+                                {{ .name }}
+                            </a>
+                        </h2>
+                    </article>
+                </div>
+            {{ end }}
+        </div>
+    </div>
 {{ end }}

@@ -1,7 +1,7 @@
-<header>
+<header class="header">
     <nav class="navbar navbar-expand-lg py-3 bg-white" aria-label="Основная">
         <div class="container">
-            <a href="{{ `` | absURL }}" class="navbar-brand heder-logo ">
+            <a href="{{ `` | absURL }}" class="navbar-brand header-logo">
                 <svg class="" width="161" height="62" aria-hidden="true">
                     <use href="{{ `icons.svg#logoheader` | absURL }}"></use>
                 </svg>
@@ -18,7 +18,7 @@
                     {{ end }}
                 </ul>
                 <div class="d-flex flex-column flex-xl-row align-items-lg-center align-items-center">
-                    <a href="tel:{{ .Site.Params.company_phone01_link }}" class="btn btn-primary d-flex align-items-center px-4 rounded-pill text-nowrap">
+                    <a href="tel:{{ .Site.Params.company_phone01_link }}" class="header-phone btn btn-primary d-flex align-items-center px-4 rounded-pill text-nowrap">
                         <svg class="icon text-white me-3 my-2" width="19" height="19" style="flex: 0 0 19px;" aria-hidden="true">
                             <use href="{{ `icons.svg#telephone-fill` | absURL }}"></use>
                         </svg>
@@ -28,4 +28,4 @@
             </div>
         </div>
     </nav>
-</header>
+</headerю>
