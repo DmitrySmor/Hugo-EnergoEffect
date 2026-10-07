@@ -10,64 +10,36 @@
 // Привязка выполняется через data-атрибут, а не через классы Bootstrap,
 // поэтому изменение внешнего вида или классов не влияет на работу скрипта.
 
-document.querySelectorAll('[data-equal-height="heading"]').forEach((heading) => {
-    // Находим родительский контейнер, внутри которого находятся
-    // остальные заголовки этого ряда.
-    const container = heading.closest('.row')
+// Находим все заголовки, высоту которых нужно выровнять.
+// data-атрибут используется специально для JS и не зависит от классов Bootstrap.
+const headings = document.querySelectorAll('[data-equal-height="heading"]')
 
-    if (!container) {
-        return
-    }
+const equalizeHeadings = () => {
+    // Сначала сбрасываем установленную JS высоту.
+    // Это важно при изменении ширины окна: текст может начать занимать
+    // меньше или больше строк, поэтому высоту нужно пересчитать заново.
+    headings.forEach((heading) => {
+        heading.style.height = ''
+    })
 
-    // Чтобы не инициализировать один и тот же ряд несколько раз,
-    // обработку выполняем только для первого найденного заголовка.
-    if (container.dataset.equalHeightInitialized) {
-        return
-    }
+    // Находим высоту самого высокого заголовка.
+    // offsetHeight возвращает фактическую высоту элемента в пикселях.
+    const height = Math.max(...Array.from(headings, (heading) => heading.offsetHeight))
 
-    container.dataset.equalHeightInitialized = 'true'
+    // Устанавливаем одинаковую высоту всем заголовкам.
+    // Благодаря этому текст и контент под заголовками начинаются на одном уровне.
+    headings.forEach((heading) => {
+        heading.style.height = `${height}px`
+    })
+}
 
-    const headings = container.querySelectorAll('[data-equal-height="heading"]')
+// Выравниваем заголовки сразу после загрузки страницы.
+equalizeHeadings()
 
-    const equalize = () => {
-        // Сначала сбрасываем заданную JS высоту.
-        // Это необходимо, чтобы корректно пересчитать высоту
-        // после изменения ширины окна.
-        headings.forEach((heading) => {
-            heading.style.height = ''
-        })
-
-        // Группируем заголовки по их вертикальной позиции.
-        // Заголовки с одинаковым top находятся в одном визуальном ряду.
-        const rows = new Map()
-
-        headings.forEach((heading) => {
-            const top = Math.round(heading.getBoundingClientRect().top)
-
-            if (!rows.has(top)) {
-                rows.set(top, [])
-            }
-
-            rows.get(top).push(heading)
-        })
-
-        // Для каждого визуального ряда находим самый высокий заголовок
-        // и устанавливаем эту высоту всем заголовкам данного ряда.
-        rows.forEach((items) => {
-            const height = Math.max(...items.map((heading) => heading.getBoundingClientRect().height))
-
-            items.forEach((heading) => {
-                heading.style.height = `${height}px`
-            })
-        })
-    }
-
-    // Первоначальное выравнивание.
-    equalize()
-
-    // Пересчитываем высоту при изменении размера окна.
-    window.addEventListener('resize', equalize)
-})
+// При изменении ширины окна Bootstrap меняет количество колонок,
+// а текст может переноситься на другое количество строк.
+// Поэтому высоту заголовков пересчитываем заново.
+window.addEventListener('resize', equalizeHeadings)
 
 $('.main-carousel').owlCarousel({
     loop: true,

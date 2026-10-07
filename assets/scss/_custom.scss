@@ -354,6 +354,10 @@ a.btn-warning:hover {
         > div {
             background-color: $warning;
         }
+        svg {
+            width: clamp(2.1875rem, calc(1.5275rem + 1.835vw), 3.125rem);
+            aspect-ratio: 1;
+        }
     }
     .target-img {
         margin-top: -1.25rem !important;
