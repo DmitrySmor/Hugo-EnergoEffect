@@ -129,99 +129,88 @@
         </div>
     </section>
 
-    <section class="bg-gradient-diagonal section-bg-3">
+    <!-- широкий спектр работ -->
+    <section class="list-works bg-gradient-diagonal">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h2 class="h1 mb-5 text-uppercase text-white">широкий спектр работ:<br /><b>от проектирования до эксплуатации</b></h2>
+                <div class="col">
+                    <h2 class="h1 mb-5 text-uppercase text-white">Широкий спектр работ:<br /><b>от Проектирования до Эксплуатации</b></h2>
                 </div>
             </div>
+            {{ $items := slice
+                (dict
+                "title" "Наличие лицензии на эксплуатацию"
+                "items" (slice
+                "Взрывопожароопасных и химически опасных производственных объектов I, II и III классов опасности, с большим перечнем разрешенных видов деятельности"
+                "Являемся членом СРО в области строительства, а так же СРО в области изысканий и проектирования"
+                )
+                )
+                (dict
+                "title" "Наличие аттестата аккредитации"
+                "items" (slice
+                "На право поверки средств измерений предоставляет еще более широкий комплекс услуг нашему заказчику в области обеспечения единства измерений. Выполняем поверку любых средств измерений установленных в котельных и ИТП"
+                )
+                )
+                (dict
+                "title" "Собственная аварийно-диспетчерская служба (АДС)"
+                "items" (slice
+                "Оперативность реагирования на аварийные ситуации"
+                "Строгое соблюдение нормативов времени реагирования"
+                "Быстрая локализация и устранение аварий"
+                )
+                )
+                (dict
+                "title" "Большой коллектив инженерно-технических работников"
+                "items" (slice
+                "Более 50 специалистов"
+                "Высокая надежность выполнения работ благодаря большому опыту коллектива"
+                "Возможность обеспечивать большой объем работ"
+                "Соблюдение нормативов и стандартов безопасности"
+                "Профильные специалисты"
+                )
+                )
+                (dict
+                "title" "Мы располагаем собственным проектным отделом"
+                "items" (slice
+                "Передовое оборудование последнего поколения"
+                "Команда профессиональных проектировщиков зарегистрированных в НРС"
+                "Оперативность в реализации проекта"
+                "Полный контроль над процессом проектирования"
+                )
+                )
+                (dict
+                "title" "Мы создаем ценность, а не просто предлагаем услуги"
+                "items" (slice
+                "В мире, где цена часто становится главным аргументом, мы выбрали другой путь. Наша компания конкурирует не стоимостью услуг, а их качеством и результатом, который мы создаем для наших клиентов"
+                )
+                )
+                }}
+
+
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-xs mb-3">
-                    <div>
-                        <div class="d-flex justify-content-md-between">
-                            <p class="p-4 pb-0">Наличие лицензии на эксплуатацию</p>
-                            <span class="custom-num d-flex justify-content-center align-items-center rounded-circle fw-bold text-white">01</span>
+                {{ range $index, $item := $items }}
+                    <div class="col-12 col-sm-6 col-lg-4 mb-3">
+                        <div class="work-card h-100">
+                            <div class="d-flex">
+                                <h3 class="h5 p-3 m-0 fw-bolder">{{ $item.title }}</h3>
+
+                                <span class="custom-num ms-auto d-flex flex-shrink-0 justify-content-center align-items-center rounded-circle fw-bold text-white">
+                                    {{ printf "%02d" (add $index 1) }}
+                                </span>
+                            </div>
+
+                            <ul class="px-5 pb-3 m-0">
+                                {{ range $item.items }}
+                                    <li>{{ . }}</li>
+                                {{ end }}
+                            </ul>
                         </div>
-                        <ul class="p-3">
-                            <li>Взрывопожароопасных и химически опасных производственных объектов I, II и III классов опасности, с большим перечнем разрешенных видов деятельности</li>
-                            <li>Являемся членом СРО в области строительства, а так же СРО в области изысканий и проектирования</li>
-                        </ul>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
-                    <div>
-                        <div class="d-flex justify-content-md-between">
-                            <p class="p-4 pb-0">Наличие аттестата аккредитации</p>
-                            <span class="custom-num d-flex justify-content-center align-items-center rounded-circle fw-bold text-white">02</span>
-                        </div>
-                        <ul class="p-3">
-                            <li>
-                                На право поверки средств измерений предоставляет еще более широкий комплекс услуг нашему заказчику в области обеспечения единства измерений. Выполняем поверку любых
-                                средств измерений установленных в котельных и ИТП
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
-                    <div>
-                        <div class="d-flex justify-content-md-between">
-                            <p class="p-4 pb-0">Собственная аварийно-диспетчерская служба (АДС)</p>
-                            <span class="custom-num d-flex justify-content-center align-items-center rounded-circle fw-bold text-white">03</span>
-                        </div>
-                        <ul class="p-3">
-                            <li>Оперативность реагирования на аварийные ситуации</li>
-                            <li>Строгое соблюдение нормативов времени реагирования</li>
-                            <li>Быстрая локализация и устранение аварий</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
-                    <div>
-                        <div class="d-flex justify-content-md-between">
-                            <p class="p-4 pb-0">Большой коллектив инженерно-технических работников</p>
-                            <span class="custom-num d-flex justify-content-center align-items-center rounded-circle fw-bold text-white">04</span>
-                        </div>
-                        <ul class="p-3">
-                            <li>Более 50 специалистов</li>
-                            <li>Высокая надежность выполнения работ благодаря большому опыту коллектива</li>
-                            <li>Возможность обеспечивать большой объем работ</li>
-                            <li>Соблюдение нормативов и стандартов безопасности</li>
-                            <li>Профильные специалисты</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
-                    <div>
-                        <div class="d-flex justify-content-md-between">
-                            <p class="p-4 pb-0">Мы располагаем собственным проектным отделом</p>
-                            <span class="custom-num d-flex justify-content-center align-items-center rounded-circle fw-bold text-white">05</span>
-                        </div>
-                        <ul class="p-3">
-                            <li>Передовое оборудование последнего поколения</li>
-                            <li>Команда профессиональных проектировщиков зарегистрированных в НРС</li>
-                            <li>Оперативность в реализации проекта</li>
-                            <li>Полный контроль над процессом проектирования</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-xs-6 mb-3">
-                    <div>
-                        <div class="d-flex justify-content-md-between">
-                            <p class="p-4 pb-0">Мы создаем ценность, а не просто предлагаем услуги</p>
-                            <span class="custom-num d-flex justify-content-center align-items-center rounded-circle fw-bold text-white">06</span>
-                        </div>
-                        <ul class="p-3">
-                            <li>
-                                В мире, где цена часто становится главным аргументом, мы выбрали другой путь. Наша компания конкурирует не стоимостью услуг, а их качеством и результатом, который мы
-                                создаем для наших клиентов
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                {{ end }}
             </div>
         </div>
     </section>
+
     <!-- История -->
     <section id="about-company" class="section-bg-4 bg-light-watermark-white">
         <div class="container mb-3">
@@ -326,7 +315,7 @@
             </div>
         </div>
     </section>
-    <!-- Цели -->
+    <!-- Основные цели -->
     <section class="target">
         <div class="container">
             <div class="row">
@@ -367,7 +356,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="target-img col-12 p-0 d-none d-md-block overflow-hidden rounded-4 rounded-top-0 ratio" style="--bs-aspect-ratio: 33%;">
+                <div class="target-img col-12 p-0 d-none d-lg-block overflow-hidden rounded-4 rounded-top-0 ratio" style="--bs-aspect-ratio: 33%;">
                     {{ with resources.Get "images/main-banner-2.webp" }}
                         <img src="{{ .RelPermalink }}" alt="Основные цели" width="{{ .Width }}" height="{{ .Height }}" class="w-100 h-100 object-fit-cover" />
                     {{ end }}

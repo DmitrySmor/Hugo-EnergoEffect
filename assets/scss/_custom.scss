@@ -203,52 +203,56 @@ footer {
     }
 }
 
-.section-bg-3 {
-    margin-bottom: unset;
-    height: fit-content;
-    // background: linear-gradient(310deg, #013350, $primary);
+// ============================================
+// Широкий спектр работ
+// ============================================
+.list-works {
+    .container {
+        padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
+        position: relative;
 
-    // background:
-    // Левый верхний угол: прозрачный → #015D91
-    // linear-gradient(150deg, #0133501f 25%, #015d9100 25%),
-    // Правый нижний угол
-    // linear-gradient(330deg, #0133501f 55%, #015d9100 55%),
-    // Вертикальная подложка: #015D91 → #001C2B
-    // linear-gradient(180deg, #015d91 0%, #001c2b 100%);
-    .col-md-4 > div {
-        background: url('../images/clip-bg-3.png');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        min-height: 350px;
-        border-radius: 30px;
-    }
+        .work-card {
+            position: relative;
+            background: transparent;
+            border-radius: var(--bs-border-radius-xl);
 
-    p {
-        font-size: 22px;
-        font-weight: 600;
-        margin-bottom: unset;
-        line-height: 24px;
-        padding-right: unset !important;
-        width: 75%;
-    }
+            &::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                z-index: 0;
 
-    ul {
-        margin-bottom: unset;
+                background: var(--bs-white);
+                border-radius: inherit;
 
-        &.p-3 {
-            padding: 24px 42px !important;
-        }
-    }
+                -webkit-mask-image: linear-gradient(#fff 0 0), var(--work-card-mask);
+                -webkit-mask-position:
+                    0 0,
+                    right top;
+                -webkit-mask-size:
+                    100% 100%,
+                    80px 80px;
+                -webkit-mask-repeat: no-repeat;
+                -webkit-mask-composite: destination-out;
 
-    &.v2 {
-        p {
-            font-size: 16px;
-            width: 100%;
-            font-weight: normal;
-        }
+                mask-image: linear-gradient(#fff 0 0), var(--work-card-mask);
+                mask-position:
+                    0 0,
+                    right top;
+                mask-size:
+                    100% 100%,
+                    80px 80px;
+                mask-repeat: no-repeat;
+                mask-composite: exclude;
+            }
 
-        a {
-            text-decoration: unset;
+            > * {
+                position: relative;
+                z-index: 1;
+            }
+            h3 {
+                letter-spacing: -0.05rem;
+            }
         }
     }
 }
