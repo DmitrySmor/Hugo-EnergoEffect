@@ -41,34 +41,105 @@ equalizeHeadings()
 // Поэтому высоту заголовков пересчитываем заново.
 window.addEventListener('resize', equalizeHeadings)
 
-$('.main-carousel').owlCarousel({
-    loop: true,
-    margin: 15,
-    autoplay: true,
-    nav: true,
-    navText: ["<img src='./images/slide-prev.png' alt='' width='61' height='61' />", "<img src='./images/slide-next.png' alt='' width='61' height='61' />"],
-    responsive: {
-        0: {
-            items: 1,
-        },
-        720: {
-            items: 2,
-        },
-        960: {
-            items: 3,
-        },
-        1320: {
-            items: 4,
-        },
-    },
-})
-// Owl Carousel автоматически создаёт кнопки .owl-prev и .owl-next без понятных для скринридеров названий.
-// Добавляем aria-label, чтобы скринридер озвучивал назначение кнопок: «Предыдущий слайд» и «Следующий слайд».
-// Это также устраняет ошибку Lighthouse/axe о кнопках без доступного имени.
-$('.main-carousel .owl-prev').attr('aria-label', 'Предыдущий слайд')
-$('.main-carousel .owl-next').attr('aria-label', 'Следующий слайд')
-// Owl Carousel автоматически создаёт кнопки .owl-dot без доступного имени.
-// Добавляем aria-label, чтобы скринридер понимал, какой слайд выбирает каждая точка навигации.
-$('.main-carousel .owl-dot').each(function (index) {
-    $(this).attr('aria-label', 'Перейти к слайду ' + (index + 1))
-})
+//
+// Начало слайдера
+//
+const carousel = document.querySelector('[data-administration-carousel]')
+const prev = document.querySelector('[data-administration-prev]')
+const next = document.querySelector('[data-administration-next]')
+
+if (carousel && prev && next) {
+    const total = carousel.children.length
+
+    const breakpoints = [
+        { minWidth: 1200, visible: 4 },
+        { minWidth: 992, visible: 3 },
+        { minWidth: 576, visible: 2 },
+        { minWidth: 0, visible: 1 },
+    ]
+
+    let index = 0
+    let startX = 0
+    let isDragging = false
+
+    const getVisible = () => {
+        return breakpoints.find(({ minWidth }) => window.innerWidth >= minWidth).visible
+    }
+
+    const update = () => {
+        const visible = getVisible()
+        const maxIndex = Math.max(total - visible, 0)
+
+        index = Math.min(index, maxIndex)
+
+        carousel.style.setProperty('--administration-visible', visible)
+
+        carousel.style.setProperty('--administration-index', index)
+    }
+
+    const nextSlide = () => {
+        const visible = getVisible()
+        const maxIndex = Math.max(total - visible, 0)
+
+        if (index >= maxIndex) {
+            return
+        }
+
+        index++
+
+        update()
+    }
+
+    const prevSlide = () => {
+        if (index <= 0) {
+            return
+        }
+
+        index--
+
+        update()
+    }
+
+    next.addEventListener('click', nextSlide)
+    prev.addEventListener('click', prevSlide)
+
+    /*
+     * Начало свайпа.
+     */
+    carousel.addEventListener('pointerdown', (event) => {
+        startX = event.clientX
+        isDragging = true
+    })
+
+    /*
+     * Завершение свайпа.
+     */
+    carousel.addEventListener('pointerup', (event) => {
+        if (!isDragging) {
+            return
+        }
+
+        const distance = event.clientX - startX
+
+        isDragging = false
+
+        // Слишком короткое движение не считаем свайпом.
+        if (Math.abs(distance) < 50) {
+            return
+        }
+
+        if (distance < 0) {
+            nextSlide()
+        } else {
+            prevSlide()
+        }
+    })
+
+    carousel.addEventListener('pointercancel', () => {
+        isDragging = false
+    })
+
+    window.addEventListener('resize', update)
+
+    update()
+}

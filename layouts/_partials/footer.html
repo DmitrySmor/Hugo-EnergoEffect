@@ -35,13 +35,6 @@
     </div>
 </footer>
 
-<!-- Временная legacy-связка для Owl Carousel -->
-{{ $jquery := resources.Get "js/jquery-3.7.1.min.js" }}
-{{ $owlcarousel := resources.Get "js/owlcarousel/owl.carousel.min.js" }}
-<!-- Объединение и минификация скриптов -->
-{{ $js := slice $jquery $owlcarousel | resources.Concat "js/bundle-carousel.js" | resources.Minify | resources.Fingerprint }}
-<script src="{{ $js.Permalink }}" integrity="{{ $js.Data.Integrity }}" crossorigin="anonymous" defer></script>
-
 <!-- Современный JS через js.Build -->
 {{ with resources.Get "js/main.js" }}
     {{ $js := . | js.Build "js/main.js" | resources.Minify | resources.Fingerprint }}

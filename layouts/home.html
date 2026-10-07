@@ -398,33 +398,53 @@
         </div>
     </section>
     <!-- Руководство -->
-    <section id="administration" class="section-carousel py-10">
-        <div class="container mb-5">
+    <section id="administration" class="administration">
+        <div class="container px-md-0">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-9 mb-5">
                     <h2 class="h1 text-uppercase">Руководство</h2>
                 </div>
+                <div class="col-3 d-flex justify-content-end gap-3">
+                    <svg class="icon text-warning" width="52" height="52" style="flex: 0 0 52px; cursor: pointer;" data-administration-prev>
+                        <use href="{{ `icons.svg#icon-arrow-left` | absURL }}"></use>
+                    </svg>
+
+                    <svg class="icon text-warning" width="52" height="52" style="flex: 0 0 52px; cursor: pointer;" data-administration-next>
+                        <use href="{{ `icons.svg#icon-arrow-right` | absURL }}"></use>
+                    </svg>
+                </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="owl-carousel main-carousel">
-                        {{ range .Params.administration }}
-                            <div class="item">
-                                <img src="{{ path.Join `images/administration` .img | absURL }}" alt="{{ .name }}" width="300" height="450" loading="lazy" decoding="async" />
-                                <p class="btn btn-warning text-white overflow-hidden rounded-4">
-                                    <span class="text-uppercase">{{ .name }}</span><br />{{ .role }}
-                                </p>
-                            </div>
-                        {{ end }}
-                    </div>
+            <div class="overflow-hidden">
+                <div class="row" data-administration-carousel>
+                    {{ range .Params.administration }}
+                        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                            <article class="ratio overflow-hidden rounded-4" style="--bs-aspect-ratio: 150%;">
+                                <img
+                                    src="{{ path.Join `images/administration` .img | absURL }}"
+                                    alt="{{ .name }}"
+                                    width="300"
+                                    height="450"
+                                    loading="lazy"
+                                    decoding="async"
+                                    class="w-100 h-100 object-fit-cover"
+                                />
+
+                                <div class="d-flex align-items-end p-2">
+                                    <div class="administration-text w-100 p-3 text-white text-start rounded-4 bg-warning overflow-hidden">
+                                        <h3 class="h6 mb-0 text-uppercase text-nowrap">{{ .name }}</h3>
+                                        <p class="mb-0 text-nowrap">{{ .role }}</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    {{ end }}
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Реализованные проекты -->
-    <section id="projects" class="cases py-10">
+    <section id="projects" class="cases">
         <div class="container mb-3">
             <div class="row">
                 <div class="col-md-12">
