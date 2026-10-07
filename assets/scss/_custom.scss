@@ -347,62 +347,37 @@ a.btn-warning:hover {
 // Основные цели
 // ============================================
 .target {
-    .target-info {
-        @include media-breakpoint-up(md) {
-            background-color: $warning;
+    .container {
+        padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
+        .target-info {
+            @include media-breakpoint-up(md) {
+                background-color: $warning;
+            }
+            > div {
+                background-color: $warning;
+            }
+            svg {
+                width: clamp(2.1875rem, calc(1.5275rem + 1.835vw), 3.125rem);
+                aspect-ratio: 1;
+            }
         }
-        > div {
-            background-color: $warning;
+        .target-img {
+            margin-top: -1.25rem !important;
+            z-index: -1;
         }
-        svg {
-            width: clamp(2.1875rem, calc(1.5275rem + 1.835vw), 3.125rem);
-            aspect-ratio: 1;
-        }
-    }
-    .target-img {
-        margin-top: -1.25rem !important;
-        z-index: -1;
     }
 }
 
 // ============================================
 // Секция 6 — команда
 // ============================================
-
-.section-bg-6 {
-    height: 832px;
-
+.team {
     .container {
-        background-image: linear-gradient(#00000000, #0000009e), url('../images/main-banner-3.webp');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        border-radius: 40px;
-        height: 100%;
-
-        .row {
-            height: 100%;
-
-            .col-md-12 {
-                height: fit-content;
-                position: relative;
-                bottom: 30px;
-            }
+        .team-overlay {
+            background: linear-gradient(to bottom, transparent 30%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.83) 100%);
         }
     }
-
-    // h2 {
-    //     font-size: 42px;
-    //     font-weight: 700 !important;
-    //     width: 50%;
-    // }
-
-    p {
-        font-size: 16px;
-        line-height: 19px;
-    }
 }
-
 // ============================================
 // Секция 7 — партнёрства
 // ============================================

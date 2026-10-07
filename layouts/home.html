@@ -129,7 +129,7 @@
         </div>
     </section>
 
-    <section class="bg-gradient-diagonal section-bg-3 py-9">
+    <section class="bg-gradient-diagonal section-bg-3">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -223,7 +223,7 @@
         </div>
     </section>
     <!-- История -->
-    <section id="about-company" class="section-bg-4  py-9 bg-light-watermark-white">
+    <section id="about-company" class="section-bg-4 bg-light-watermark-white">
         <div class="container mb-3">
             <div class="row">
                 <div class="col-md-12">
@@ -327,7 +327,7 @@
         </div>
     </section>
     <!-- Цели -->
-    <section class="target pt-5">
+    <section class="target">
         <div class="container">
             <div class="row">
                 <div class="col mb-5">
@@ -376,15 +376,23 @@
         </div>
     </section>
     <!-- Наша команда -->
-    <section class="section-bg-6 py-10">
-        <div class="container px-5 overflow-hidden">
-            <div class="row">
-                <div class="col-md-12 align-self-end">
-                    <h2 class="h1 mb-5 text-uppercase text-white"><span class="text-warning">Наша команда —</span><br />наше преимущество</h2>
-                    <p class="text-white">
-                        Команда из более 60 высококвалифицированных специалистов, каждый из которых вносит свой вклад в успешную реализацию проектов, обеспечивает комплексное решение любых задач: от
-                        проектирования до запуска объектов в постоянную эксплуатацию.
-                    </p>
+    <section class="team">
+        <div class="container px-0">
+            <div class="ratio ratio-16x9 overflow-hidden rounded-sm-4">
+                {{ with resources.Get "images/team.webp" }}
+                    <img src="{{ .RelPermalink }}" alt="Команда компании" width="{{ .Width }}" height="{{ .Height }}" class="w-100 h-100 object-fit-cover" />
+                {{ end }}
+                <div class="team-overlay d-flex align-items-end p-4 p-lg-5">
+                    <div class="text-white">
+                        <h2 class="h1 mb-0 mb-lg-4 text-uppercase">
+                            <span class="text-warning">Наша команда —</span><br />
+                            наше преимущество
+                        </h2>
+                        <p class="mb-0 d-none d-lg-block lh-sm">
+                            Команда из более 60 высококвалифицированных специалистов, каждый из которых вносит свой вклад в успешную реализацию проектов, обеспечивает комплексное решение любых задач:
+                            от проектирования до запуска объектов в постоянную эксплуатацию.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -481,7 +489,6 @@
             </div>
             <div class="row mb-0">
                 {{ $pages := where .Site.RegularPages "Section" "partner" }}
-                <!---->
                 {{ range $pages }}
                     <div class="col-lg-6 col-md-6 col-xs-12 mb-4">
                         <div class="d-flex flex-column justify-content-md-between justify-content-between p-5">
