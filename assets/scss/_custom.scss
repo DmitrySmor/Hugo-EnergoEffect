@@ -383,6 +383,15 @@ footer {
 }
 
 // ============================================
+// Реализованные проекты
+// ============================================
+.projects {
+    .container {
+        padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
+    }
+}
+
+// ============================================
 // Секция 7 — партнёрства
 // ============================================
 
@@ -474,100 +483,6 @@ footer {
 }
 
 // ============================================
-// Карусели и слайдеры
-// ============================================
-
-.section-carousel {
-    .carousel {
-        .carousel-control-prev,
-        .carousel-control-next {
-            position: relative;
-            width: 7%;
-        }
-    }
-
-    .owl-item {
-        p {
-            position: relative;
-            bottom: 17%;
-            margin: 0 auto;
-            display: block;
-            text-align: left;
-            width: 95%;
-            white-space: nowrap;
-            font-size: 12px;
-            padding: 10px 15px;
-
-            span {
-                font-weight: 600;
-            }
-        }
-    }
-}
-
-.carousel-control-prev-icon {
-    background-image: url('../images/slide-prev.png');
-    height: 60px;
-    width: 60px;
-}
-
-.carousel-control-next-icon {
-    background-image: url('../images/slide-next.png');
-    height: 60px;
-    width: 60px;
-}
-
-.owl-carousel.main-carousel {
-    .owl-nav {
-        display: flex;
-        justify-content: flex-end;
-        position: relative;
-        bottom: 560px;
-
-        button:first-child {
-            margin-right: 20px;
-        }
-    }
-}
-
-// #administration {
-//     .owl-item {
-//         height: 450px;
-
-//         .item {
-//             height: 100%;
-//         }
-
-//         img {
-//             height: 100%;
-//             width: 100%;
-//             border-radius: 15px;
-//         }
-//     }
-// }
-
-// ============================================
-// Cases — реализованные проекты
-// ============================================
-.cases {
-    .case p {
-        font-size: 22px;
-        font-weight: 600;
-        margin-bottom: unset;
-    }
-
-    .border-top,
-    .border-bottom {
-        border-color: #00000033 !important;
-    }
-
-    .col-md-2 a img {
-        width: 55px;
-        height: 55px;
-    }
-}
-
-// ============================================
 // News — новости
 // ============================================
 
@@ -603,10 +518,6 @@ footer {
         border-radius: 16px;
         overflow: hidden;
     }
-}
-
-#contacts .border-bottom {
-    border-bottom: 2px solid #ffffff21 !important;
 }
 
 // ============================================
@@ -645,16 +556,4 @@ footer {
         bottom: 20vh;
         font-size: 22px;
     }
-}
-
-// ============================================
-// Служебные утилиты
-// ============================================
-
-.border-start {
-    border-left: 1px solid #00000021;
-}
-
-.border-bottom {
-    border-bottom: 1px solid #ffffff21 !important;
 }
