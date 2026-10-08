@@ -28,16 +28,9 @@ a:not(.btn) {
         color: $link-hover-color;
     }
 }
-// Кнопка свой градиент
+// Кнопка свой градиенте (горизонтальный для темной кнопка)
 .btn-primary {
     background: $primary-gradient;
-}
-
-// стилизация сылки в виде кнопки
-.btn-light {
-    &.btn-hover-warning {
-        --bs-btn-hover-color: #{$link-hover-color};
-    }
 }
 
 // ============================================
@@ -253,6 +246,13 @@ footer {
             h3 {
                 letter-spacing: -0.05rem;
             }
+            span.custom-num {
+                height: 66px;
+                width: 66px;
+                background-color: #f85508;
+                font-size: 32px;
+                position: relative;
+            }
         }
     }
 }
@@ -419,15 +419,16 @@ footer {
 }
 
 // ============================================
-// Кастомные декоративные элементы
+// Новости
 // ============================================
+.news {
+    .container {
+        padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
 
-.custom-num {
-    height: 66px;
-    width: 66px;
-    background-color: $warning;
-    font-size: 32px;
-    position: relative;
+        h3 {
+            letter-spacing: -0.04rem;
+        }
+    }
 }
 
 // ============================================
@@ -455,30 +456,6 @@ footer {
         height: 22px;
         width: 22px;
     }
-}
-
-// ============================================
-// News — новости
-// ============================================
-
-.news-main {
-    p {
-        height: 68px;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .col-md-3 p:nth-child(2) {
-        font-weight: 600;
-    }
-}
-
-#news img {
-    height: 173px;
-    border-radius: 15px;
 }
 
 // ============================================

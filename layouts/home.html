@@ -492,7 +492,7 @@
 
     <!-- Официальные партнерства -->
     <section class="partners">
-        <div class="container overflow-hidden rounded-5 px-5 text-white">
+        <div class="container overflow-hidden rounded-sm-5 px-5 text-white">
             <div class="row">
                 <div class="col-12">
                     <h2 class="h1 mb-5 text-uppercase">Официальные партнерства</h2>
@@ -507,7 +507,7 @@
                 {{ $pages := where .Site.RegularPages "Section" "partner" }}
 
                 {{ range $pages }}
-                    <li class="col-md-6">
+                    <li class="col-lg-6">
                         <div class="partner-item rounded-4 p-5 h-100 d-flex flex-column">
                             <h3 class="h5 mb-3">{{ .Title }}</h3>
 
@@ -524,31 +524,47 @@
     </section>
 
     <!-- Новости -->
-    <section id="news" class="py-10 mpy-4 news-main">
-        <div class="container mb-3">
+    <section class="news">
+        <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h2 class="h1 mb-5 text-uppercase fw-bolder">Новости</h2>
+                <div class="col">
+                    <h2 class="h1 text-uppercase">Новости</h2>
                 </div>
             </div>
-            <div class="row">
+            <ul class="row g-4 list-unstyled my-3">
                 {{ $pages := where .Site.RegularPages "Section" "news" | first 4 }}
+
                 {{ range $index, $page := $pages }}
-                    <div class="col-lg-3 col-md-3 col-xsm-5 col-xs-6 {{ if gt $index 0 }}d-none d-sm-block{{ end }}">
+                    <li
+                        class="col-12 col-md-6 col-lg-4 col-xl-3
+                        {{ if eq $index 1 }}d-none d-md-block{{ end }}
+                        {{ if eq $index 2 }}d-none d-lg-block{{ end }}
+                        {{ if eq $index 3 }}d-none d-xl-block{{ end }}"
+                    >
                         {{ $preview := .Resources.GetMatch "preview.webp" }}
-                        <a href="{{ .Permalink | absURL }}">
-                            <img class="mb-3 w-100" src="{{ $preview.RelPermalink | absURL }}" alt="{{ .Title }}" width="306" height="173" loading="lazy" decoding="async" />
-                        </a>
-                        <p class="text-uppercase">
-                            <a href="{{ .Permalink | absURL }}">{{ .Title }}</a>
-                        </p>
-                        <p class="text-warning">{{ .Date | time.Format ":date_long" }}</p>
-                    </div>
+
+
+                        <article class="h-100 d-flex flex-column">
+                            <a class="ratio ratio-16x9 rounded-4 overflow-hidden mb-3" href="{{ .RelPermalink | absURL }}">
+                                <img class="object-fit-cover" src="{{ $preview.RelPermalink | absURL }}" alt="{{ .Title }}" width="306" height="173" loading="lazy" decoding="async" />
+                            </a>
+
+                            <h3 class="h6 text-uppercase mb-3 fw-bolder">
+                                <a href="{{ .RelPermalink | absURL }}">
+                                    {{ .Title }}
+                                </a>
+                            </h3>
+
+                            <time class="mt-auto text-warning" datetime="{{ .Date.Format "2006-01-02" }}">
+                                {{ .Date | time.Format ":date_long" }}
+                            </time>
+                        </article>
+                    </li>
                 {{ end }}
-            </div>
+            </ul>
             <div class="row">
-                <div class="col-md-12">
-                    <a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase rounded-4" href="{{ `news` | absURL }}">Смотреть все новости</a>
+                <div class="col-12 my-3 d-flex justify-content-center">
+                    <a class="btn btn-warning py-3 px-5 fw-semibold text-white text-uppercase rounded-4" href="{{ `news` | absURL }}">Смотреть все новости</a>
                 </div>
             </div>
         </div>
