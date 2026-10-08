@@ -355,7 +355,7 @@ footer {
 // ============================================
 .administration {
     .container {
-        padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
+        padding-top: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
 
         .administration-text {
             opacity: 95%;
@@ -392,57 +392,32 @@ footer {
 }
 
 // ============================================
-// Секция 7 — партнёрства
+// Официальные партнерства
 // ============================================
-
-.section-bg-7 {
-    min-height: 1680px;
-
+.partners {
     .container {
-        background-image: url('../images/main-banner-4.webp');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        border-radius: 45px;
-        height: 100%;
-    }
+        padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
+        // Стили для фона
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        @include bg-gradient-industry;
 
-    ul {
-        padding-left: 16px;
-    }
+        .partner-item {
+            background-color: #000000a3;
+            backdrop-filter: blur(10px);
+            a {
+                color: var(--bs-white);
 
-    // h2 {
-    //     font-weight: 700;
-    // }
-
-    .col-md-6 > div {
-        background-color: #000000a3;
-        border-radius: 25px;
-        backdrop-filter: blur(10px);
-        min-height: 325px;
-    }
-
-    .d-flex {
-        p {
-            display: -webkit-box;
-            -webkit-line-clamp: 6;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
+                &:hover,
+                &:focus-visible {
+                    color: var(--bs-warning);
+                }
+            }
         }
-
-        h4 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    }
-
-    a {
-        width: fit-content;
     }
 }
+
 // ============================================
 // Кастомные декоративные элементы
 // ============================================

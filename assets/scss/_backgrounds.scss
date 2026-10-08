@@ -112,3 +112,183 @@
         }
     }
 }
+
+// Фон сгенерирован ИИ в стиле инудустиализации
+@mixin bg-gradient-industry {
+    background-image:
+        /*
+         * ============================================================
+         * ТЕХНИЧЕСКАЯ СЕТКА
+         * ============================================================
+         */
+        linear-gradient(rgb(116 178 213 / 6%) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(116 178 213 / 6%) 1px, transparent 1px),
+        /*
+         * ============================================================
+         * ГЛАВНЫЙ ПРОМЫШЛЕННЫЙ СВЕТ
+         *
+         * Световой центр расположен справа — там, где визуально
+         * сходятся инфраструктурные линии.
+         * ============================================================
+         */
+            radial-gradient(ellipse 65% 80% at 72% 45%, rgb(116 178 213 / 26%) 0%, rgb(116 178 213 / 15%) 22%, rgb(0 20 56 / 38%) 48%, transparent 74%),
+        /*
+         * ============================================================
+         * ГЛУБОКИЙ СИНИЙ ПРОМЫШЛЕННЫЙ СВЕТ
+         * ============================================================
+         */
+            radial-gradient(ellipse 75% 60% at 15% 110%, rgb(0 20 56 / 95%) 0%, rgb(0 20 56 / 60%) 42%, transparent 75%),
+        /*
+         * ============================================================
+         * ХОЛОДНЫЙ СВЕТ ПРОМЫШЛЕННОГО УЗЛА
+         * ============================================================
+         */
+            radial-gradient(circle 16rem at 88% 16%, rgb(198 224 238 / 18%) 0%, rgb(116 178 213 / 9%) 30%, transparent 72%),
+        /*
+         * ============================================================
+         * БАЗОВАЯ ПРОМЫШЛЕННАЯ ГЛУБИНА
+         * ============================================================
+         */
+            linear-gradient(135deg, #000003 0%, #001438 52%, #000003 100%);
+
+    background-size:
+        48px 48px,
+        48px 48px,
+        auto,
+        auto,
+        auto,
+        auto;
+
+    /*
+     * ================================================================
+     * ИНФРАСТРУКТУРНЫЙ СЛОЙ
+     *
+     * Здесь уже не просто декоративные линии.
+     * Они напоминают магистральные газовые коммуникации.
+     * ================================================================
+     */
+    &::before {
+        content: '';
+
+        position: absolute;
+        inset: -15%;
+
+        z-index: -1;
+        pointer-events: none;
+
+        background:
+            /*
+             * ========================================================
+             * МАГИСТРАЛЬНАЯ ЛИНИЯ
+             *
+             * Толстое световое ядро + мягкое свечение вокруг.
+             * ========================================================
+             */
+            linear-gradient(
+                118deg,
+                transparent 0%,
+                transparent 38%,
+
+                rgb(116 178 213 / 3%) 38.2%,
+
+                rgb(116 178 213 / 14%) 38.8%,
+
+                rgb(198 224 238 / 38%) 39%,
+
+                rgb(198 224 238 / 68%) 39.12%,
+
+                rgb(116 178 213 / 38%) 39.28%,
+
+                rgb(116 178 213 / 10%) 39.6%,
+
+                transparent 40%,
+                transparent 100%
+            ),
+            /*
+             * ========================================================
+             * ВТОРАЯ МАГИСТРАЛЬ
+             * ========================================================
+             */
+                linear-gradient(
+                    118deg,
+                    transparent 0%,
+                    transparent 55%,
+
+                    rgb(116 178 213 / 3%) 55.2%,
+                    rgb(116 178 213 / 10%) 55.7%,
+                    rgb(198 224 238 / 32%) 55.9%,
+                    rgb(198 224 238 / 52%) 56.05%,
+                    rgb(116 178 213 / 12%) 56.3%,
+
+                    transparent 56.8%,
+                    transparent 100%
+                ),
+            /*
+             * ========================================================
+             * РАДИАЛЬНЫЕ ЛИНИИ
+             *
+             * Напоминают технологическую карту трубопровода.
+             * ========================================================
+             */
+                repeating-radial-gradient(
+                    ellipse 85% 70% at 76% 47%,
+
+                    transparent 0,
+                    transparent 82px,
+
+                    rgb(116 178 213 / 5%) 83px,
+                    rgb(116 178 213 / 9%) 84px,
+                    rgb(198 224 238 / 13%) 85px,
+                    rgb(116 178 213 / 7%) 86px,
+
+                    transparent 88px
+                ),
+            /*
+             * ========================================================
+             * ВТОРИЧНЫЕ ИНЖЕНЕРНЫЕ ЛИНИИ
+             * ========================================================
+             */
+                linear-gradient(28deg, transparent 0%, transparent 67%, rgb(116 178 213 / 7%) 67.1%, rgb(116 178 213 / 14%) 67.25%, transparent 67.45%, transparent 100%);
+
+        transform: rotate(-4deg) scale(1.12);
+
+        mask-image: radial-gradient(ellipse at 68% 45%, #000 0%, rgb(0 0 0 / 96%) 42%, rgb(0 0 0 / 75%) 66%, transparent 90%);
+    }
+
+    /*
+     * ================================================================
+     * SVG — ПРОМЫШЛЕННЫЕ УЗЛЫ
+     *
+     * SVG здесь используется как генератор геометрии:
+     *
+     *   • магистральные трубы
+     *   • ответвления
+     *   • технологические узлы
+     *   • точки соединения
+     *   • световые центры
+     *
+     * Никаких внешних изображений.
+     * ================================================================
+     */
+    &::after {
+        content: '';
+
+        position: absolute;
+        inset: 0;
+
+        z-index: -1;
+        pointer-events: none;
+
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1400 800' fill='none'%3E%3Cdefs%3E%3CradialGradient id='glow' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(1030 390) rotate(90) scale(300 430)'%3E%3Cstop stop-color='%23C6E0EE' stop-opacity='.30'/%3E%3Cstop offset='.25' stop-color='%2374B2D5' stop-opacity='.16'/%3E%3Cstop offset='.65' stop-color='%2374B2D5' stop-opacity='.05'/%3E%3Cstop offset='1' stop-color='%2374B2D5' stop-opacity='0'/%3E%3C/radialGradient%3E%3Cfilter id='blur' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='14'/%3E%3C/filter%3E%3Cfilter id='softGlow' x='-50%25' y='-50%25' width='200%25' height='200%25'%3E%3CfeGaussianBlur stdDeviation='4' result='blur'/%3E%3CMerge%3E%3CMergeNode in='blur'/%3E%3CMergeNode in='SourceGraphic'/%3E%3C/Merge%3E%3C/filter%3E%3C/defs%3E%3Cellipse cx='1030' cy='390' rx='430' ry='270' fill='url(%23glow)' filter='url(%23blur)'/%3E%3Cg filter='url(%23softGlow)'%3E%3C!-- main gas pipeline --%3E%3Cpath d='M80 690C260 610 360 520 500 430C640 340 720 320 850 340C990 362 1090 290 1320 170' stroke='%2374B2D5' stroke-opacity='.34' stroke-width='2'/%3E%3Cpath d='M130 760C330 650 430 545 570 455C700 372 800 370 910 390C1050 414 1140 340 1360 230' stroke='%23C6E0EE' stroke-opacity='.18' stroke-width='1.4'/%3E%3C!-- branch --%3E%3Cpath d='M690 340C690 250 720 180 790 80' stroke='%2374B2D5' stroke-opacity='.22' stroke-width='1.5'/%3E%3C!-- branch --%3E%3Cpath d='M910 390C940 470 1010 535 1120 590' stroke='%2374B2D5' stroke-opacity='.18' stroke-width='1.5'/%3E%3C!-- distribution branch --%3E%3Cpath d='M500 430C430 350 350 300 250 280' stroke='%2374B2D5' stroke-opacity='.12' stroke-width='1'/%3E%3C!-- nodes --%3E%3Ccircle cx='690' cy='340' r='4' fill='%23C6E0EE' fill-opacity='.85'/%3E%3Ccircle cx='690' cy='340' r='15' stroke='%2374B2D5' stroke-opacity='.28'/%3E%3Ccircle cx='910' cy='390' r='4' fill='%23C6E0EE' fill-opacity='.75'/%3E%3Ccircle cx='910' cy='390' r='15' stroke='%2374B2D5' stroke-opacity='.22'/%3E%3Ccircle cx='500' cy='430' r='3' fill='%2374B2D5' fill-opacity='.7'/%3E%3Ccircle cx='250' cy='280' r='3' fill='%2374B2D5' fill-opacity='.6'/%3E%3C!-- technical rings --%3E%3Ccircle cx='1030' cy='390' r='95' stroke='%2374B2D5' stroke-opacity='.07'/%3E%3Ccircle cx='1030' cy='390' r='150' stroke='%2374B2D5' stroke-opacity='.05'/%3E%3Ccircle cx='1030' cy='390' r='215' stroke='%2374B2D5' stroke-opacity='.035'/%3E%3C/g%3E%3C/svg%3E");
+
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        mix-blend-mode: screen;
+
+        opacity: 1;
+
+        mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+}
