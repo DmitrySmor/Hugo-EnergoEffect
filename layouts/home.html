@@ -571,26 +571,50 @@
     </section>
 
     <!-- Документация -->
-    <section class="py-10 mpy-4">
-        <div class="container mb-3">
+    <section class="documentation">
+        <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <h2 class="h1 mb-5 text-uppercase fw-bolder">Документация</h2>
+                <div class="col">
+                    <h2 class="h1 text-uppercase">Документация</h2>
                 </div>
             </div>
-            <div class="row docs mb-5">
-                {{ $docPage := .Site.GetPage "/documents" }}
-                {{ with $docPage }}
+
+            {{ $docPage := .Site.GetPage "/documents" }}
+
+            {{ with $docPage }}
+                <ul class="row g-4 list-unstyled my-3">
                     {{ range $index, $doc := first 4 .Params.documents }}
-                        <div class="col-md-3 col-xs-6 {{ if gt $index 0 }}d-none d-sm-block{{ end }}">
-                            <img src="{{ printf `docs/%s` .img | absURL }}" alt="{{ .name }}" width="320" height="390" loading="lazy" decoding="async" />
-                        </div>
+                        {{ $preview := $.Site.GetPage "/documents" }}
+                        {{ $image := $preview.Resources.GetMatch $doc.img }}
+                        {{ $file := $preview.Resources.GetMatch $doc.file }}
+
+
+                        <li
+                            class="col-12 col-md-6 col-lg-4 col-xl-3
+                            {{ if eq $index 1 }}d-none d-md-block{{ end }}
+                            {{ if eq $index 2 }}d-none d-lg-block{{ end }}
+                            {{ if eq $index 3 }}d-none d-xl-block{{ end }}"
+                        >
+                            <article class="h-100">
+                                <a class="d-block ratio rounded-4 overflow-hidden border mb-3" style="--bs-aspect-ratio: 142.43%;" href="{{ $file.RelPermalink }}" target="_blank" rel="noopener">
+                                    <img class="w-100 object-fit-cover" src="{{ $image.RelPermalink }}" alt="{{ $doc.name }}" width="320" height="456" loading="lazy" decoding="async" />
+                                </a>
+
+                                <h3 class="h6 lh-1">
+                                    <a href="{{ $file.RelPermalink }}" target="_blank" rel="noopener">
+                                        {{ $doc.name }}
+                                    </a>
+                                </h3>
+                            </article>
+                        </li>
                     {{ end }}
-                {{ end }}
-            </div>
+                </ul>
+            {{ end }}
+
+
             <div class="row">
-                <div class="col-md-12">
-                    <a class="btn btn-warning text-white p-3 px-5 d-block mx-auto text-uppercase rounded-4" href="{{ `documents` | absURL }}">Смотреть все документы</a>
+                <div class="col-12 my-3 d-flex justify-content-center">
+                    <a class="btn btn-warning py-3 px-5 fw-semibold text-white text-uppercase rounded-4" href="{{ `documents` | absURL }}"> Смотреть все документы </a>
                 </div>
             </div>
         </div>
