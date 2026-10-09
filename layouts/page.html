@@ -46,11 +46,15 @@
                     </div>
 
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <svg class="icon text-warning" width="52" height="52" style="flex: 0 0 52px; cursor: pointer;" aria-hidden="true">
+                            <use href="{{ `icons.svg#icon-arrow-left` | absURL }}"></use>
+                        </svg>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <svg class="icon text-warning" width="52" height="52" style="flex: 0 0 52px; cursor: pointer;" aria-hidden="true">
+                            <use href="{{ `icons.svg#icon-arrow-right` | absURL }}"></use>
+                        </svg>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>
