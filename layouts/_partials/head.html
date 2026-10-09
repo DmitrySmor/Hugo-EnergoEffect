@@ -40,6 +40,6 @@
         "silenceDependencyDeprecations" true
     }}
     {{ with . | css.Sass $opts | postCSS | fingerprint | resources.PostProcess }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" />
+        <link rel="stylesheet" href="{{ .Permalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" />
     {{ end }}
 {{ end }}

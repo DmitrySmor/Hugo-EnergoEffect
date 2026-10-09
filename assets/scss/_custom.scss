@@ -274,8 +274,7 @@ footer {
                 border: 0;
             }
 
-            > [class*='col-'] {
-                position: relative;
+            .history-time-item {
                 h4 {
                     position: relative;
                     border-bottom: 0;
@@ -296,15 +295,16 @@ footer {
 
                     @include media-breakpoint-up(md) {
                         // Линия до краёв экрана.
-                        &::after {
-                            position: absolute;
-                            right: calc(-50vw + 50%);
-                            bottom: 0;
-                            left: calc(-50vw + 50%);
-                            height: 2px;
-                            background-color: var(--bs-primary);
-                            content: '';
-                        }
+                        // &::after {
+                        //     position: absolute;
+                        //     right: calc(-50vw + 50%);
+                        //     bottom: 0;
+                        //     left: calc(-50vw + 50%);
+                        //     height: 2px;
+                        //     background-color: var(--bs-primary);
+                        //     content: '';
+                        // }
+                        border-bottom: 2px solid var(--bs-primary);
 
                         // Меняем только положение точки.
                         &::before {
