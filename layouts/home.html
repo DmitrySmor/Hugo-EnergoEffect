@@ -583,17 +583,18 @@
 
             {{ with $docPage }}
                 <ul class="row g-4 list-unstyled my-3">
-                    {{ range $index, $doc := first 4 .Params.documents }}
+                    {{ range $index, $doc := first 6 .Params.documents }}
                         {{ $preview := $.Site.GetPage "/documents" }}
                         {{ $image := $preview.Resources.GetMatch $doc.img }}
                         {{ $file := $preview.Resources.GetMatch $doc.file }}
 
 
                         <li
-                            class="col-12 col-md-6 col-lg-4 col-xl-3
-                            {{ if eq $index 1 }}d-none d-md-block{{ end }}
-                            {{ if eq $index 2 }}d-none d-lg-block{{ end }}
-                            {{ if eq $index 3 }}d-none d-xl-block{{ end }}"
+                            class="col-6 col-md-4 col-lg-3 col-xl-2
+                            {{ if eq $index 2 }}d-none d-md-block{{ end }}
+                            {{ if eq $index 3 }}d-none d-lg-block{{ end }}
+                            {{ if eq $index 4 }}d-none d-xl-block{{ end }}
+                            {{ if eq $index 5 }}d-none d-xxl-block{{ end }}"
                         >
                             <article class="h-100">
                                 <a class="d-block ratio rounded-4 overflow-hidden border mb-3" style="--bs-aspect-ratio: 142.43%;" href="{{ $file.RelPermalink }}" target="_blank" rel="noopener">
