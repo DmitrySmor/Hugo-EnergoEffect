@@ -1,4 +1,4 @@
 // Подключаем Bootstrap из node_modules
-import "bootstrap";
+import 'bootstrap'
 // Собственный код запускается после Owl Carousel
-import("./script.js");
+import('./script.js')

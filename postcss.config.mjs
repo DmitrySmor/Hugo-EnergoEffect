@@ -9,7 +9,7 @@
 // Autoprefixer — автоматически добавляет вендорные префиксы
 // (-webkit-, -moz-, -ms-) для поддержки старых браузеров.
 // Список браузеров берётся из файла .browserslistrc.
-import autoprefixer from 'autoprefixer';
+import autoprefixer from 'autoprefixer'
 
 // PurgeCSS — удаляет из CSS все правила, которые не встречаются
 // в HTML. Источник данных — hugo_stats.json, который Hugo
@@ -17,57 +17,51 @@ import autoprefixer from 'autoprefixer';
 //
 // В v8.0.0 используется default export — поэтому просто
 // import purgeCSSPlugin from '...'.
-import purgeCSSPlugin from '@fullhuman/postcss-purgecss';
+import purgeCSSPlugin from '@fullhuman/postcss-purgecss'
 
 // Инициализация PurgeCSS с настройками.
 const purgecss = purgeCSSPlugin({
-  // Источник: файл со списком всех тегов, классов и ID,
-  // которые реально встречаются в HTML-шаблонах.
-  // Hugo создаёт его при сборке, если включён buildStats.
-  content: ['./hugo_stats.json'],
+    // Источник: файл со списком всех тегов, классов и ID,
+    // которые реально встречаются в HTML-шаблонах.
+    // Hugo создаёт его при сборке, если включён buildStats.
+    content: ['./hugo_stats.json'],
 
-  // Извлекаем из JSON теги, классы и ID в один плоский массив.
-  // PurgeCSS сверяет с ним правила в CSS и удаляет лишние.
-  defaultExtractor: (content) => {
-    const els = JSON.parse(content).htmlElements;
-    return [
-      ...(els.tags || []),
-      ...(els.classes || []),
-      ...(els.ids || [])
-    ];
-  },
+    // Извлекаем из JSON теги, классы и ID в один плоский массив.
+    // PurgeCSS сверяет с ним правила в CSS и удаляет лишние.
+    defaultExtractor: (content) => {
+        const els = JSON.parse(content).htmlElements
+        return [...(els.tags || []), ...(els.classes || []), ...(els.ids || [])]
+    },
 
-  // safelist — классы, которые НЕЛЬЗЯ удалять, даже если их нет
-  // в HTML. Нужны для классов, которые добавляет JavaScript
-  // динамически (Bootstrap JS, Owl Carousel, ваш script.js).
-  //
-  // Пока пустой — заполняйте по мере необходимости, если
-  // после сборки что-то пропадёт.
-  safelist: {
-    standard: [],
-    deep: [],
-    greedy: [
-        /owl-/,
-        /^active$/
-      ],
-    keyframes: [],
-    variables: []
-  }
-});
+    // safelist — классы, которые НЕЛЬЗЯ удалять, даже если их нет
+    // в HTML. Нужны для классов, которые добавляет JavaScript
+    // динамически (Bootstrap JS, Owl Carousel, ваш script.js).
+    //
+    // Пока пустой — заполняйте по мере необходимости, если
+    // после сборки что-то пропадёт.
+    safelist: {
+        standard: [],
+        deep: [],
+        greedy: [/owl-/, /^active$/],
+        keyframes: [],
+        variables: [],
+    },
+})
 
 // Экспорт конфигурации для PostCSS.
 export default {
-  plugins: [
-    // PurgeCSS запускается ТОЛЬКО в production-сборке.
-    // В dev-режиме (hugo server) пропускается — иначе Hugo
-    // не успеет сгенерировать hugo_stats.json, и PurgeCSS
-    // удалит всё подряд.
-    //
-    // process.env.HUGO_ENVIRONMENT === 'development' → пропускаем.
-    // Иначе (production, CI) → включаем.
-    process.env.HUGO_ENVIRONMENT !== 'development' ? purgecss : null,
+    plugins: [
+        // PurgeCSS запускается ТОЛЬКО в production-сборке.
+        // В dev-режиме (hugo server) пропускается — иначе Hugo
+        // не успеет сгенерировать hugo_stats.json, и PurgeCSS
+        // удалит всё подряд.
+        //
+        // process.env.HUGO_ENVIRONMENT === 'development' → пропускаем.
+        // Иначе (production, CI) → включаем.
+        // process.env.HUGO_ENVIRONMENT !== 'development' ? purgecss : null,
+        null, // Временно отключаем PurgeCSS для проверки.
 
-    // Autoprefixer запускается всегда — он безопасен.
-    autoprefixer,
-  ].filter(Boolean) // убираем null из массива, если PurgeCSS отключён
-};
+        // Autoprefixer запускается всегда — он безопасен.
+        autoprefixer,
+    ].filter(Boolean), // убираем null из массива, если PurgeCSS отключён
+}
