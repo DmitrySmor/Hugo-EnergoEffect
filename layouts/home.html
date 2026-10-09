@@ -445,7 +445,7 @@
                 </div>
 
                 <div class="col-lg-7">
-                    <p class="py-2">
+                    <p class="fs-5">
                         <strong>ООО «Энерго Эффект»</strong> продолжает расширять географию присутствия и спектр реализуемых проектов. Компания активно участвует в развитии энергетической
                         инфраструктуры региона, внедряя инновационные решения и современные технологии.
                     </p>
@@ -656,62 +656,65 @@
     </section>
 
     <!-- Как до нас добраться -->
-    <section class="py-10">
-        <div class="container how-to-point">
-            <div class="row mb-5">
-                <div class="col-md-12">
-                    <h2 class="h1 text-uppercase fw-bolder">Как до нас добраться</h2>
-                </div>
-            </div>
-            <div class="row mb-5">
-                <div class="col-lg-7 col-md-7 col-xs-12">
-                    <p class="m-f">Мы находимся в центре Сочи, в районе с удобной транспортной развязкой Въезд с ул. Донская → направо на ул. Подгорную → здание слева</p>
-                </div>
-            </div>
+    <section class="how-to-point" aria-labelledby="how-to-point-title">
+        <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-xs-6 mb-5">
-                    <div class="btn btn-warning d-flex justify-content-md-between justify-content-between align-items-center text-white px-4 py-0 text-start rounded-4">
-                        Парковка рядом с офисом
-                        <svg width="30" height="30" style="flex: 0 0 30px;">
+                <div class="col-12">
+                    <h2 class="h1 text-uppercase">Как до нас добраться</h2>
+                </div>
+                <div class="col-lg-7">
+                    <p class="fs-5">Мы находимся в центре Сочи, в районе с удобной транспортной развязкой. Въезд с ул. Донская → направо на ул. Подгорную → здание слева.</p>
+                </div>
+            </div>
+            <div class="row g-4 mb-4 d-none d-lg-flex">
+                <div class="col-12 col-lg-4">
+                    <div class="d-flex align-items-center justify-content-between gap-3 h-100 p-4 text-white bg-warning rounded-4">
+                        <span>Парковка рядом с офисом</span>
+                        <svg class="flex-shrink-0" width="30" height="30" aria-hidden="true">
                             <use href="{{ `icons.svg#arrow-up-right` | absURL }}"></use>
                         </svg>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-xs-6 mb-5">
-                    <div class="btn btn-warning d-flex justify-content-md-between justify-content-between align-items-center text-white px-4 py-0 text-start rounded-4">
-                        5 минут пешком от остановки «Хлебозавод» и «Мясокомбинат»
-                        <svg width="30" height="30" style="flex: 0 0 30px;">
+
+                <div class="col-12 col-lg-4">
+                    <div class="d-flex align-items-center justify-content-between gap-3 h-100 p-4 text-white bg-warning rounded-4">
+                        <span>5 минут пешком от остановки «Хлебозавод» и «Мясокомбинат»</span>
+                        <svg class="flex-shrink-0" width="30" height="30" aria-hidden="true">
                             <use href="{{ `icons.svg#arrow-up-right` | absURL }}"></use>
                         </svg>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-xs-6 mb-5">
-                    <div class="btn btn-warning d-flex justify-content-md-between justify-content-between align-items-center text-white px-4 py-0 text-start rounded-4">
-                        15 минут от ж/д вокзала
-                        <svg width="30" height="30" style="flex: 0 0 30px;">
+
+                <div class="col-12 col-lg-4">
+                    <div class="d-flex align-items-center justify-content-between gap-3 h-100 p-4 text-white bg-warning rounded-4">
+                        <span>15 минут от ж/д вокзала</span>
+                        <svg class="flex-shrink-0" width="30" height="30" aria-hidden="true">
                             <use href="{{ `icons.svg#arrow-up-right` | absURL }}"></use>
                         </svg>
                     </div>
                 </div>
             </div>
-            <div class="row contacts align-items-stretch">
+            <div class="row g-4">
                 <div class="col-12 col-md-6">
-                    <div class="rounded-4 overflow-hidden">
+                    <div class="ratio ratio-1x1 rounded-4 overflow-hidden">
                         <iframe
+                            class="border-0"
                             loading="lazy"
-                            width="100%"
-                            height="100%"
                             title="Карта с расположением офиса ООО «Энерго Эффект»"
                             src="https://www.openstreetmap.org/export/embed.html?bbox=39.71992135047913%2C43.61064762313755%2C39.73783850669861%2C43.61746766867014&amp;layer=mapnik&amp;marker=43.614057742585295%2C39.72887992858887"
                         ></iframe>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-xs-12 d-flex flex-column justify-content-md-between">
-                    <div class="mb-4">
-                        <img class="w-100" src="{{ `images/contact-img-1.webp` | absURL }}" alt="" width="636" height="262" loading="lazy" decoding="async" />
-                    </div>
-                    <div>
-                        <img class="w-100" src="{{ `images/contact-img-2.webp` | absURL }}" alt="" width="636" height="263" loading="lazy" decoding="async" />
+
+                <div class="col-12 col-md-6">
+                    <div class="d-flex flex-column gap-4 h-100">
+                        <div class="flex-fill overflow-hidden rounded-4">
+                            <img class="w-100 h-100 object-fit-cover" src="{{ `images/contact-img-1.webp` | absURL }}" alt="" width="636" height="262" loading="lazy" decoding="async" />
+                        </div>
+
+                        <div class="flex-fill overflow-hidden rounded-4">
+                            <img class="w-100 h-100 object-fit-cover" src="{{ `images/contact-img-2.webp` | absURL }}" alt="" width="636" height="263" loading="lazy" decoding="async" />
+                        </div>
                     </div>
                 </div>
             </div>
