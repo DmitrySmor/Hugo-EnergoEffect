@@ -444,6 +444,27 @@ footer {
 }
 
 // ============================================
+// Контакты
+// ============================================
+.contacts {
+    .container {
+        padding-block: clamp(3.75rem, calc(2.351rem + 2.43vw), 5rem);
+        h3 {
+            letter-spacing: -0.04rem;
+            border-bottom: 1px solid rgba($white, 0.13);
+        }
+        a {
+            color: var(--bs-white);
+
+            &:hover,
+            &:focus-visible {
+                color: var(--bs-warning);
+            }
+        }
+    }
+}
+
+// ============================================
 // Panes — направления работ
 // ============================================
 .panes {
@@ -471,23 +492,8 @@ footer {
 }
 
 // ============================================
-// Контакты
-// ============================================
-.row.contacts {
-    > .col-md-6:first-child > div {
-        height: 550px;
-    }
-
-    .col-md-6 > div {
-        border-radius: 16px;
-        overflow: hidden;
-    }
-}
-
-// ============================================
 // How-to-point — как добраться
 // ============================================
-
 .how-to-point {
     p {
         font-size: 22px;

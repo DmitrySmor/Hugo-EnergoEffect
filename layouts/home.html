@@ -621,45 +621,35 @@
     </section>
 
     <!-- Контакты -->
-    <section id="contacts" class="bg-gradient-diagonal section-bg-3 v2 py-10">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-12">
-                    <h2 class="h1 text-uppercase text-white fw-bolder">Контакты</h2>
+    <section id="contacts" class="contacts bg-gradient-diagonal" aria-labelledby="contacts-title">
+        <div class="container text-white">
+            <div class="row mb-3">
+                <div class="col">
+                    <h2 id="contacts-title" class="h1 text-uppercase">Контакты</h2>
                 </div>
             </div>
-            <div class="row justify-content-md-between">
-                <div class="col-lg-5 col-md-5 col-xs-12">
-                    <h3 class="text-white border-bottom pb-3">Связаться с нами</h3>
-                    <div class="row pt-3">
-                        <div class="col-md-12">
-                            <h4 class="text-white">Телефон:</h4>
-                        </div>
-                    </div>
-                    <div class="row pb-3">
-                        <div class="col-md-12">
-                            <a class="text-white" href="tel:{{ .Site.Params.company_phone01_link }}"> {{ .Site.Params.company_phone01 }} </a><br />
-                            <a class="text-white" href="tel:{{ .Site.Params.company_phone02_link }}"> {{ .Site.Params.company_phone02 }} (поверка счетчиков) </a>
-                        </div>
-                    </div>
-                    <div class="row pt-3 pb-3">
-                        <div class="col-md-12">
-                            <h4 class="text-white mb-3">E-mail:</h4>
-                            <a class="text-white" href="mailto:{{ .Site.Params.company_emailMain }}"> {{ .Site.Params.company_emailMain }} </a><br />
-                            <a class="text-white" href="mailto:{{ .Site.Params.company_emailPoverka }}"> {{ .Site.Params.company_emailPoverka }} (поверка счетчиков) </a>
-                        </div>
-                    </div>
+
+            <div class="row g-5">
+                <div class="col-md-6">
+                    <h3 class="m-0 pb-3">Связаться с нами</h3>
+
+                    <h4 class="h5 pt-3">Телефон:</h4>
+                    <a href="tel:{{ .Site.Params.company_phone01_link }}">{{ .Site.Params.company_phone01 }}</a><br />
+                    <a href="tel:{{ .Site.Params.company_phone02_link }}">{{ .Site.Params.company_phone02 }}</a> (поверка счётчиков)
+
+                    <h4 class="h5 pt-3">E-mail:</h4>
+                    <a href="mailto:{{ .Site.Params.company_emailMain }}">{{ .Site.Params.company_emailMain }}</a><br />
+                    <a href="mailto:{{ .Site.Params.company_emailPoverka }}">{{ .Site.Params.company_emailPoverka }}</a> (поверка счётчиков)
                 </div>
-                <div class="col-lg-5 col-md-5 col-xs-12">
-                    <h3 class="text-white border-bottom pb-3 pmt-3">Офис компании</h3>
-                    <div class="mt-3 pb-3">
-                        <h4 class="text-white mb-3">Адрес:</h4>
-                        <p class="text-white">{{ partial "address-full.html" .Site.Params.addressPostal }}</p>
-                    </div>
-                    <div class="mt-3 pb-3">
-                        <h4 class="text-white">Часы работы:</h4>
-                        <p class="text-white pb-3">Пн–Пт: 08:00–17:00<br />Сб–Вс: выходной</p>
-                    </div>
+
+                <div class="col-md-6">
+                    <h3 class="m-0 pb-3">Офис компании</h3>
+
+                    <h4 class="h5 pt-3">Адрес:</h4>
+                    <p>{{ partial "address-full.html" .Site.Params.addressPostal }}</p>
+
+                    <h4 class="h5 pt-3">Часы работы:</h4>
+                    <p>Пн–Пт: 08:00–17:00<br />Сб–Вс: выходной</p>
                 </div>
             </div>
         </div>
