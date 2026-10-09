@@ -85,7 +85,7 @@
 // светвлый с ватермарком
 .bg-light-watermark-white {
     background: #e8f0f6ed;
-    > .container:first-child {
+    .container {
         position: relative;
         isolation: isolate; /* ← создаёт stacking context, z-index:-1 не "убежит" */
         background-repeat: no-repeat;
@@ -94,12 +94,11 @@
         &::before {
             content: '';
             position: absolute;
-            top: 50%;
-            right: 0%; /* отступ от правого края */
-            transform: translateY(-50%);
+            top: 5rem;
+            right: 1rem; /* отступ от правого края */
 
-            width: 50%;
-            height: 100%;
+            width: 25rem;
+            height: 25rem;
 
             background-color: #ffffff;
 

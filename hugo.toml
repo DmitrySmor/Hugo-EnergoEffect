@@ -108,7 +108,7 @@ enableRobotsTXT = true # Включаем генрацию robots.txt
     weight = 2
 [[menu.main]]
     name = "О компании"
-    url = "/#about-company"
+    url = "/#history"
     weight = 7
 [[menu.main]]
     name = "Руководство"
