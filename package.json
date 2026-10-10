@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/DmitrySmor/Hugo-EnergoEffect#readme",
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^8.0.0",
     "@htnabe/prettier-plugin-go-template": "^0.0.3",
     "autoprefixer": "^10.6.1",
     "postcss": "^8.5.28",

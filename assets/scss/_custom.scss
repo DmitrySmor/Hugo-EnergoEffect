@@ -417,7 +417,6 @@ footer {
         position: relative;
         isolation: isolate;
         overflow: hidden;
-        @include bg-gradient-industry;
 
         .partner-item {
             background-color: #000000a3;
