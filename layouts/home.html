@@ -78,13 +78,14 @@
             </div>
             <div class="row">
                 {{ $pages := first 6 (where .Site.RegularPages "Section" "direction").Reverse }}
-                {{ range $pages }}
-                    {{ $preview := .Resources.GetMatch "preview.webp" }}
+                {{ range $index, $page := $pages }}
+                    {{ $preview := $page.Resources.GetMatch "preview.webp" }}
+                    {{ $maskID := printf "preview-mask-%d" $index }}
                     <div class="col-12 col-md-6 col-lg-4 mb-4">
                         <div class="preview-card position-relative overflow-hidden rounded-4">
                             <svg width="100%" viewBox="0 0 416 285" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
-                                    <mask id="preview-mask">
+                                    <mask id="{{ $maskID }}">
                                         <rect width="416" height="285" fill="black" />
                                         <path
                                             d="
@@ -103,7 +104,7 @@
                                     </mask>
                                 </defs>
 
-                                <image href="{{ $preview.RelPermalink | absURL }}" x="0" y="0" width="416" height="285" preserveAspectRatio="xMidYMid slice" mask="url(#preview-mask)" />
+                                <image href="{{ $preview.RelPermalink | absURL }}" x="0" y="0" width="416" height="285" preserveAspectRatio="xMidYMid slice" mask="url(#{{ $maskID }})" />
                             </svg>
 
                             <a
@@ -129,7 +130,7 @@
         </div>
     </section>
 
-    <!-- широкий спектр работ -->
+    <!-- Широкий спектр работ -->
     <section class="list-works bg-gradient-diagonal">
         <div class="container">
             <div class="row">
@@ -290,6 +291,9 @@
 
     <!-- Миссия -->
     <section class="mission bg-gradient-light">
+        <!-- Скрытый заголовок секции: нужен для семантической структуры HTML и доступности (скринридеров), чтобы обозначить назначение блока. Класс visually-hidden скрывает заголовок визуально, сохраняя его доступным для вспомогательных технологий, не нарушая дизайн страницы. -->
+        <h2 class="visually-hidden">Наша миссия</h2>
+
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6">
