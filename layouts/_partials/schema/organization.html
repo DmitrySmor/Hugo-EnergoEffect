@@ -83,4 +83,19 @@
 		}
 	}
 	</script>
+{{ else if and .IsPage (eq .RelPermalink "/poverka/") }}
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Service",
+			"@id": {{ print .Permalink "#service" }},
+			"name": {{ .Title }},
+			"description": {{ .Description }},
+			"url": {{ .Permalink }},
+			"serviceType": {{ .Title }},
+			"provider": {
+				"@id": {{ print .Site.BaseURL "#organization" }}
+			}
+		}
+		</script>
 {{ end }}
