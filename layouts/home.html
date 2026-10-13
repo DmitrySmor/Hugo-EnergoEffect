@@ -1,21 +1,14 @@
 {{ define "main" }}
-    <section class="hero">
-        <div class="container rounded-bottom-0 rounded-bottom-sm-6">
-            <div class="row h-100">
-                <div class="col-12 col-lg-6 d-flex flex-column justify-content-start justify-content-lg-end">
-                    <h1 class="hero-title text-uppercase text-white fw-bold">
-                        Инжиниринговая<br />
-                        компания<br />
-                        <span class="text-warning text-nowrap">«ЭНЕРГО ЭФФЕКТ»</span>
-                    </h1>
-                </div>
-                <div class="col-12 col-lg-6 d-flex flex-column justify-content-end justify-content-lg-end">
-                    <p class="m-0 hero-subtitle text-white text-end">
-                        Проектирование<br />
-                        Строительство<br />
-                        Эксплуатация
-                    </p>
-                </div>
+    <section class="hero" aria-label="Энерго Эффект">
+        <!-- Скрытый заголовок секции: нужен для семантической структуры HTML и доступности (скринридеров), чтобы обозначить назначение блока. Класс visually-hidden скрывает заголовок визуально, сохраняя его доступным для вспомогательных технологий, не нарушая дизайн страницы. -->
+        <h2 class="visually-hidden">Инжиниринговая компания «ЭНЕРГО ЭФФЕКТ»</h2>
+
+        <div class="container">
+            <div class="row g-0 rounded-bottom-0 rounded-bottom-sm-6 overflow-hidden">
+                {{- $image := resources.Get "images/main-banner-1.webp" -}}
+                {{- with $image }}
+                    <img src="{{ .Permalink }}" alt="Инжиниринговая компания «ЭНЕРГО ЭФФЕКТ»" width="{{ .Width }}" height="{{ .Height }}" class="img-fluid w-100 d-block" fetchpriority="high" />
+                {{- end }}
             </div>
         </div>
     </section>
@@ -104,7 +97,7 @@
                                     </mask>
                                 </defs>
 
-                                <image href="{{ $preview.RelPermalink | absURL }}" x="0" y="0" width="416" height="285" preserveAspectRatio="xMidYMid slice" mask="url(#{{ $maskID }})" />
+                                <image href="{{ $preview.Permalink | absURL }}" x="0" y="0" width="416" height="285" preserveAspectRatio="xMidYMid slice" mask="url(#{{ $maskID }})" />
                             </svg>
 
                             <a
@@ -115,7 +108,7 @@
                                    rounded-4
                                    bg-white
                                    fw-bold fs-body-lg text-decoration-none"
-                                href="{{ .RelPermalink | absURL }}"
+                                href="{{ .Permalink | absURL }}"
                             >
                                 <span>{{ .Title }}</span>
 
@@ -371,7 +364,7 @@
                 </div>
                 <div class="target-img col-12 p-0 d-none d-lg-block overflow-hidden rounded-4 rounded-top-0 ratio" style="--bs-aspect-ratio: 33%;">
                     {{ with resources.Get "images/main-banner-2.webp" }}
-                        <img src="{{ .RelPermalink }}" alt="Основные цели" width="{{ .Width }}" height="{{ .Height }}" class="w-100 h-100 object-fit-cover" />
+                        <img src="{{ .Permalink }}" alt="Основные цели" width="{{ .Width }}" height="{{ .Height }}" class="w-100 h-100 object-fit-cover" />
                     {{ end }}
                 </div>
             </div>
@@ -383,7 +376,7 @@
         <div class="container px-md-0">
             <div class="ratio ratio-16x9 overflow-hidden rounded-sm-4">
                 {{ with resources.Get "images/team.webp" }}
-                    <img src="{{ .RelPermalink }}" alt="Команда компании" width="{{ .Width }}" height="{{ .Height }}" class="w-100 h-100 object-fit-cover" />
+                    <img src="{{ .Permalink }}" alt="Команда компании" width="{{ .Width }}" height="{{ .Height }}" class="w-100 h-100 object-fit-cover" />
                 {{ end }}
                 <div class="team-overlay d-flex align-items-end p-4 p-lg-5">
                     <div class="text-white">
@@ -475,7 +468,7 @@
                         <a class="row align-items-center g-3 py-3" href="{{ .Permalink | absURL }}">
                             <div class="col-12 col-sm-3">
                                 <div class="ratio ratio-16x9">
-                                    <img class="object-fit-cover rounded-4" src="{{ $preview.RelPermalink | absURL }}" alt="" width="306" height="172" loading="lazy" decoding="async" />
+                                    <img class="object-fit-cover rounded-4" src="{{ $preview.Permalink | absURL }}" alt="" width="306" height="172" loading="lazy" decoding="async" />
                                 </div>
                             </div>
 
@@ -526,7 +519,7 @@
                                 {{ .Summary }}
                             </p>
 
-                            <a class="mt-auto text-decoration-underline fst-italic" href="{{ .RelPermalink | absURL }}" aria-label="Подробнее о партнере {{ .Title }}"> Подробнее ... </a>
+                            <a class="mt-auto text-decoration-underline fst-italic" href="{{ .Permalink | absURL }}" aria-label="Подробнее о партнере {{ .Title }}"> Подробнее ... </a>
                         </div>
                     </li>
                 {{ end }}
@@ -556,12 +549,12 @@
 
 
                         <article class="h-100 d-flex flex-column">
-                            <a class="ratio ratio-16x9 rounded-4 overflow-hidden mb-3" href="{{ .RelPermalink | absURL }}">
-                                <img class="object-fit-cover" src="{{ $preview.RelPermalink | absURL }}" alt="{{ .Title }}" width="306" height="173" loading="lazy" decoding="async" />
+                            <a class="ratio ratio-16x9 rounded-4 overflow-hidden mb-3" href="{{ .Permalink | absURL }}">
+                                <img class="object-fit-cover" src="{{ $preview.Permalink | absURL }}" alt="{{ .Title }}" width="306" height="173" loading="lazy" decoding="async" />
                             </a>
 
                             <h3 class="h6 text-uppercase mb-3 fw-bolder">
-                                <a href="{{ .RelPermalink | absURL }}">
+                                <a href="{{ .Permalink | absURL }}">
                                     {{ .Title }}
                                 </a>
                             </h3>
@@ -608,12 +601,12 @@
                             {{ if eq $index 5 }}d-none d-xxl-block{{ end }}"
                         >
                             <article class="h-100">
-                                <a class="d-block ratio rounded-4 overflow-hidden border mb-3" style="--bs-aspect-ratio: 142.43%;" href="{{ $file.RelPermalink }}" target="_blank" rel="noopener">
-                                    <img class="w-100 object-fit-cover" src="{{ $image.RelPermalink }}" alt="{{ $doc.name }}" width="320" height="456" loading="lazy" decoding="async" />
+                                <a class="d-block ratio rounded-4 overflow-hidden border mb-3" style="--bs-aspect-ratio: 142.43%;" href="{{ $file.Permalink }}" target="_blank" rel="noopener">
+                                    <img class="w-100 object-fit-cover" src="{{ $image.Permalink }}" alt="{{ $doc.name }}" width="320" height="456" loading="lazy" decoding="async" />
                                 </a>
 
                                 <h3 class="h6 lh-1">
-                                    <a href="{{ $file.RelPermalink }}" target="_blank" rel="noopener">
+                                    <a href="{{ $file.Permalink }}" target="_blank" rel="noopener">
                                         {{ $doc.name }}
                                     </a>
                                 </h3>
