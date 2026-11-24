@@ -108,3 +108,7 @@ enableRobotsTXT = true # Включаем генрацию robots.txt
     name = "Согласие"
     url = "/terms_of_service"
     weight = 9
+[[menu.footer]]
+    name = "Вакансии"
+    url = "/vacancies"
+    weight = 10
