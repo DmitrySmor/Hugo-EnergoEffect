@@ -507,8 +507,9 @@
                     </p>
                 </div>
             </div>
-            <ul class="row g-5 list-unstyled mb-0">
+            <ul class="row g-5 list-unstyled">
                 {{ $pages := where .Site.RegularPages "Section" "partner" }}
+                {{ $pages = first 2 $pages }}
 
                 {{ range $pages }}
                     <li class="col-lg-6">
@@ -524,6 +525,12 @@
                     </li>
                 {{ end }}
             </ul>
+
+            <div class="row">
+                <div class="col-12 my-3 d-flex justify-content-center">
+                    <a class="btn btn-warning py-3 px-5 fw-semibold text-white text-uppercase rounded-4" href="{{ `partner` | absURL }}"> Смотреть всеx партеров </a>
+                </div>
+            </div>
         </div>
     </section>
 
